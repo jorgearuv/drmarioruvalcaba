@@ -28,10 +28,13 @@ export default function Hero({ headline, subheadline }: HeroProps) {
       className="gradient-mesh-hero noise-overlay relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Ambient light effects */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="animate-float absolute -right-24 top-1/4 h-[500px] w-[500px] rounded-full bg-teal-500/[0.07] blur-[100px]" />
-        <div className="animate-float-delayed absolute -left-24 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gold-400/[0.05] blur-[80px]" />
+      {/* Aurora background — always in motion */}
+      <div className="aurora-field" aria-hidden="true">
+        <div className="aurora-orb aurora-orb-1" />
+        <div className="aurora-orb aurora-orb-2" />
+        <div className="aurora-orb aurora-orb-3" />
+        <div className="aurora-orb aurora-orb-4" />
+        <div className="aurora-orb aurora-orb-5" />
       </div>
 
       {/* Subtle grid */}

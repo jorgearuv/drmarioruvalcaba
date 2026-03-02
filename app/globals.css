@@ -215,6 +215,152 @@ textarea:focus-visible {
   50% { transform: translateY(-8px) rotate(-1.5deg); }
 }
 
+/* ---- Aurora background system ---- */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  25%      { transform: translate(30%, -35%) scale(1.2); }
+  50%      { transform: translate(-15%, -50%) scale(0.85); }
+  75%      { transform: translate(-35%, -15%) scale(1.15); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  33%      { transform: translate(-40%, 25%) scale(1.25) rotate(8deg); }
+  66%      { transform: translate(30%, -30%) scale(0.8) rotate(-6deg); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20%      { transform: translate(35%, 20%) scale(1.15); }
+  40%      { transform: translate(10%, -40%) scale(0.85); }
+  60%      { transform: translate(-25%, -10%) scale(1.2); }
+  80%      { transform: translate(-35%, 30%) scale(0.8); }
+}
+
+@keyframes aurora-drift-4 {
+  0%, 100% { transform: translate(0%, 0%) scale(1) rotate(0deg); }
+  30%      { transform: translate(20%, -40%) scale(1.2) rotate(5deg); }
+  60%      { transform: translate(-30%, 20%) scale(0.85) rotate(-4deg); }
+}
+
+@keyframes aurora-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%      { border-radius: 50% 60% 30% 60% / 30% 50% 70% 50%; }
+  75%      { border-radius: 60% 30% 50% 40% / 70% 40% 50% 60%; }
+}
+
+@keyframes aurora-breathe-slow {
+  0%, 100% { opacity: var(--aurora-min-opacity, 0.4); }
+  50%      { opacity: var(--aurora-max-opacity, 0.7); }
+}
+
+@keyframes aurora-breathe-fast {
+  0%, 100% { opacity: var(--aurora-min-opacity, 0.3); }
+  50%      { opacity: var(--aurora-max-opacity, 0.6); }
+}
+
+.aurora-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-orb {
+  position: absolute;
+  filter: blur(var(--aurora-blur, 80px));
+  will-change: transform, border-radius, opacity;
+  animation:
+    var(--aurora-drift) var(--aurora-drift-duration, 20s) ease-in-out infinite,
+    aurora-morph var(--aurora-morph-duration, 12s) ease-in-out infinite,
+    var(--aurora-breathe, aurora-breathe-slow) var(--aurora-breathe-duration, 8s) ease-in-out infinite;
+}
+
+/* Orb 1 — large teal, upper-right drift */
+.aurora-orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -5%;
+  right: -5%;
+  background: #06c4ae;
+  --aurora-drift: aurora-drift-1;
+  --aurora-drift-duration: 18s;
+  --aurora-morph-duration: 12s;
+  --aurora-blur: 80px;
+  --aurora-min-opacity: 0.15;
+  --aurora-max-opacity: 0.55;
+  --aurora-breathe-duration: 8s;
+}
+
+/* Orb 2 — gold accent, left side */
+.aurora-orb-2 {
+  width: 420px;
+  height: 420px;
+  bottom: 0;
+  left: -5%;
+  background: #d4a853;
+  --aurora-drift: aurora-drift-2;
+  --aurora-drift-duration: 20s;
+  --aurora-morph-duration: 14s;
+  --aurora-blur: 70px;
+  --aurora-min-opacity: 0.1;
+  --aurora-max-opacity: 0.42;
+  --aurora-breathe: aurora-breathe-fast;
+  --aurora-breathe-duration: 6s;
+}
+
+/* Orb 3 — deep teal, center-bottom */
+.aurora-orb-3 {
+  width: 520px;
+  height: 520px;
+  bottom: -10%;
+  left: 25%;
+  background: #019e8f;
+  --aurora-drift: aurora-drift-3;
+  --aurora-drift-duration: 24s;
+  --aurora-morph-duration: 16s;
+  --aurora-blur: 90px;
+  --aurora-min-opacity: 0.12;
+  --aurora-max-opacity: 0.48;
+  --aurora-breathe-duration: 9s;
+}
+
+/* Orb 4 — bright teal highlight, upper-left */
+.aurora-orb-4 {
+  width: 380px;
+  height: 380px;
+  top: 5%;
+  left: 10%;
+  background: #1ee0c7;
+  --aurora-drift: aurora-drift-4;
+  --aurora-drift-duration: 16s;
+  --aurora-morph-duration: 11s;
+  --aurora-blur: 65px;
+  --aurora-min-opacity: 0.1;
+  --aurora-max-opacity: 0.45;
+  --aurora-breathe: aurora-breathe-fast;
+  --aurora-breathe-duration: 5s;
+}
+
+/* Orb 5 — teal spark, small & faster */
+.aurora-orb-5 {
+  width: 300px;
+  height: 300px;
+  top: 30%;
+  right: 10%;
+  background: #06c4ae;
+  --aurora-drift: aurora-drift-1;
+  --aurora-drift-duration: 12s;
+  --aurora-morph-duration: 8s;
+  --aurora-blur: 55px;
+  --aurora-min-opacity: 0.08;
+  --aurora-max-opacity: 0.4;
+  --aurora-breathe: aurora-breathe-fast;
+  --aurora-breathe-duration: 4s;
+  animation-delay: 2s, 1s, 0.5s;
+}
+
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow: 0 0 0 0 rgba(1, 158, 143, 0.4);
