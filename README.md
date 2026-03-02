@@ -1,37 +1,37 @@
-# Dr. Mario Ruvalcaba — Cirujano Bariátrico en Mérida
+# Dr. Mario Ruvalcaba — Bariatric Surgeon in Mérida
 
-Sitio web profesional para el Dr. Mario Ruvalcaba, especialista en cirugía bariátrica y metabólica en Mérida, Yucatán.
+Professional website for Dr. Mario Ruvalcaba, specialist in bariatric and metabolic surgery in Mérida, Yucatán.
 
 ## Stack
 
-| Capa | Tecnología |
-|------|-----------|
+| Layer | Technology |
+|-------|-----------|
 | Framework | Next.js 16 (App Router) |
 | UI | React 19 + TypeScript 5 |
-| Estilos | Tailwind CSS 4 |
-| Animaciones | Framer Motion 12 |
-| Tipografía | Instrument Serif (display) + Plus Jakarta Sans (body) |
-| Despliegue | Vercel (recomendado) |
+| Styling | Tailwind CSS 4 |
+| Animations | Framer Motion 12 |
+| Typography | Instrument Serif (display) + Plus Jakarta Sans (body) |
+| Deployment | Vercel (recommended) |
 
-## Inicio rápido
+## Quick Start
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Servidor de desarrollo
+# Development server
 npm run dev
 
-# Build de producción
+# Production build
 npm run build && npm start
 
 # Lint
 npm run lint
 ```
 
-El servidor arranca en [http://localhost:3000](http://localhost:3000).
+The server starts at [http://localhost:3000](http://localhost:3000).
 
-## Estructura del proyecto
+## Project Structure
 
 ```
 app/
@@ -39,12 +39,12 @@ app/
 ├── layout.tsx                      # Root layout (lang="es", fonts, Navbar, Footer, JSON-LD)
 ├── globals.css                     # Tailwind v4 theme, brand tokens, utility classes
 ├── not-found.tsx                   # 404
-├── sitemap.ts                      # Sitemap dinámico
+├── sitemap.ts                      # Dynamic sitemap
 ├── robots.ts                       # robots.txt
-├── manga-gastrica-merida/          # Página de procedimiento
-├── bypass-gastrico-merida/         # Página de procedimiento
-├── balon-intragastrico/            # Página de procedimiento
-├── cirugia-minima-invasion/        # Página de procedimiento
+├── manga-gastrica-merida/          # Procedure page
+├── bypass-gastrico-merida/         # Procedure page
+├── balon-intragastrico/            # Procedure page
+├── cirugia-minima-invasion/        # Procedure page
 ├── sobre-el-doctor/
 ├── contacto/
 ├── testimonios/
@@ -62,98 +62,98 @@ components/
 
 lib/
 ├── constants.ts                    # Doctor info, nav links, stats, trust badges
-├── procedures.ts                   # 4 procedimientos con contenido médico completo
-├── testimonials.ts                 # Testimonios de pacientes
-├── faq.ts                          # 15 preguntas frecuentes (5 categorías)
-├── blog.ts                         # Posts de blog (placeholder)
-├── animations.ts                   # Variantes de Framer Motion
-├── metadata.ts                     # Factory de metadata por página
-└── seo.ts                          # Generadores JSON-LD (Physician, LocalBusiness, etc.)
+├── procedures.ts                   # 4 procedures with full medical content
+├── testimonials.ts                 # Patient testimonials
+├── faq.ts                          # 15 FAQs (5 categories)
+├── blog.ts                         # Blog posts (placeholder)
+├── animations.ts                   # Framer Motion variants
+├── metadata.ts                     # Per-page metadata factory
+└── seo.ts                          # JSON-LD generators (Physician, LocalBusiness, etc.)
 
 types/
-└── index.ts                        # Interfaces TypeScript compartidas
+└── index.ts                        # Shared TypeScript interfaces
 
 public/fonts/                       # Instrument Serif (Regular + Italic)
 ```
 
-## Arquitectura
+## Architecture
 
-**Server Components por defecto.** Solo llevan `"use client"` los componentes que requieren interactividad: Navbar, WhatsAppButton, Hero, ServiceCards, StatsCounter, BMICalculator, TestimonialCarousel, TrustBadges, CTASection, ContactForm, FAQAccordion, SectionWrapper.
+**Server Components by default.** Only components requiring interactivity use `"use client"`: Navbar, WhatsAppButton, Hero, ServiceCards, StatsCounter, BMICalculator, TestimonialCarousel, TrustBadges, CTASection, ContactForm, FAQAccordion, SectionWrapper.
 
-**Patrón template para procedimientos.** Las 4 páginas de procedimiento comparten el componente `ProcedureDetail`. Cada archivo de página son ~30 líneas: lookup de datos + export de metadata + render + JSON-LD.
+**Template pattern for procedures.** All 4 procedure pages share the `ProcedureDetail` component. Each page file is ~30 lines: data lookup + metadata export + render + JSON-LD.
 
-**Contenido data-driven.** Todo el texto vive en `lib/*.ts`. Los componentes reciben datos tipados via props. Cero strings hardcodeados en componentes.
+**Data-driven content.** All text lives in `lib/*.ts`. Components receive typed data via props. Zero hardcoded strings in components.
 
-## Sistema de diseño
+## Design System
 
-**Paleta de colores:**
-- Teal (`#019E8F` → `#0D524D`) — color primario, CTAs, acentos
-- Navy (`#0C1426` → `#F6F8FB`) — texto, fondos oscuros, neutrales
-- Gold (`#D4A853`) — acento secundario, certificaciones, elegancia
+**Color palette:**
+- Teal (`#019E8F` → `#0D524D`) — primary color, CTAs, accents
+- Navy (`#0C1426` → `#F6F8FB`) — text, dark backgrounds, neutrals
+- Gold (`#D4A853`) — secondary accent, certifications, elegance
 
-**Clases CSS propias (definidas en `globals.css`):**
+**Custom CSS classes (defined in `globals.css`):**
 
-| Clase | Uso |
-|-------|-----|
-| `.gradient-mesh-hero` | Fondo de secciones hero (dark, con radial gradients) |
-| `.gradient-mesh-light` | Fondo sutil para secciones claras |
-| `.gradient-mesh-cta` | Fondo para banners de conversión |
-| `.glass` / `.glass-dark` | Glassmorphism (blur + transparencia) |
-| `.card-premium` | Tarjeta con bordes sutiles, hover lift y transición |
-| `.card-glow` | Borde gradient (teal→gold) que aparece en hover |
-| `.noise-overlay` | Textura de ruido SVG sutil (::before) |
-| `.section-divider` | Línea gradient teal→gold (60px × 3px) |
-| `.heading-gradient` | Texto con gradient navy→teal |
-| `.skip-to-content` | Link de accesibilidad (skip nav) |
-| `.sr-only` | Contenido solo para screen readers |
+| Class | Usage |
+|-------|-------|
+| `.gradient-mesh-hero` | Hero section background (dark, with radial gradients) |
+| `.gradient-mesh-light` | Subtle background for light sections |
+| `.gradient-mesh-cta` | Background for conversion banners |
+| `.glass` / `.glass-dark` | Glassmorphism (blur + transparency) |
+| `.card-premium` | Card with subtle borders, hover lift, and transition |
+| `.card-glow` | Gradient border (teal→gold) that appears on hover |
+| `.noise-overlay` | Subtle SVG noise texture (::before) |
+| `.section-divider` | Gradient line teal→gold (60px × 3px) |
+| `.heading-gradient` | Text with navy→teal gradient |
+| `.skip-to-content` | Accessibility link (skip nav) |
+| `.sr-only` | Screen reader only content |
 
-## Accesibilidad
+## Accessibility
 
-- Skip-to-content link para navegación por teclado
-- `prefers-reduced-motion`: todas las animaciones se desactivan (duration: 0, sin transforms)
-- `useReducedMotion()` de Framer Motion en cada componente animado
-- `:focus-visible` con outline teal en todos los elementos interactivos
-- `aria-labelledby` en cada `<section>`
-- Carousel: `aria-roledescription="carousel"`, `aria-live="polite"`, pausa en hover y focus
-- BMI Calculator: `aria-live="polite"` en zona de resultados, `aria-required` en inputs
-- Touch targets mínimos de 44px en inputs y botones
-- HTML semántico: `<section>`, `<article>`, `<nav>`, `<header>`, `<footer>`
+- Skip-to-content link for keyboard navigation
+- `prefers-reduced-motion`: all animations are disabled (duration: 0, no transforms)
+- `useReducedMotion()` from Framer Motion in every animated component
+- `:focus-visible` with teal outline on all interactive elements
+- `aria-labelledby` on every `<section>`
+- Carousel: `aria-roledescription="carousel"`, `aria-live="polite"`, pauses on hover and focus
+- BMI Calculator: `aria-live="polite"` on results area, `aria-required` on inputs
+- Minimum 44px touch targets on inputs and buttons
+- Semantic HTML: `<section>`, `<article>`, `<nav>`, `<header>`, `<footer>`
 
 ## SEO
 
-Cada página exporta metadata via `createPageMetadata()`. JSON-LD inyectado:
+Each page exports metadata via `createPageMetadata()`. Injected JSON-LD:
 
-| Schema | Alcance |
-|--------|---------|
+| Schema | Scope |
+|--------|-------|
 | `Physician` | Global (root layout) |
 | `LocalBusiness` | Global (root layout) |
-| `MedicalProcedure` | Páginas de procedimiento |
-| `FAQPage` | Página de preguntas frecuentes |
-| `BreadcrumbList` | Disponible vía helper |
+| `MedicalProcedure` | Procedure pages |
+| `FAQPage` | FAQ page |
+| `BreadcrumbList` | Available via helper |
 
-Sitemap dinámico con prioridades ponderadas. `robots.txt` permite indexación completa.
+Dynamic sitemap with weighted priorities. `robots.txt` allows full indexing.
 
-## Placeholders pendientes
+## Pending Placeholders
 
-Estos valores deben reemplazarse con datos reales antes de ir a producción:
+These values must be replaced with real data before going to production:
 
-- `lib/constants.ts` — número de WhatsApp (`+52XXXXXXXXXX`), cédula profesional, URLs de redes sociales
+- `lib/constants.ts` — WhatsApp number (`+52XXXXXXXXXX`), professional license number, social media URLs
 - `lib/constants.ts` — `siteUrl` (`https://drmarioruvalcaba.com`)
-- Fotos del doctor y procedimientos (actualmente se muestran gradients placeholder)
-- Logos de hospitales y certificaciones en `TrustBadges`
-- Google Maps embed en página de contacto
-- Imágenes de blog posts
-- Conectar formulario de contacto a backend (actualmente es client-side only)
+- Doctor and procedure photos (currently showing gradient placeholders)
+- Hospital and certification logos in `TrustBadges`
+- Google Maps embed on the contact page
+- Blog post images
+- Connect contact form to a backend (currently client-side only)
 
 ## Scripts
 
 ```bash
-npm run dev       # Servidor de desarrollo (Turbopack)
-npm run build     # Build de producción (genera 16 rutas estáticas)
-npm run start     # Sirve el build de producción
+npm run dev       # Development server (Turbopack)
+npm run build     # Production build (generates 16 static routes)
+npm run start     # Serve the production build
 npm run lint      # ESLint
 ```
 
-## Licencia
+## License
 
-Privado. Todos los derechos reservados.
+Private. All rights reserved.
