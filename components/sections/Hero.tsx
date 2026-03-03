@@ -56,7 +56,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-400" />
             </span>
-            <span className="text-teal-200">Cirujano Bariátrico Certificado</span>
+            <span className="text-teal-200">Cirujano General y Bariatra Certificado</span>
             <span className="text-white/20" aria-hidden="true">|</span>
             <span className="text-gold-400">Mérida, Yucatán</span>
           </span>
@@ -69,8 +69,8 @@ export default function Hero({ headline, subheadline }: HeroProps) {
           className="mx-auto mt-8 max-w-4xl font-display text-[clamp(2.5rem,6vw,5rem)] leading-[1.05] tracking-tight text-white"
         >
           {headline.split(" ").map((word, wordIndex) => {
-            const isTealWord = ["Transforma", "Bariátrica"].includes(word);
-            const isGoldWord = ["Mérida"].includes(word);
+            const isTealWord = ["Bariatra", "Mínima", "Invasión"].includes(word);
+            const isGoldWord = ["Mérida", "Yucatán"].includes(word);
             if (isTealWord) {
               return (
                 <span key={wordIndex} className="text-teal-400">
@@ -90,12 +90,23 @@ export default function Hero({ headline, subheadline }: HeroProps) {
         </motion.h1>
 
         {/* Subheadline */}
-        <motion.p
+        <motion.div
           {...animationProps(0.3)}
-          className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-navy-300/90 md:text-xl"
+          className="mx-auto mt-6 max-w-2xl"
         >
-          {subheadline}
-        </motion.p>
+          {subheadline.split("\n\n").map((paragraph, paragraphIndex) => (
+            <p
+              key={paragraphIndex}
+              className={
+                paragraphIndex === 0
+                  ? "text-lg leading-relaxed text-navy-300/90 md:text-xl"
+                  : "mt-4 text-base leading-relaxed text-navy-400/80"
+              }
+            >
+              {paragraph}
+            </p>
+          ))}
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
@@ -106,7 +117,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-teal-500 to-teal-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-teal-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal-600/30"
+            className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-primary-500 to-primary-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-600/30"
           >
             <svg
               className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
@@ -160,7 +171,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                 <div className="text-center">
                   <p className="font-display text-2xl text-white md:text-3xl">
                     {stat.value.toLocaleString()}
-                    <span className="text-teal-400">{stat.suffix}</span>
+                    <span className="text-primary-400">{stat.suffix}</span>
                   </p>
                   <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-navy-400">
                     {stat.label}

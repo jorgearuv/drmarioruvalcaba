@@ -204,7 +204,7 @@ export default function TrustBadges() {
             }
             className="mx-auto mt-3 max-w-lg font-display text-2xl text-navy-900 md:text-3xl"
           >
-            Avalado por Instituciones de Primer Nivel
+            Certificaciones y Membresías Profesionales
           </motion.h2>
 
           <motion.div
@@ -224,7 +224,7 @@ export default function TrustBadges() {
         {/* Badge grid — 3 cols desktop, 2 cols tablet/mobile */}
         <ul
           role="list"
-          aria-label="Hospitales, certificaciones y asociaciones profesionales"
+          aria-label="Certificaciones y membresías profesionales"
           className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {TRUST_BADGES.map((badge, badgeIndex) => (

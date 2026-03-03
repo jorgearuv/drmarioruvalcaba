@@ -78,12 +78,13 @@ export interface SubProcedure {
 export interface Testimonial {
   id: string;
   name: string;
-  age: number;
-  procedure: string;
+  age?: number;
+  procedure?: string;
   rating: number;
   text: string;
-  weightLost: string;
+  weightLost?: string;
   timeAgo: string;
+  source?: string;
 }
 
 export interface FAQItem {

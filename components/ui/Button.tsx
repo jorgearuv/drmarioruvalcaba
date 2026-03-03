@@ -28,11 +28,11 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-teal-600 to-teal-700 text-white hover:from-teal-500 hover:to-teal-600 shadow-lg shadow-teal-600/20 hover:shadow-xl hover:shadow-teal-600/25 hover:-translate-y-0.5",
+    "bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-500 hover:to-primary-600 shadow-lg shadow-primary-600/20 hover:shadow-xl hover:shadow-primary-600/25 hover:-translate-y-0.5",
   secondary:
     "bg-navy-900 text-white hover:bg-navy-800 shadow-lg shadow-navy-900/20 hover:-translate-y-0.5",
   outline:
-    "border border-navy-200 text-navy-700 hover:border-teal-400 hover:text-teal-700 hover:shadow-lg hover:-translate-y-0.5",
+    "border border-navy-200 text-navy-700 hover:border-primary-400 hover:text-primary-700 hover:shadow-lg hover:-translate-y-0.5",
   whatsapp:
     "bg-gradient-to-br from-green-500 to-green-600 text-white hover:from-green-400 hover:to-green-500 shadow-lg shadow-green-500/20 hover:shadow-xl hover:-translate-y-0.5",
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
+import { type Variants, motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
@@ -237,7 +237,7 @@ const BMIResultDisplay = ({
           delay: shouldReduceMotion ? 0 : 0.25,
           ease: CUBIC_EASE_OUT,
         }}
-        className="animate-pulse-glow mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 px-8 py-3 font-semibold text-white shadow-lg shadow-teal-600/25 transition-all hover:from-teal-500 hover:to-teal-600 hover:shadow-teal-600/40"
+        className="animate-pulse-glow mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 px-8 py-3 font-semibold text-white shadow-lg shadow-primary-600/25 transition-all hover:from-primary-500 hover:to-primary-600 hover:shadow-primary-600/40"
         aria-label="Agendar valoración bariátrica por WhatsApp con el Dr. Mario Ruvalcaba"
       >
         Agendar Valoración
@@ -519,7 +519,7 @@ export default function BMICalculator() {
                   type="submit"
                   disabled={!hasValidInputs}
                   aria-disabled={!hasValidInputs}
-                  className="mt-2 w-full rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 py-3.5 font-semibold text-white shadow-lg shadow-teal-600/20 transition-all hover:from-teal-500 hover:to-teal-600 hover:shadow-teal-600/35 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:hover:from-teal-600 disabled:hover:to-teal-700"
+                  className="mt-2 w-full rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 py-3.5 font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:from-primary-500 hover:to-primary-600 hover:shadow-primary-600/35 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:hover:from-primary-600 disabled:hover:to-primary-700"
                   style={{ minHeight: "44px" }}
                 >
                   Calcular IMC
@@ -583,7 +583,168 @@ export default function BMICalculator() {
           </motion.div>
 
         </div>
+
+        {/* ----------------------------------------------------------------
+            Bariatric surgery candidacy criteria
+        ---------------------------------------------------------------- */}
+        <BariatricCriteriaSection shouldReduceMotion={shouldReduceMotion} />
       </div>
     </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// BariatricCriteriaSection — "¿Quiénes son candidatos?"
+// ---------------------------------------------------------------------------
+
+interface CriterionData {
+  title: string;
+  description: string;
+}
+
+const BARIATRIC_CRITERIA: CriterionData[] = [
+  {
+    title: "IMC ≥ 40 (obesidad severa)",
+    description:
+      "Pacientes con índice de masa corporal igual o mayor a 40, aun sin enfermedades asociadas.",
+  },
+  {
+    title: "IMC ≥ 35 con comorbilidades",
+    description:
+      "Diabetes tipo 2, hipertensión arterial, apnea obstructiva del sueño, dislipidemia, enfermedad articular degenerativa o esteatohepatitis no alcohólica.",
+  },
+  {
+    title: "IMC 30–34.9 con diabetes tipo 2 mal controlada",
+    description:
+      "Pacientes con obesidad grado I y diabetes tipo 2 que no logran control metabólico adecuado con tratamiento médico (cirugía metabólica).",
+  },
+  {
+    title: "Fracaso de tratamientos previos",
+    description:
+      "Pacientes que han intentado bajar de peso con dieta, ejercicio y/o medicamentos sin resultados sostenidos durante al menos 6 meses.",
+  },
+  {
+    title: "Evaluación integral favorable",
+    description:
+      "Valoración multidisciplinaria (nutricional, psicológica, médica) que confirme al paciente como candidato apto y comprometido con los cambios de estilo de vida.",
+  },
+];
+
+interface BariatricCriteriaSectionProps {
+  shouldReduceMotion: boolean;
+}
+
+function BariatricCriteriaSection({
+  shouldReduceMotion,
+}: BariatricCriteriaSectionProps) {
+  const fadeUpVariants: Variants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    visible: (delaySeconds: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.55,
+        delay: shouldReduceMotion ? 0 : delaySeconds,
+        ease: CUBIC_EASE_OUT,
+      },
+    }),
+  };
+
+  return (
+    <div className="mt-20 md:mt-28">
+      {/* Section heading */}
+      <div className="text-center">
+        <motion.p
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          custom={0}
+          viewport={{ once: true }}
+          className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
+        >
+          Criterios de Candidatura
+        </motion.p>
+
+        <motion.h3
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          custom={0.1}
+          viewport={{ once: true }}
+          className="heading-gradient mt-3 font-display text-3xl md:text-4xl"
+        >
+          ¿Quiénes son candidatos a cirugía bariátrica?
+        </motion.h3>
+
+        <motion.p
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          custom={0.2}
+          viewport={{ once: true }}
+          className="mx-auto mt-4 max-w-2xl text-base text-navy-500 md:text-lg"
+        >
+          De acuerdo con criterios internacionales, pueden ser candidatos a
+          cirugía bariátrica los pacientes que cumplan con alguna de las
+          siguientes condiciones:
+        </motion.p>
+      </div>
+
+      {/* Criteria cards */}
+      <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {BARIATRIC_CRITERIA.map((criterion, criterionIndex) => (
+          <motion.article
+            key={criterion.title}
+            variants={fadeUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            custom={0.15 + criterionIndex * 0.1}
+            viewport={{ once: true, margin: "-40px" }}
+            className="card-premium card-glow flex items-start gap-4 p-6"
+          >
+            <div
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-md shadow-teal-600/25"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <div>
+              <h4 className="font-display text-base text-navy-900">
+                {criterion.title}
+              </h4>
+              <p className="mt-1.5 text-sm leading-relaxed text-navy-500">
+                {criterion.description}
+              </p>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+
+      {/* Disclaimer note */}
+      <motion.p
+        variants={fadeUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        custom={0.5}
+        viewport={{ once: true }}
+        className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-navy-400"
+      >
+        La indicación final siempre debe realizarse de manera individualizada
+        por un cirujano bariatra certificado, tomando en cuenta la historia
+        clínica completa, expectativas del paciente y riesgos asociados.
+      </motion.p>
+    </div>
   );
 }

@@ -69,7 +69,7 @@ const TestimonialCard = ({
     {/* Decorative quotation mark */}
     <span
       aria-hidden="true"
-      className="font-display pointer-events-none select-none text-6xl leading-none text-teal-100"
+      className="font-display pointer-events-none select-none text-6xl leading-none text-primary-100"
     >
       &ldquo;
     </span>
@@ -89,13 +89,29 @@ const TestimonialCard = ({
         />
 
         <p className="font-semibold text-navy-900">{testimonial.name}</p>
-        <p className="mt-0.5 text-sm text-navy-500">
-          {testimonial.age} años &middot; {testimonial.procedure}
-        </p>
+        {(testimonial.age || testimonial.procedure) && (
+          <p className="mt-0.5 text-sm text-navy-500">
+            {testimonial.age ? `${testimonial.age} años` : ""}
+            {testimonial.age && testimonial.procedure ? " · " : ""}
+            {testimonial.procedure ?? ""}
+          </p>
+        )}
 
-        <span className="mt-3 inline-flex items-center rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
-          -{testimonial.weightLost} perdidos
-        </span>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {testimonial.weightLost && (
+            <span className="inline-flex items-center rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
+              -{testimonial.weightLost} perdidos
+            </span>
+          )}
+          {testimonial.source && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-navy-200 px-3 py-1 text-[11px] font-medium text-navy-500">
+              <svg aria-hidden="true" className="h-3 w-3 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {testimonial.source}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   </article>
@@ -384,7 +400,7 @@ export default function TestimonialCarousel({
                   onClick={() => navigateToDot(dotIndex)}
                   className={`h-2 cursor-pointer rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 ${
                     isActiveDot
-                      ? "w-6 bg-teal-600"
+                      ? "w-6 bg-primary-600"
                       : "w-2 bg-navy-200 hover:bg-navy-400"
                   }`}
                 />

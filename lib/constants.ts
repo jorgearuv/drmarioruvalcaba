@@ -2,7 +2,7 @@ import type { DoctorInfo, NavLink, StatItem, TrustBadge } from "@/types";
 
 export const DOCTOR_INFO = {
   name: "Dr. Mario Ruvalcaba",
-  title: "Cirujano Bariátrico Certificado",
+  title: "Cirujano General y Bariatra Certificado",
   specialties: [
     "Manga Gástrica",
     "Bypass Gástrico",
@@ -10,14 +10,14 @@ export const DOCTOR_INFO = {
     "Cirugía de Mínima Invasión",
   ],
   cedula: "XXXXXXXX",
-  phone: "+52XXXXXXXXXX",
-  whatsapp: "+52XXXXXXXXXX",
+  phone: "+529992603030",
+  whatsapp: "+529992603030",
   email: "contacto@drmarioruvalcaba.com",
-  address: "Calle 26 No. 199, Col. Altabrisa, Mérida, Yucatán, C.P. 97130",
+  address: "Calle 17 #182-B por calle 14 y 16, México Oriente",
   city: "Mérida",
   state: "Yucatán",
   country: "México",
-  zipCode: "97130",
+  zipCode: "97137",
   googleMapsUrl: "https://maps.google.com/?q=Merida+Yucatan+Mexico",
   siteUrl: "https://drmarioruvalcaba.com",
   socialMedia: {
@@ -49,22 +49,15 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const STATS = [
-  { value: 3000, suffix: "+", label: "Cirugías realizadas" },
-  { value: 15, suffix: "+", label: "Años de experiencia" },
+  { value: 3000, suffix: "+", label: "Procedimientos exitosos" },
   { value: 98, suffix: "%", label: "Pacientes satisfechos" },
-  { value: 4, suffix: "", label: "Certificaciones internacionales" },
 ] as const satisfies readonly StatItem[];
 
 export const TRUST_BADGES = [
-  { name: "Hospital Star Médica Mérida", type: "hospital" },
-  { name: "Hospital CMQ Mérida", type: "hospital" },
-  { name: "Consejo Mexicano de Cirugía General", type: "certification" },
-  { name: "IFSO Member", type: "certification" },
-  {
-    name: "Sociedad Mexicana de Cirugía para la Obesidad",
-    type: "association",
-  },
-  { name: "Colegio de Cirujanos de Yucatán", type: "association" },
+  { name: "Consejo Mexicano de Cirugía General, A.C.", type: "certification" },
+  { name: "Asociación Mexicana de Cirugía General (AMCG)", type: "association" },
+  { name: "Asociación Mexicana de Cirugía Endoscópica (AMCE)", type: "association" },
+  { name: "Colegio Mexicano de Cirugía para la Obesidad y Enfermedades Metabólicas (CMCOEM)", type: "association" },
 ] as const satisfies readonly TrustBadge[];
 
 export const WHATSAPP_MESSAGE = encodeURIComponent(

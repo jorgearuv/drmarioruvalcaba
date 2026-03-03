@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { PROCEDURES } from "@/lib/procedures";
+import { PROCEDURES, BARIATRIC_SUB_PROCEDURES, SUB_PROCEDURES } from "@/lib/procedures";
 import type { Procedure } from "@/types";
 
 // ---------------------------------------------------------------------------
@@ -281,7 +281,7 @@ export default function ServiceCards() {
             viewport={{ once: true }}
             className="mx-auto mt-5 max-w-2xl text-lg text-navy-500"
           >
-            Soluciones quirúrgicas y no quirúrgicas personalizadas para cada
+            Soluciones quirúrgicas personalizadas a las necesidades de cada
             paciente
           </motion.p>
         </div>
@@ -310,6 +310,59 @@ export default function ServiceCards() {
             );
           })}
         </div>
+
+        {/* ----------------------------------------------------------------
+            All procedures — chip/tag subsection
+        ---------------------------------------------------------------- */}
+        <motion.div
+          variants={fadeUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          custom={0.2}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
+          <h3 className="heading-gradient text-center font-display text-2xl md:text-3xl">
+            Todos Nuestros Procedimientos
+          </h3>
+          <div className="section-divider mx-auto mt-4" aria-hidden="true" />
+
+          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2">
+            {/* Bariatric procedures */}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600">
+                Cirugía Bariátrica
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {BARIATRIC_SUB_PROCEDURES.map((subProcedure) => (
+                  <span
+                    key={subProcedure.title}
+                    className="rounded-full border border-navy-200 px-4 py-2 text-sm text-navy-600 transition hover:border-teal-300 hover:text-teal-700"
+                  >
+                    {subProcedure.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Minimally invasive procedures */}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600">
+                Cirugía de Mínima Invasión
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {SUB_PROCEDURES.map((subProcedure) => (
+                  <span
+                    key={subProcedure.title}
+                    className="rounded-full border border-navy-200 px-4 py-2 text-sm text-navy-600 transition hover:border-teal-300 hover:text-teal-700"
+                  >
+                    {subProcedure.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>

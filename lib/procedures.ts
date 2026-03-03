@@ -35,7 +35,7 @@ export const PROCEDURES: Procedure[] = [
       {
         title: "Procedimiento mínimamente invasivo",
         description:
-          "Cirugía laparoscópica con incisiones de 5 a 12 mm que reducen el dolor, las complicaciones y dejan cicatrices prácticamente imperceptibles.",
+          "Cirugía laparoscópica con incisiones de 3 a 12 mm que reducen el dolor, las complicaciones y dejan cicatrices prácticamente imperceptibles.",
         icon: "🔬",
       },
       {
@@ -325,14 +325,14 @@ export const PROCEDURES: Procedure[] = [
     heroSubheadline:
       "Soluciones quirúrgicas avanzadas con la menor invasión posible. Menos dolor, cicatrices casi invisibles y una recuperación notablemente más rápida.",
     description:
-      "La cirugía de mínima invasión utiliza técnicas laparoscópicas avanzadas para tratar diversas patologías abdominales a través de incisiones de 5 a 12 mm. Incluye colecistectomía (vesícula biliar), reparación de hernias, apendicectomía y funduplicatura para reflujo, entre otros procedimientos.",
+      "La cirugía de mínima invasión utiliza técnicas laparoscópicas avanzadas para tratar diversas patologías abdominales a través de incisiones de 3 a 12 mm. Incluye colecistectomía (vesícula biliar), reparación de hernias, apendicectomía y funduplicatura para reflujo, entre otros procedimientos.",
     longDescription:
-      "La cirugía laparoscópica o de mínima invasión representa uno de los avances más significativos de la cirugía moderna. A diferencia de la cirugía abierta tradicional que requiere incisiones grandes (10-20 cm), la laparoscopia permite realizar los mismos procedimientos a través de 3 a 4 pequeñas incisiones (5-12 mm) mediante las cuales se introduce una cámara de alta definición y los instrumentos quirúrgicos especializados. Esto se traduce en menos trauma tisular, menor dolor postoperatorio, menor riesgo de infección de herida y de hernias incisionales, mejor resultado estético y una recuperación significativamente más rápida.\n\nEl Dr. Mario Ruvalcaba cuenta con amplia experiencia en cirugía laparoscópica general y de pared abdominal. Entre los procedimientos que realiza con mayor frecuencia se encuentran: la colecistectomía laparoscópica (extirpación de la vesícula biliar por cálculos o pólipos), la reparación laparoscópica de hernias inguinales, umbilicales, incisionales y de la pared abdominal con o sin colocación de malla, la apendicectomía laparoscópica (extirpación del apéndice en apendicitis aguda) y la funduplicatura de Nissen laparoscópica para el tratamiento definitivo de la enfermedad por reflujo gastroesofágico severo que no responde al tratamiento médico. Cada procedimiento se planifica de manera individualizada, priorizando la seguridad del paciente y la excelencia en los resultados.",
+      "La cirugía laparoscópica o de mínima invasión representa uno de los avances más significativos de la cirugía moderna. A diferencia de la cirugía abierta tradicional que requiere incisiones grandes (10-20 cm), la laparoscopia permite realizar los mismos procedimientos a través de 3 a 4 pequeñas incisiones (3-12 mm) mediante las cuales se introduce una cámara de alta definición y los instrumentos quirúrgicos especializados. Esto se traduce en menos trauma tisular, menor dolor postoperatorio, menor riesgo de infección de herida y de hernias incisionales, mejor resultado estético y una recuperación significativamente más rápida.\n\nEl Dr. Mario Ruvalcaba cuenta con amplia experiencia en cirugía laparoscópica general y de pared abdominal. Entre los procedimientos que realiza con mayor frecuencia se encuentran: la colecistectomía laparoscópica (extirpación de la vesícula biliar por cálculos o pólipos), la reparación laparoscópica de hernias inguinales, umbilicales, incisionales y de la pared abdominal con o sin colocación de malla, la apendicectomía laparoscópica (extirpación del apéndice en apendicitis aguda) y la funduplicatura de Nissen laparoscópica para el tratamiento definitivo de la enfermedad por reflujo gastroesofágico severo que no responde al tratamiento médico. Cada procedimiento se planifica de manera individualizada, priorizando la seguridad del paciente y la excelencia en los resultados.",
     benefits: [
       {
         title: "Menos dolor postoperatorio",
         description:
-          "Las incisiones de 5 a 12 mm causan significativamente menos trauma en los tejidos que la cirugía abierta, reduciendo la necesidad de analgésicos fuertes y el dolor durante la recuperación.",
+          "Las incisiones de 3 a 12 mm causan significativamente menos trauma en los tejidos que la cirugía abierta, reduciendo la necesidad de analgésicos fuertes y el dolor durante la recuperación.",
         icon: "💪",
       },
       {
@@ -397,7 +397,7 @@ export const PROCEDURES: Procedure[] = [
       {
         question: "¿La cirugía laparoscópica deja cicatrices?",
         answer:
-          "Sí, pero son mínimas. La cirugía laparoscópica se realiza a través de 3 a 4 incisiones de entre 5 y 12 mm, que generan cicatrices muy pequeñas comparadas con las incisiones de 10 a 20 cm de la cirugía abierta. Con el tiempo, estas marcas se vuelven prácticamente invisibles. El Dr. Ruvalcaba utiliza técnicas de cierre cosmético y, cuando es posible, coloca las incisiones en zonas poco visibles (como el ombligo) para optimizar el resultado estético.",
+          "Sí, pero son mínimas. La cirugía laparoscópica se realiza a través de 3 a 4 incisiones de entre 3 y 12 mm, que generan cicatrices muy pequeñas comparadas con las incisiones de 10 a 20 cm de la cirugía abierta. Con el tiempo, estas marcas se vuelven prácticamente invisibles. El Dr. Ruvalcaba utiliza técnicas de cierre cosmético y, cuando es posible, coloca las incisiones en zonas poco visibles (como el ombligo) para optimizar el resultado estético.",
       },
       {
         question:
@@ -416,6 +416,54 @@ export const PROCEDURES: Procedure[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Sub-procedimientos bariátricos
+// ---------------------------------------------------------------------------
+export const BARIATRIC_SUB_PROCEDURES: SubProcedure[] = [
+  {
+    title: "Manga Gástrica",
+    description:
+      "Reducción del 80% del estómago para limitar la ingesta y disminuir la hormona del hambre.",
+    icon: "🔬",
+  },
+  {
+    title: "Bypass Gástrico",
+    description:
+      "Procedimiento mixto restrictivo-malabsortivo, estándar de oro para obesidad severa y diabetes tipo 2.",
+    icon: "⚕️",
+  },
+  {
+    title: "Balón Intragástrico",
+    description:
+      "Dispositivo endoscópico sin cirugía para pérdida de peso en sobrepeso y obesidad leve a moderada.",
+    icon: "🎈",
+  },
+  {
+    title: "Bipartición de Tránsito Intestinal",
+    description:
+      "Técnica que combina manga gástrica con derivación intestinal parcial para optimizar resultados metabólicos.",
+    icon: "🔄",
+  },
+  {
+    title: "SADI-S",
+    description:
+      "Derivación duodeno-ileal de anastomosis simple con manga gástrica para obesidad severa y diabetes.",
+    icon: "⚡",
+  },
+  {
+    title: "Cirugía de Revisión",
+    description:
+      "Corrección de procedimientos bariátricos previos con resultados insuficientes o complicaciones.",
+    icon: "🔧",
+  },
+  {
+    title: "Cirugía de Conversión",
+    description:
+      "Conversión de un tipo de cirugía bariátrica a otro para mejorar resultados.",
+    icon: "🔀",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Sub-procedimientos (Cirugía de Mínima Invasión)
 // ---------------------------------------------------------------------------
 export const SUB_PROCEDURES: SubProcedure[] = [
@@ -424,12 +472,6 @@ export const SUB_PROCEDURES: SubProcedure[] = [
     description:
       "Extirpación de la vesícula biliar mediante laparoscopia para tratar cálculos biliares, pólipos vesiculares y colecistitis. Procedimiento ambulatorio con recuperación en 5 a 7 días y mínimo dolor postoperatorio.",
     icon: "🫁",
-  },
-  {
-    title: "Reparación de Hernias",
-    description:
-      "Corrección laparoscópica de hernias inguinales, umbilicales, incisionales y de pared abdominal con colocación de malla protésica. Menor dolor y tasa de recurrencia inferior al 2% comparada con la técnica abierta.",
-    icon: "🩹",
   },
   {
     title: "Apendicectomía Laparoscópica",
@@ -442,6 +484,24 @@ export const SUB_PROCEDURES: SubProcedure[] = [
     description:
       "Cirugía antirreflujo laparoscópica (funduplicatura de Nissen) para el tratamiento definitivo de la enfermedad por reflujo gastroesofágico severo. Envuelve el fondo gástrico alrededor del esófago inferior para restaurar la barrera antirreflujo de forma permanente.",
     icon: "🔧",
+  },
+  {
+    title: "Cirugía para Acalasia",
+    description:
+      "Miotomía de Heller laparoscópica para trastorno de motilidad esofágica.",
+    icon: "🫁",
+  },
+  {
+    title: "Cirugía de Hernias Ventrales",
+    description:
+      "Reparación laparoscópica de hernias de la pared abdominal anterior con malla.",
+    icon: "🩹",
+  },
+  {
+    title: "Cirugía de Hernias Inguinales",
+    description:
+      "Hernioplastía inguinal laparoscópica con técnica TEP o TAPP.",
+    icon: "🩹",
   },
 ];
 

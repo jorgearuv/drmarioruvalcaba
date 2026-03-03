@@ -93,7 +93,7 @@ const BARIATRIC_BENEFITS: BariatricBenefit[] = [
     icon: <ScalpelIcon />,
     title: "Mínima Invasión",
     description:
-      "Técnicas laparoscópicas avanzadas con incisiones de 5–12 mm, recuperación más rápida, menos dolor y cicatrices prácticamente invisibles.",
+      "Técnicas laparoscópicas avanzadas con incisiones desde 3 hasta 12 mm, recuperación más rápida, menos dolor y cicatrices prácticamente invisibles.",
   },
 ];
 

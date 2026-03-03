@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 import { DOCTOR_INFO } from "@/lib/constants";
 import { generatePhysicianJsonLd, generateLocalBusinessJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -33,16 +34,19 @@ const headingFont = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Dr. Mario Ruvalcaba | Cirujano Bariátrico en Mérida, Yucatán",
+    default: "Dr. Mario Ruvalcaba | Cirujano Bariatra en Mérida | Cirugía de Mínima Invasión en Yucatán",
     template: "%s | Dr. Mario Ruvalcaba",
   },
   description:
-    "Especialista en cirugía bariátrica y metabólica en Mérida, Yucatán. Manga gástrica, bypass gástrico, balón intragástrico. +3,000 cirugías exitosas. Agenda tu consulta.",
+    "Cirujano general y bariatra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, SADI-S, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
   keywords: [
-    "cirujano bariátrico Mérida",
+    "cirujano bariatra Mérida",
     "cirugía bariátrica Yucatán",
+    "cirugía de mínima invasión Yucatán",
     "manga gástrica Mérida",
     "bypass gástrico Mérida",
+    "SADI-S",
+    "cirugía de revisión bariátrica",
     "balón intragástrico",
     "cirugía para obesidad",
     "Dr. Mario Ruvalcaba",
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL(DOCTOR_INFO.siteUrl),
   openGraph: {
-    siteName: "Dr. Mario Ruvalcaba - Cirujano Bariátrico en Mérida",
+    siteName: "Dr. Mario Ruvalcaba - Cirujano Bariatra en Mérida",
     locale: "es_MX",
     type: "website",
   },
@@ -73,7 +77,15 @@ export default function RootLayout({
   const localBusinessJsonLd = generateLocalBusinessJsonLd(DOCTOR_INFO);
 
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
+
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t&&t!=='original')document.documentElement.dataset.theme=t}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={`${bodyFont.variable} ${headingFont.variable} font-sans antialiased`}
       >
@@ -84,6 +96,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <ThemeToggle />
 
         <script
           type="application/ld+json"
