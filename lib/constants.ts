@@ -28,6 +28,7 @@ export const DOCTOR_INFO = {
     instagram: "https://instagram.com/drmarioruvalcaba",
     youtube: "https://youtube.com/@drmarioruvalcaba",
     tiktok: "https://tiktok.com/@drmarioruvalcaba",
+    doctoralia: "https://www.doctoralia.com.mx/jose-mario-ruvalcaba-vallarta/cirujano-general/yucatan",
   },
 } as const satisfies DoctorInfo;
 
@@ -44,7 +45,6 @@ export const NAV_LINKS: NavLink[] = [
     ],
   },
   { label: "Sobre el Doctor", href: "/sobre-el-doctor" },
-  { label: "Testimonios", href: "/testimonios" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/preguntas-frecuentes" },
   { label: "Contacto", href: "/contacto" },

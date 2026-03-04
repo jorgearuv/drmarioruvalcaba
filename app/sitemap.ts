@@ -42,12 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/testimonios`,
-      lastModified: LAST_CONTENT_UPDATE,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/blog`,
       lastModified: LAST_CONTENT_UPDATE,
       changeFrequency: "weekly",

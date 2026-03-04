@@ -1,11 +1,12 @@
-import type { Procedure } from "@/types";
+import Image from 'next/image'
+import type { Procedure } from '@/types'
 
 interface ProcedureDetailProps {
-  procedure: Procedure;
+  procedure: Procedure
 }
 
 export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
-  const descriptionParagraphs = procedure.longDescription.split("\n\n");
+  const descriptionParagraphs = procedure.longDescription.split('\n\n')
 
   return (
     <>
@@ -27,36 +28,69 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
 
           <div className="mt-8 flex gap-4 flex-wrap">
             <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-              {"\u23F1\uFE0F"} {procedure.duration}
+              {'\u23F1\uFE0F'} {procedure.duration}
             </span>
             <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-              {"\u{1F3E5}"} {procedure.hospitalStay}
+              {'\u{1F3E5}'} {procedure.hospitalStay}
             </span>
             {procedure.costRange && (
               <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-                {"\u{1F4B0}"} {procedure.costRange}
+                {'\u{1F4B0}'} {procedure.costRange}
               </span>
             )}
           </div>
         </div>
       </section>
 
-      {/* Description Section */}
+      {/* Description Section — editorial layout with optional image */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="font-display text-3xl text-navy-900">
-            ¿Qué es la {procedure.shortTitle}?
-          </h2>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+            {/* Text column */}
+            <div className="max-w-2xl">
+              <h2 className="font-display text-3xl text-navy-900">
+                ¿Qué es la {procedure.shortTitle}?
+              </h2>
 
-          <div className="mt-6 space-y-6">
-            {descriptionParagraphs.map((paragraph, paragraphIndex) => (
-              <p
-                key={paragraphIndex}
-                className="text-lg text-navy-600 leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
+              <div className="mt-6 space-y-6">
+                {descriptionParagraphs.map((paragraph, paragraphIndex) => (
+                  <p
+                    key={paragraphIndex}
+                    className="text-lg text-navy-600 leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Image column */}
+            <div className="relative mx-auto w-full max-w-lg lg:mx-0">
+              <div className="overflow-hidden rounded-2xl border border-navy-100 bg-navy-50 shadow-lg">
+                {procedure.imagePath ? (
+                  <Image
+                    src={procedure.imagePath}
+                    alt={`Ilustración del procedimiento de ${procedure.shortTitle}`}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="h-auto w-full"
+                  />
+                ) : (
+                  <div className="flex aspect-4/3 flex-col items-center justify-center p-8 text-center">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 text-4xl">
+                      {procedure.icon}
+                    </div>
+                    <p className="mt-4 text-sm font-medium text-navy-400">
+                      Ilustración del procedimiento
+                    </p>
+                    <p className="mt-1 text-xs text-navy-300">
+                      {procedure.shortTitle}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -69,7 +103,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-            {procedure.benefits.map((benefit) => (
+            {procedure.benefits.map(benefit => (
               <div
                 key={benefit.title}
                 className="card-premium bg-white rounded-2xl p-6"
@@ -93,12 +127,9 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
           </h2>
 
           <ul className="space-y-4 mt-8">
-            {procedure.candidates.map((candidateDescription) => (
-              <li
-                key={candidateDescription}
-                className="flex items-start gap-3"
-              >
-                <span className="h-6 w-6 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 text-teal-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            {procedure.candidates.map(candidateDescription => (
+              <li key={candidateDescription} className="flex items-start gap-3">
+                <span className="h-6 w-6 rounded-full bg-linear-to-br from-teal-50 to-teal-100 text-teal-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                   ✓
                 </span>
                 <span className="text-lg text-navy-700">
@@ -153,7 +184,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
           </h2>
 
           <div className="mt-8">
-            {procedure.faq.map((faqItem) => (
+            {procedure.faq.map(faqItem => (
               <div
                 key={faqItem.question}
                 className="border-b border-navy-100 py-6"
@@ -168,5 +199,5 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
         </div>
       </section>
     </>
-  );
+  )
 }

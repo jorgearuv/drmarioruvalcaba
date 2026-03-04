@@ -27,6 +27,7 @@ export interface DoctorInfo {
     instagram: string;
     youtube: string;
     tiktok: string;
+    doctoralia: string;
   };
 }
 
@@ -58,6 +59,7 @@ export interface Procedure {
   duration: string;
   hospitalStay: string;
   icon: string;
+  imagePath?: string;
   faq: FAQItem[];
 }
 

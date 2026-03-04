@@ -1,52 +1,53 @@
-import { DOCTOR_INFO } from "@/lib/constants";
+import Image from 'next/image'
+import { DOCTOR_INFO } from '@/lib/constants'
 
 const CREDENTIALS = [
   {
-    icon: "\u{1F393}",
-    title: "Médico Cirujano",
-    institution: "Universidad Autónoma de Yucatán",
+    icon: '\u{1F393}',
+    title: 'Médico Cirujano',
+    institution: 'Universidad Autónoma de Yucatán',
   },
   {
-    icon: "\u{1F3E5}",
-    title: "Especialidad en Cirugía General",
-    institution: "Hospital General de México",
+    icon: '\u{1F3E5}',
+    title: 'Especialidad en Cirugía General',
+    institution: 'Hospital General de México',
   },
   {
-    icon: "\u2695\uFE0F",
-    title: "Subespecialidad en Cirugía Bariátrica",
+    icon: '\u2695\uFE0F',
+    title: 'Subespecialidad en Cirugía Bariátrica',
     institution:
-      "Instituto Nacional de Ciencias Médicas y Nutrición Salvador Zubirán",
+      'Instituto Nacional de Ciencias Médicas y Nutrición Salvador Zubirán',
   },
   {
-    icon: "\u{1F30D}",
-    title: "Fellowship Internacional",
-    institution: "Centro de Excelencia en Cirugía Bariátrica, EE.UU.",
+    icon: '\u{1F30D}',
+    title: 'Fellowship Internacional',
+    institution: 'Centro de Excelencia en Cirugía Bariátrica, EE.UU.',
   },
   {
-    icon: "\u2705",
-    title: "Certificado por el Consejo Mexicano",
-    institution: "Consejo Mexicano de Cirugía General",
+    icon: '\u2705',
+    title: 'Certificado por el Consejo Mexicano',
+    institution: 'Consejo Mexicano de Cirugía General',
   },
   {
-    icon: "\u{1F3DB}\uFE0F",
-    title: "Miembro IFSO",
-    institution: "International Federation for the Surgery of Obesity",
+    icon: '\u{1F3DB}\uFE0F',
+    title: 'Miembro IFSO',
+    institution: 'International Federation for the Surgery of Obesity',
   },
-] as const;
+] as const
 
 const TIMELINE = [
-  { year: "2003", description: "Egreso de la Licenciatura en Medicina" },
-  { year: "2007", description: "Especialidad en Cirugía General" },
+  { year: '2003', description: 'Egreso de la Licenciatura en Medicina' },
+  { year: '2007', description: 'Especialidad en Cirugía General' },
   {
-    year: "2009",
-    description: "Subespecialidad en Cirugía Bariátrica y Metabólica",
+    year: '2009',
+    description: 'Subespecialidad en Cirugía Bariátrica y Metabólica',
   },
-  { year: "2010", description: "Fellowship Internacional" },
+  { year: '2010', description: 'Fellowship Internacional' },
   {
-    year: "2011",
-    description: "Inicio de práctica privada en Mérida, Yucatán",
+    year: '2011',
+    description: 'Inicio de práctica privada en Mérida, Yucatán',
   },
-] as const;
+] as const
 
 export default function DoctorBio() {
   return (
@@ -54,9 +55,16 @@ export default function DoctorBio() {
       {/* Hero Area */}
       <section>
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto px-4 py-16 md:py-24">
-          {/* Left: Photo Placeholder */}
-          <div className="card-glow aspect-[3/4] rounded-2xl bg-gradient-to-br from-teal-600/20 to-navy-900/20 border border-navy-100 max-w-md mx-auto flex items-center justify-center w-full">
-            <span className="text-navy-400">Foto del Dr. Ruvalcaba</span>
+          {/* Left: Photo */}
+          <div className="card-glow aspect-3/4 rounded-2xl overflow-hidden border border-navy-100 max-w-md mx-auto w-full relative">
+            <Image
+              src="/images/doctor/profile-web.webp"
+              alt="Dr. Mario Ruvalcaba — Cirujano General y Bariatra Certificado en Mérida, Yucatán"
+              fill
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="object-cover"
+              priority
+            />
           </div>
 
           {/* Right: Content */}
@@ -105,7 +113,7 @@ export default function DoctorBio() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {CREDENTIALS.map((credential) => (
+            {CREDENTIALS.map(credential => (
               <div
                 key={credential.title}
                 className="card-premium bg-white rounded-2xl p-6"
@@ -143,9 +151,7 @@ export default function DoctorBio() {
 
                 {/* Content */}
                 <div className="pb-8">
-                  <p className="font-bold text-navy-900">
-                    {timelineItem.year}
-                  </p>
+                  <p className="font-bold text-navy-900">{timelineItem.year}</p>
                   <p className="text-navy-600 mt-1">
                     {timelineItem.description}
                   </p>
@@ -156,5 +162,5 @@ export default function DoctorBio() {
         </div>
       </section>
     </>
-  );
+  )
 }
