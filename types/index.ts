@@ -31,12 +31,6 @@ export interface DoctorInfo {
   };
 }
 
-export interface StatItem {
-  value: number;
-  suffix: string;
-  label: string;
-}
-
 export interface TrustBadge {
   name: string;
   type: "hospital" | "certification" | "association";

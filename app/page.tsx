@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* 1. Hero — trust + first impression + primary CTA */}
       <Hero
         headline="Cirujano Bariatra en Mérida, Especialista en Mínima Invasión"
-        subheadline={"El Dr. Mario Ruvalcaba es cirujano general y bariatra certificado por el Consejo Mexicano de Cirugía General. Se especializa en cirugía bariátrica y metabólica, así como en cirugía de mínima invasión (laparoscópica), ofreciendo a sus pacientes tratamientos seguros, efectivos y con la menor invasión posible.\n\nCuenta con más de 3,000 procedimientos realizados, brindando atención de calidad con un enfoque integral y personalizado para cada paciente.\n\nSu consultorio se encuentra en Mérida, Yucatán, donde atiende a pacientes locales y de otras partes de México y el extranjero."}
+        subheadline={"El Dr. Mario Ruvalcaba es cirujano general y bariatra certificado por el Consejo Mexicano de Cirugía General. Se especializa en cirugía bariátrica y metabólica, así como en cirugía de mínima invasión (laparoscópica), ofreciendo a sus pacientes tratamientos seguros, efectivos y con la menor invasión posible.\n\nRespaldado por experiencia en distintos tipos de cirugías y una preparación constante, brinda atención de calidad con un enfoque integral y personalizado para cada paciente.\n\nSu consultorio se encuentra en Mérida, Yucatán, donde atiende a pacientes locales y de otras partes de México y el extranjero."}
       />
 
       {/* 2. Why bariatric surgery — empathy + benefits */}

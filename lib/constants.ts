@@ -1,4 +1,4 @@
-import type { DoctorInfo, NavLink, StatItem, TrustBadge } from "@/types";
+import type { DoctorInfo, NavLink, TrustBadge } from "@/types";
 
 export const DOCTOR_INFO = {
   name: "Dr. Mario Ruvalcaba",
@@ -13,7 +13,7 @@ export const DOCTOR_INFO = {
   cedulaEspecialidad: "14576281",
   phone: "+529992603030",
   whatsapp: "+529992603030",
-  email: "contacto@drmarioruvalcaba.com",
+  email: "cirujanomarioruvalcaba@gmail.com",
   address: "Calle 17 #182-B por calle 14 y 16, México Oriente",
   city: "Mérida",
   state: "Yucatán",
@@ -50,10 +50,27 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-export const STATS = [
-  { value: 3000, suffix: "+", label: "Procedimientos exitosos" },
-  { value: 98, suffix: "%", label: "Pacientes satisfechos" },
-] as const satisfies readonly StatItem[];
+export const HERO_TRUST_SIGNALS = [
+  {
+    type: "doctoralia" as const,
+    value: "5.0",
+    label: "en Doctoralia",
+    sublabel: "23 opiniones verificadas",
+    href: DOCTOR_INFO.socialMedia.doctoralia,
+  },
+  {
+    type: "certification" as const,
+    value: "Certificado",
+    label: "Consejo Mexicano de",
+    sublabel: "Cirugía General",
+  },
+  {
+    type: "experience" as const,
+    value: "+5 años",
+    label: "Experiencia en",
+    sublabel: "Cirugía Bariátrica",
+  },
+] as const;
 
 export const TRUST_BADGES = [
   { name: "Consejo Mexicano de Cirugía General, A.C.", type: "certification" },

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { WHATSAPP_URL, STATS } from "@/lib/constants";
+import { WHATSAPP_URL, HERO_TRUST_SIGNALS } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 
 interface HeroProps {
@@ -149,38 +149,84 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               </Link>
             </motion.div>
 
-            {/* Trust indicators */}
+            {/* Trust credentials bar */}
             <motion.div
               {...animationProps(0.6)}
               className="mt-12"
+              aria-label="Credenciales del doctor"
               role="list"
-              aria-label="Logros del doctor"
             >
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:gap-x-12">
-                {STATS.map((stat, statIndex) => (
-                  <div
-                    key={stat.label}
-                    role="listitem"
-                    className="flex items-center gap-3"
-                  >
-                    {statIndex > 0 && (
-                      <div
-                        className="hidden h-8 w-px bg-white/[0.1] md:block"
-                        aria-hidden="true"
-                        style={{ marginLeft: "-1.5rem" }}
-                      />
-                    )}
-                    <div>
-                      <p className="font-display text-2xl text-white md:text-3xl">
-                        {stat.value.toLocaleString()}
-                        <span className="text-primary-400">{stat.suffix}</span>
-                      </p>
-                      <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-navy-400">
-                        {stat.label}
-                      </p>
-                    </div>
+              {/* Gradient accent line */}
+              <div
+                className="mb-4 h-px w-16"
+                style={{ background: "linear-gradient(90deg, var(--color-teal-600), var(--color-gold-400))" }}
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-0">
+                {/* Doctoralia — primary signal */}
+                <a
+                  href={HERO_TRUST_SIGNALS[0].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-80"
+                >
+                  {/* Star cluster */}
+                  <div className="flex gap-0.5" aria-hidden="true">
+                    {[...Array(5)].map((_, starIndex) => (
+                      <svg key={starIndex} className="h-3.5 w-3.5 text-gold-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
                   </div>
-                ))}
+                  <div className="leading-none">
+                    <span className="text-sm font-semibold text-white">5.0</span>
+                    <span className="ml-1.5 text-xs text-navy-300/80 transition-colors duration-200 group-hover:text-teal-400">
+                      Doctoralia
+                    </span>
+                    <span className="ml-0.5 inline-block transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
+                      <svg className="inline h-2.5 w-2.5 text-navy-300/50" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 010-1.06l7.22-7.22H8.75a.75.75 0 010-1.5h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V6.06l-7.22 7.22a.75.75 0 01-1.06 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
+                      23 opiniones verificadas
+                    </p>
+                  </div>
+                </a>
+
+                {/* Divider */}
+                <div className="hidden h-10 w-px self-center bg-white/[0.06] sm:mx-6 sm:block md:mx-8" aria-hidden="true" />
+
+                {/* Certification */}
+                <div role="listitem" className="flex items-center gap-3">
+                  <svg className="h-4 w-4 shrink-0 text-teal-500/60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+                  </svg>
+                  <div className="leading-none">
+                    <p className="text-sm font-semibold text-white">Certificado</p>
+                    <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
+                      Consejo Mexicano de Cirugía General
+                    </p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="hidden h-10 w-px self-center bg-white/[0.06] sm:mx-6 sm:block md:mx-8" aria-hidden="true" />
+
+                {/* Experience */}
+                <div role="listitem" className="flex items-center gap-3">
+                  <svg className="h-4 w-4 shrink-0 text-teal-500/60" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
+                  </svg>
+                  <div className="leading-none">
+                    <p className="text-sm font-semibold text-white">+5 años</p>
+                    <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
+                      Experiencia en Cirugía Bariátrica
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

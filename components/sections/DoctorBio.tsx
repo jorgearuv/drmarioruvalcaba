@@ -70,7 +70,7 @@ export default function DoctorBio() {
           {/* Right: Content */}
           <div>
             <span className="inline-block glass px-4 py-1.5 rounded-full text-sm font-semibold text-teal-800">
-              Cirujano Bariátrico Certificado
+              Cirujano Bariatra Certificado
             </span>
 
             <h1 className="text-4xl md:text-5xl font-display text-navy-900 mt-4">
@@ -83,10 +83,11 @@ export default function DoctorBio() {
 
             <div className="text-lg text-navy-600 mt-6 space-y-4">
               <p>
-                El Dr. Mario Ruvalcaba es uno de los cirujanos bariátricos más
-                reconocidos del sureste de México, con más de 15 años de
-                experiencia y más de 3,000 procedimientos realizados
-                exitosamente.
+                Con más de 5 años de práctica como cirujano, el Dr. Mario
+                Ruvalcaba ha desarrollado experiencia en múltiples
+                procedimientos no solo de cirugía, sino también de cirugía
+                bariátrica, manteniendo un enfoque integral y personalizado en
+                cada paciente.
               </p>
               <p>
                 Su preparación incluye entrenamiento con cirujanos de referencia

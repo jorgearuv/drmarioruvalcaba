@@ -651,7 +651,7 @@ function BariatricCriteriaSection({
           viewport={{ once: true }}
           className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
         >
-          Criterios de Candidatura
+          ¿Eres Candidato?
         </motion.p>
 
         <motion.h3
@@ -660,7 +660,7 @@ function BariatricCriteriaSection({
           whileInView="visible"
           custom={0.1}
           viewport={{ once: true }}
-          className="heading-gradient mt-3 font-display text-3xl md:text-4xl"
+          className="mt-3 font-display text-3xl text-navy-900 md:text-4xl"
         >
           ¿Quiénes son candidatos a cirugía bariátrica?
         </motion.h3>
@@ -733,6 +733,21 @@ function BariatricCriteriaSection({
         La indicación final siempre debe realizarse de manera individualizada
         por un cirujano bariatra certificado, tomando en cuenta la historia
         clínica completa, expectativas del paciente y riesgos asociados.
+      </motion.p>
+
+      <motion.p
+        variants={fadeUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        custom={0.5}
+        viewport={{ once: true }}
+        className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-navy-300 italic"
+      >
+        Referencia: Eisenberg D, Shikora SA, Aarts E, Aminian A, et al. 2022
+        American Society of Metabolic and Bariatric Surgery (ASMBS) and
+        International Federation for the Surgery of Obesity and Metabolic
+        Disorders (IFSO) Indications for Metabolic and Bariatric Surgery. Obes
+        Surg. 2023 Jan;33(1):3-14.
       </motion.p>
     </div>
   );

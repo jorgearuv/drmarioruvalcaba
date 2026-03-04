@@ -127,11 +127,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/turismo-medico" className="group/link inline-block text-sm text-navy-400 transition-all duration-200 hover:pl-1 hover:text-white">
-                  Turismo Médico
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className="group/link inline-block text-sm text-navy-400 transition-all duration-200 hover:pl-1 hover:text-white">
                   Blog
                 </Link>

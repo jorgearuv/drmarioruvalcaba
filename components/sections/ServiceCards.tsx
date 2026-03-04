@@ -348,7 +348,7 @@ export default function ServiceCards() {
             {/* Minimally invasive procedures */}
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600">
-                Cirugía de Mínima Invasión
+                Cirugía General de Mínima Invasión
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {SUB_PROCEDURES.map((subProcedure) => (
