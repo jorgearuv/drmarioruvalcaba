@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import { DOCTOR_INFO } from "@/lib/constants";
+import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
 import { generatePhysicianJsonLd, generateLocalBusinessJsonLd } from "@/lib/seo";
 import "./globals.css";
 
@@ -58,9 +59,11 @@ export const metadata: Metadata = {
     siteName: "Dr. Mario Ruvalcaba - Cirujano Bariatra en Mérida",
     locale: "es_MX",
     type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
+    images: [DEFAULT_OG_IMAGE],
   },
   robots: {
     index: true,

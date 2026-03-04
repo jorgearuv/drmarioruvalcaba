@@ -424,17 +424,6 @@ export default function BMICalculator() {
             Centered section header
         ---------------------------------------------------------------- */}
         <div className="text-center">
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={0}
-            viewport={{ once: true }}
-            className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
-          >
-            Herramienta Interactiva
-          </motion.p>
-
           <motion.h2
             id={sectionHeadingId}
             variants={fadeUp}

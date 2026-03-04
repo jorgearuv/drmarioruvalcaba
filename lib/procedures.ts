@@ -74,10 +74,10 @@ export const PROCEDURES: Procedure[] = [
           "Alimentación variada con énfasis en proteínas, vegetales y buena hidratación. Actividad física regular sin restricciones. Pérdida del 60% al 70% del exceso de peso. Seguimiento trimestral con estudios de laboratorio para monitorear niveles nutricionales y metabólicos.",
       },
     ],
-    costRange: "$80,000 - $120,000 MXN",
+    costRange: "",
     duration: "1 - 1.5 horas",
     hospitalStay: "1 - 2 noches",
-    icon: "🔬",
+    icon: "🩺",
     faq: [
       {
         question: "¿La manga gástrica es reversible?",
@@ -122,7 +122,7 @@ export const PROCEDURES: Procedure[] = [
     description:
       "El bypass gástrico en Y de Roux combina la restricción del tamaño del estómago con una derivación intestinal que modifica la absorción de nutrientes y genera potentes cambios hormonales. Es considerado el procedimiento de referencia (gold standard) para pacientes con obesidad severa y enfermedades metabólicas.",
     longDescription:
-      "El bypass gástrico en Y de Roux es un procedimiento mixto —restrictivo y malabsortivo— que consiste en crear un pequeño reservorio gástrico (de 15 a 30 ml) a partir de la porción superior del estómago, el cual se conecta directamente a un segmento del intestino delgado (asa alimentaria), derivando la mayor parte del estómago, el duodeno y la primera porción del yeyuno. Esta configuración limita la cantidad de alimento que el paciente puede ingerir, reduce la absorción calórica y, crucialmente, provoca cambios hormonales profundos —incluyendo el aumento de GLP-1, PYY y la reducción de grelina— que mejoran la sensibilidad a la insulina y contribuyen a la resolución de la diabetes tipo 2 en hasta el 80% de los casos.\n\nEl Dr. Mario Ruvalcaba realiza el bypass gástrico por vía laparoscópica con técnica depurada y más de una década de experiencia quirúrgica. Los pacientes pueden esperar perder entre el 70% y el 80% de su exceso de peso en los primeros 18 a 24 meses. Este procedimiento es particularmente efectivo para pacientes con IMC superior a 45, diabetes tipo 2 de difícil control, síndrome metabólico y enfermedad por reflujo gastroesofágico severo. El seguimiento postoperatorio incluye suplementación vitamínica de por vida (hierro, calcio, vitamina B12, vitaminas liposolubles), control nutricional periódico y monitoreo de laboratorio para prevenir deficiencias nutricionales.",
+      "El bypass gástrico en Y de Roux es un procedimiento restrictivo e hipoabsortivo que consiste en crear un estómago más pequeño (reservorio) a partir de la porción superior del estómago, el cual se conecta directamente a un segmento del intestino delgado (asa alimentaria), derivando la mayor parte del estómago, el duodeno y la primera porción del yeyuno. Esta configuración limita la cantidad de alimento que el paciente puede ingerir, reduce la absorción calórica y, crucialmente, provoca cambios hormonales profundos —incluyendo el aumento de GLP-1, PYY y la reducción de grelina— que mejoran la sensibilidad a la insulina y contribuyen a la resolución de la diabetes tipo 2 en hasta el 80% de los casos.\n\nEl Dr. Mario Ruvalcaba realiza el bypass gástrico por vía laparoscópica con técnica depurada gracias a sus maestros de talla internacional. Los pacientes pueden esperar perder entre el 70% y el 80% de su exceso de peso en los primeros 18 a 24 meses. Este procedimiento es particularmente efectivo para pacientes con IMC superior a 45, diabetes tipo 2 de difícil control, síndrome metabólico y enfermedad por reflujo gastroesofágico severo. El seguimiento postoperatorio incluye suplementación vitamínica de por vida (hierro, calcio, vitamina B12, vitaminas liposolubles), control nutricional periódico y monitoreo de laboratorio para prevenir deficiencias nutricionales.\n\n* Para mantener un control metabólico y una perdida de peso a lo largo del tiempo el seguimiento multidisciplinario es lo más importante.",
     benefits: [
       {
         title: "Mayor pérdida de peso",
@@ -178,10 +178,10 @@ export const PROCEDURES: Procedure[] = [
           "Alimentación equilibrada y variada sin restricciones mayores, manteniendo la prioridad en proteínas y evitando azúcares concentrados. Actividad física regular. Controles de laboratorio trimestrales para detectar deficiencias de hierro, B12, calcio y vitaminas liposolubles. Pérdida esperada del 70% al 80% del exceso de peso.",
       },
     ],
-    costRange: "$100,000 - $150,000 MXN",
+    costRange: "",
     duration: "2 - 3 horas",
     hospitalStay: "2 - 3 noches",
-    icon: "⚕️",
+    icon: "💜",
     faq: [
       {
         question:
@@ -225,7 +225,7 @@ export const PROCEDURES: Procedure[] = [
     description:
       "El balón intragástrico es un dispositivo de silicón que se coloca dentro del estómago por vía endoscópica, sin necesidad de incisiones ni cirugía. Ocupa espacio en el estómago, generando saciedad temprana y ayudando al paciente a reducir sus porciones y adoptar hábitos alimenticios saludables.",
     longDescription:
-      "El balón intragástrico consiste en una esfera de silicón médico que se introduce desinflada por vía oral mediante un endoscopio flexible y, una vez dentro del estómago, se llena con solución salina estéril teñida con azul de metileno (entre 400 y 700 ml según el modelo). El balón ocupa aproximadamente un tercio del volumen gástrico, lo que induce una sensación de plenitud y saciedad con cantidades menores de alimento. No requiere incisiones, anestesia general ni hospitalización, y el procedimiento completo dura entre 20 y 30 minutos bajo sedación ligera. El paciente regresa a casa el mismo día.\n\nEl balón permanece en el estómago durante 6 a 12 meses (dependiendo del tipo de dispositivo) y se retira por vía endoscópica de manera similar a como fue colocado. Durante este período, el paciente trabaja con un equipo multidisciplinario —nutriólogo, psicólogo y médico bariatra— para reeducar sus hábitos alimenticios y establecer una rutina de actividad física. La pérdida de peso esperada es del 10% al 15% del peso corporal total (o entre el 30% y el 40% del exceso de peso). El balón intragástrico es ideal para pacientes con sobrepeso u obesidad grado I (IMC entre 27 y 35) que no califican o no desean someterse a cirugía bariátrica, así como para pacientes con obesidad severa como terapia puente antes de un procedimiento quirúrgico definitivo.",
+      "El balón intragástrico consiste en una esfera de silicón grado médico que se introduce desinflada por vía oral mediante un endoscopio flexible y, una vez dentro del estómago, se llena con solución salina estéril teñida con azul de metileno (entre 400 y 700 ml según el modelo). El balón ocupa aproximadamente un tercio del volumen gástrico, lo que induce una sensación de plenitud y saciedad con cantidades menores de alimento. No requiere incisiones y el procedimiento completo dura entre 20 y 30 minutos bajo sedación ligera (en la mayoría de los casos). El paciente regresa a casa el mismo día.\n\nEl balón permanece en el estómago durante 6 a 12 meses (dependiendo del tipo de dispositivo) y se retira por vía endoscópica de manera similar a como fue colocado. Durante este período, el paciente trabaja con un equipo multidisciplinario —nutriólogo, psicólogo y médico bariatra— para reeducar sus hábitos alimenticios y establecer una rutina de actividad física. La pérdida de peso esperada es del 10% al 15% del peso corporal total (o entre el 30% y el 40% del exceso de peso). El balón intragástrico es ideal para pacientes con sobrepeso u obesidad grado I (IMC entre 27 y 35) que no califican o no desean someterse a cirugía bariátrica, así como para pacientes con obesidad severa como terapia puente antes de un procedimiento quirúrgico definitivo.",
     benefits: [
       {
         title: "Sin cirugía ni incisiones",
@@ -281,10 +281,10 @@ export const PROCEDURES: Procedure[] = [
           "Fase de consolidación de hábitos antes del retiro del balón. El paciente debe haber incorporado un estilo de vida saludable sostenible. Pérdida total esperada del 10% al 15% del peso corporal. Al retirar el balón por endoscopia, el seguimiento nutricional continúa para prevenir la recuperación de peso.",
       },
     ],
-    costRange: "$50,000 - $80,000 MXN",
+    costRange: "",
     duration: "20 - 30 minutos",
     hospitalStay: "Ambulatorio (mismo día)",
-    icon: "🎈",
+    icon: "⭕",
     faq: [
       {
         question: "¿Es doloroso el procedimiento del balón intragástrico?",
@@ -327,7 +327,7 @@ export const PROCEDURES: Procedure[] = [
     description:
       "La cirugía de mínima invasión utiliza técnicas laparoscópicas avanzadas para tratar diversas patologías abdominales a través de incisiones de 3 a 12 mm. Incluye colecistectomía (vesícula biliar), reparación de hernias, apendicectomía y funduplicatura para reflujo, entre otros procedimientos.",
     longDescription:
-      "La cirugía laparoscópica o de mínima invasión representa uno de los avances más significativos de la cirugía moderna. A diferencia de la cirugía abierta tradicional que requiere incisiones grandes (10-20 cm), la laparoscopia permite realizar los mismos procedimientos a través de 3 a 4 pequeñas incisiones (3-12 mm) mediante las cuales se introduce una cámara de alta definición y los instrumentos quirúrgicos especializados. Esto se traduce en menos trauma tisular, menor dolor postoperatorio, menor riesgo de infección de herida y de hernias incisionales, mejor resultado estético y una recuperación significativamente más rápida.\n\nEl Dr. Mario Ruvalcaba cuenta con amplia experiencia en cirugía laparoscópica general y de pared abdominal. Entre los procedimientos que realiza con mayor frecuencia se encuentran: la colecistectomía laparoscópica (extirpación de la vesícula biliar por cálculos o pólipos), la reparación laparoscópica de hernias inguinales, umbilicales, incisionales y de la pared abdominal con o sin colocación de malla, la apendicectomía laparoscópica (extirpación del apéndice en apendicitis aguda) y la funduplicatura de Nissen laparoscópica para el tratamiento definitivo de la enfermedad por reflujo gastroesofágico severo que no responde al tratamiento médico. Cada procedimiento se planifica de manera individualizada, priorizando la seguridad del paciente y la excelencia en los resultados.",
+      "La cirugía laparoscópica o de mínima invasión representa uno de los avances más significativos de la cirugía moderna. A diferencia de la cirugía abierta tradicional que requiere incisiones grandes (10-20 cm), la laparoscopia permite realizar los mismos procedimientos a través de 3 a 4 pequeñas incisiones (3-12 mm) mediante las cuales se introduce una cámara de alta definición y los instrumentos quirúrgicos especializados. Esto se traduce en menos trauma tisular, menor dolor postoperatorio, menor riesgo de infección de herida y de hernias incisionales, mejor resultado estético y una recuperación significativamente más rápida.\n\nEl Dr. Mario Ruvalcaba cuenta con amplia experiencia en cirugía laparoscópica general y de pared abdominal. Entre los procedimientos que realiza con mayor frecuencia se encuentran: la colecistectomía laparoscópica (extirpación de la vesícula biliar por cálculos o pólipos), la reparación laparoscópica de hernias inguinales, umbilicales, incisionales y de la pared abdominal con o sin colocación de malla, la apendicectomía laparoscópica (extirpación del apéndice en apendicitis aguda) y la funduplicatura de Nissen laparoscópica para el tratamiento definitivo de la enfermedad por reflujo gastroesofágico severo que no responde al tratamiento médico. Cada procedimiento se planifica de manera individualizada, priorizando la seguridad del paciente y la excelencia en los resultados.\n\nAlgunos de estos procedimientos también pueden realizarse mediante Cirugía por Puerto Único, una técnica laparoscópica avanzada que utiliza una sola incisión —generalmente en el ombligo— para lograr un resultado estético superior con cicatrices prácticamente invisibles.",
     benefits: [
       {
         title: "Menos dolor postoperatorio",
@@ -365,7 +365,7 @@ export const PROCEDURES: Procedure[] = [
       {
         period: "Primera semana",
         description:
-          "Según el procedimiento realizado, el paciente puede irse a casa el mismo día o al día siguiente. Reposo relativo con caminatas cortas desde el primer día. Dieta blanda o líquida por 2 a 3 días según el tipo de cirugía. Manejo del dolor con analgésicos orales. Cuidado de las pequeñas incisiones manteniéndolas limpias y secas.",
+          "Según el procedimiento realizado, el paciente puede irse a casa el mismo día o al día siguiente. Reposo relativo con caminatas cortas desde el primer día. Dieta horas después de tu cirugía, líquida o blanda según el tipo de cirugía. Manejo del dolor con analgésicos orales. Cuidado de las pequeñas incisiones manteniéndolas limpias y secas.",
       },
       {
         period: "2-4 semanas",
@@ -383,10 +383,10 @@ export const PROCEDURES: Procedure[] = [
           "Recuperación total sin restricciones. Las cicatrices se desvanecen progresivamente hasta ser casi imperceptibles. En el caso de funduplicatura, los síntomas de reflujo deben haberse resuelto completamente. Seguimiento anual de rutina según el procedimiento realizado.",
       },
     ],
-    costRange: "$40,000 - $90,000 MXN",
+    costRange: "",
     duration: "30 min - 2 horas",
     hospitalStay: "Ambulatorio - 1 noche",
-    icon: "🏥",
+    icon: "✨",
     faq: [
       {
         question:
@@ -502,6 +502,12 @@ export const SUB_PROCEDURES: SubProcedure[] = [
     description:
       "Hernioplastía inguinal laparoscópica con técnica TEP o TAPP.",
     icon: "🩹",
+  },
+  {
+    title: "Cirugía por Puerto Único",
+    description:
+      "Técnica laparoscópica avanzada que realiza el procedimiento a través de una sola incisión, generalmente en el ombligo, para un resultado estético superior.",
+    icon: "🔘",
   },
 ];
 

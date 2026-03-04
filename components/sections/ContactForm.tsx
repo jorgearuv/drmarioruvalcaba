@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DOCTOR_INFO } from "@/lib/constants";
 
 const CONSULTATION_REASONS = [
   "",
@@ -17,6 +18,38 @@ const INPUT_CLASS =
 const LABEL_CLASS =
   "block text-xs uppercase tracking-wider text-navy-500 font-semibold mb-2.5";
 
+function buildWhatsAppUrl(
+  fullName: string,
+  phoneNumber: string,
+  emailAddress: string,
+  consultationReason: string,
+  messageBody: string,
+): string {
+  const whatsAppNumber = DOCTOR_INFO.whatsapp.replace(/\D/g, "");
+  const messageLines = [
+    `Hola Dr. Ruvalcaba, me gustaría agendar una consulta.`,
+    ``,
+    `*Nombre:* ${fullName}`,
+    `*Teléfono:* ${phoneNumber}`,
+    `*Correo:* ${emailAddress}`,
+    `*Motivo:* ${consultationReason}`,
+  ];
+  if (messageBody.trim()) {
+    messageLines.push(`*Mensaje:* ${messageBody}`);
+  }
+  return `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(messageLines.join("\n"))}`;
+}
+
+function buildMailtoUrl(
+  fullName: string,
+  consultationReason: string,
+  messageBody: string,
+): string {
+  const subject = encodeURIComponent(`Consulta: ${consultationReason} — ${fullName}`);
+  const body = encodeURIComponent(messageBody || "Me gustaría agendar una consulta.");
+  return `mailto:${DOCTOR_INFO.email}?subject=${subject}&body=${body}`;
+}
+
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fullName, setFullName] = useState("");
@@ -27,6 +60,14 @@ export default function ContactForm() {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const whatsAppUrl = buildWhatsAppUrl(
+      fullName,
+      phoneNumber,
+      emailAddress,
+      consultationReason,
+      messageBody,
+    );
+    window.open(whatsAppUrl, "_blank", "noopener,noreferrer");
     setIsSubmitted(true);
   };
 
@@ -46,10 +87,17 @@ export default function ContactForm() {
           &#10003;
         </div>
         <h3 className="font-display text-2xl text-navy-900">
-          &#161;Mensaje Enviado!
+          &#161;Redirigido a WhatsApp!
         </h3>
         <p className="mt-3 text-navy-500">
-          Nos pondremos en contacto contigo pronto.
+          Si WhatsApp no se abrió,{" "}
+          <a
+            href={buildMailtoUrl(fullName, consultationReason, messageBody)}
+            className="font-semibold text-teal-600 underline underline-offset-2 hover:text-teal-700"
+          >
+            envía un correo
+          </a>{" "}
+          y nos pondremos en contacto contigo.
         </p>
         <button
           type="button"

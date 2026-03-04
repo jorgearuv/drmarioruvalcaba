@@ -49,8 +49,8 @@ export function generateLocalBusinessJsonLd(doctor: DoctorInfo) {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "",
-      longitude: "",
+      latitude: doctor.latitude,
+      longitude: doctor.longitude,
     },
     telephone: doctor.phone,
     openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"],

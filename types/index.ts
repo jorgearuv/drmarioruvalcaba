@@ -9,6 +9,7 @@ export interface DoctorInfo {
   title: string;
   specialties: string[];
   cedula: string;
+  cedulaEspecialidad: string;
   phone: string;
   whatsapp: string;
   email: string;
@@ -18,6 +19,8 @@ export interface DoctorInfo {
   country: string;
   zipCode: string;
   googleMapsUrl: string;
+  latitude: number;
+  longitude: number;
   siteUrl: string;
   socialMedia: {
     facebook: string;

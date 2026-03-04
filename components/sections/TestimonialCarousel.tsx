@@ -384,7 +384,7 @@ export default function TestimonialCarousel({
 
           {/* Dot navigation */}
           <div
-            role="tablist"
+            role="group"
             aria-label="Navegación de testimonios"
             className="mt-8 flex justify-center gap-2"
           >
@@ -394,8 +394,7 @@ export default function TestimonialCarousel({
                 <button
                   key={dotIndex}
                   type="button"
-                  role="tab"
-                  aria-selected={isActiveDot}
+                  aria-current={isActiveDot ? "true" : undefined}
                   aria-label={`Ir al testimonio ${dotIndex + 1}`}
                   onClick={() => navigateToDot(dotIndex)}
                   className={`h-2 cursor-pointer rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 ${

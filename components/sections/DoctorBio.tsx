@@ -81,16 +81,18 @@ export default function DoctorBio() {
                 exitosamente.
               </p>
               <p>
-                Formado en las mejores instituciones médicas del país, el Dr.
-                Ruvalcaba se especializa en técnicas de mínima invasión que
-                garantizan recuperaciones más rápidas y resultados superiores
-                para sus pacientes.
+                Su preparación incluye entrenamiento con cirujanos de referencia
+                y actualización continua en cirugía de mínima invasión y
+                bariátrica, lo que le permite ofrecer un abordaje integral en
+                diversos procedimientos con altos estándares de calidad y
+                seguridad.
               </p>
             </div>
 
-            <p className="text-sm text-navy-500 mt-4">
-              Cédula Profesional: {DOCTOR_INFO.cedula}
-            </p>
+            <div className="text-sm text-navy-500 mt-4 space-y-1">
+              <p>Cédula Profesional: {DOCTOR_INFO.cedula}</p>
+              <p>Cédula Especialidad: {DOCTOR_INFO.cedulaEspecialidad}</p>
+            </div>
           </div>
         </div>
       </section>

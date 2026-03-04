@@ -32,9 +32,11 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
             <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
               {"\u{1F3E5}"} {procedure.hospitalStay}
             </span>
-            <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-              {"\u{1F4B0}"} {procedure.costRange}
-            </span>
+            {procedure.costRange && (
+              <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
+                {"\u{1F4B0}"} {procedure.costRange}
+              </span>
+            )}
           </div>
         </div>
       </section>

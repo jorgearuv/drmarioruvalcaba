@@ -1,5 +1,3 @@
-"use client";
-
 import Accordion from "@/components/ui/Accordion";
 import { generateFAQPageJsonLd } from "@/lib/seo";
 import type { FAQItem } from "@/types";
