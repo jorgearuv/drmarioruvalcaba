@@ -5,23 +5,23 @@ const CREDENTIALS = [
   {
     icon: '\u{1F393}',
     title: 'Médico Cirujano',
-    institution: 'Universidad Autónoma de Yucatán',
+    institution: 'Universidad Autónoma de Guadalajara',
   },
   {
     icon: '\u{1F3E5}',
     title: 'Especialidad en Cirugía General',
-    institution: 'Hospital General de México',
+    institution: 'Universidad Autónoma de Yucatán',
   },
   {
     icon: '\u2695\uFE0F',
-    title: 'Subespecialidad en Cirugía Bariátrica',
+    title: 'Alta Especialidad en Cirugía Endoscópica y Robótica',
     institution:
-      'Instituto Nacional de Ciencias Médicas y Nutrición Salvador Zubirán',
+      'Centro de Formación en Cirugía de Mínima Invasión, CDMX',
   },
   {
     icon: '\u{1F30D}',
-    title: 'Fellowship Internacional',
-    institution: 'Centro de Excelencia en Cirugía Bariátrica, EE.UU.',
+    title: 'Alta Especialidad en Cirugía Bariátrica y Metabólica',
+    institution: 'Universidad de las Américas Puebla',
   },
   {
     icon: '\u2705',
@@ -36,16 +36,15 @@ const CREDENTIALS = [
 ] as const
 
 const TIMELINE = [
-  { year: '2003', description: 'Egreso de la Licenciatura en Medicina' },
-  { year: '2007', description: 'Especialidad en Cirugía General' },
+  { year: '2019', description: 'Egreso de Licenciatura Médico Cirujano' },
+  { year: '2020', description: 'Especialidad en Cirugía General' },
   {
-    year: '2009',
-    description: 'Subespecialidad en Cirugía Bariátrica y Metabólica',
+    year: '2024',
+    description: 'Alta Especialidad en Cirugía Endoscópica y Bariátrica',
   },
-  { year: '2010', description: 'Fellowship Internacional' },
   {
-    year: '2011',
-    description: 'Inicio de práctica privada en Mérida, Yucatán',
+    year: '2025',
+    description: 'Alta Especialidad en Cirugía Bariátrica y Metabólica',
   },
 ] as const
 
@@ -131,32 +130,75 @@ export default function DoctorBio() {
       </section>
 
       {/* Training Timeline */}
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-center font-display text-3xl text-navy-900">
-            Trayectoria Profesional
-          </h2>
+      <section className="py-20 md:py-32 bg-navy-50">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600">
+              Trayectoria
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl heading-gradient mt-3">
+              Trayectoria Profesional
+            </h2>
+            <div className="section-divider mx-auto mt-5" />
+          </div>
 
-          <div className="space-y-0 mt-10">
-            {TIMELINE.map((timelineItem, itemIndex) => (
-              <div key={timelineItem.year} className="flex gap-6 relative">
-                {/* Year circle */}
-                <div className="h-10 w-10 rounded-full bg-teal-600 text-white font-bold flex items-center justify-center text-xs flex-shrink-0">
+          {/* Desktop Timeline */}
+          <div className="hidden md:block mt-16">
+            <div className="relative grid grid-cols-4 grid-rows-[1fr_auto_1fr]">
+              {/* Horizontal gradient line — sits in the middle row */}
+              <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-linear-to-r from-teal-600 to-gold-500 -translate-y-1/2 pointer-events-none" />
+
+              {TIMELINE.map((timelineItem, itemIndex) => {
+                const isAbove = itemIndex % 2 === 0
+                return (
+                  <div
+                    key={timelineItem.year}
+                    className="col-start-auto row-span-3 grid grid-rows-subgrid items-end text-center"
+                  >
+                    {/* Row 1: above content */}
+                    <div className={`pb-6 ${isAbove ? '' : 'invisible'}`}>
+                      <p className="text-2xl font-display heading-gold">
+                        {timelineItem.year}
+                      </p>
+                      <p className="text-sm text-navy-600 mt-2 max-w-45 mx-auto">
+                        {timelineItem.description}
+                      </p>
+                    </div>
+
+                    {/* Row 2: dot on line */}
+                    <div className="flex justify-center py-2">
+                      <div className="w-3 h-3 rounded-full bg-teal-600 ring-4 ring-teal-100 relative z-10" />
+                    </div>
+
+                    {/* Row 3: below content */}
+                    <div className={`pt-6 self-start ${isAbove ? 'invisible' : ''}`}>
+                      <p className="text-2xl font-display heading-gold">
+                        {timelineItem.year}
+                      </p>
+                      <p className="text-sm text-navy-600 mt-2 max-w-45 mx-auto">
+                        {timelineItem.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Mobile Timeline */}
+          <div className="md:hidden mt-10 space-y-4">
+            {TIMELINE.map(timelineItem => (
+              <div
+                key={timelineItem.year}
+                className="card-premium bg-white rounded-2xl p-6 border-l-2 border-teal-600"
+              >
+                <p className="text-xl font-display heading-gold">
                   {timelineItem.year}
-                </div>
-
-                {/* Connecting line */}
-                {itemIndex < TIMELINE.length - 1 && (
-                  <div className="absolute left-5 top-10 bottom-0 w-0.5 bg-teal-200" />
-                )}
-
-                {/* Content */}
-                <div className="pb-8">
-                  <p className="font-bold text-navy-900">{timelineItem.year}</p>
-                  <p className="text-navy-600 mt-1">
-                    {timelineItem.description}
-                  </p>
-                </div>
+                </p>
+                <p className="text-navy-600 mt-2">
+                  {timelineItem.description}
+                </p>
               </div>
             ))}
           </div>
