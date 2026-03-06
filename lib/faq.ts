@@ -68,24 +68,6 @@ export const FAQ_ITEMS: FAQItem[] = [
     category: "costos",
   },
   {
-    question: "¿Por qué elegir Mérida para mi cirugía bariátrica?",
-    answer:
-      "Mérida es una de las ciudades más seguras de México y un destino reconocido de turismo médico. Cuenta con hospitales de alta especialidad, cirujanos certificados como el Dr. Mario Ruvalcaba, y costos significativamente menores que en otros países. Además, puedes disfrutar de la riqueza cultural, la gastronomía yucateca y las playas del Caribe durante tu recuperación.",
-    category: "turismo-médico",
-  },
-  {
-    question: "¿Qué incluye el paquete de turismo médico para cirugía bariátrica?",
-    answer:
-      "Nuestros paquetes de turismo médico incluyen traslados aeropuerto-hospital-hotel, consulta preoperatoria, cirugía, estancia hospitalaria, medicamentos postoperatorios y seguimiento a distancia. También ofrecemos apoyo con la logística de hospedaje y recomendaciones turísticas para que tu estancia en Mérida sea cómoda y placentera. Contáctanos para conocer los detalles de cada paquete.",
-    category: "turismo-médico",
-  },
-  {
-    question: "¿Necesito viajar acompañado si vengo de fuera de Mérida?",
-    answer:
-      "Sí, recomendamos que viajes con un acompañante adulto que pueda asistirte durante los primeros días de recuperación. Tu acompañante puede quedarse contigo en el hospital y ayudarte con el traslado al hotel. Si no cuentas con un acompañante, nuestro equipo puede coordinar servicios de asistencia y enfermería privada para garantizar tu comodidad y seguridad.",
-    category: "turismo-médico",
-  },
-  {
     question: "¿Qué estudios previos necesito antes de la cirugía bariátrica?",
     answer:
       "Antes de la cirugía se requiere un perfil completo de laboratorio, electrocardiograma, radiografía de tórax, ultrasonido abdominal y endoscopía digestiva. También es necesaria una valoración por nutriología, psicología y, en algunos casos, cardiología o neumología. Estos estudios pueden realizarse en tu ciudad de origen o directamente en Mérida antes del procedimiento.",

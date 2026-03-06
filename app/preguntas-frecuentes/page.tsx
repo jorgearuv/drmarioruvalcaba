@@ -37,7 +37,7 @@ export default function PreguntasFrecuentesPage() {
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-4">
           {/* Group by category */}
-          {["general", "procedimientos", "recuperación", "costos", "turismo-médico"].map(
+          {["general", "procedimientos", "recuperación", "costos"].map(
             (category) => {
               const categoryItems = FAQ_ITEMS.filter(
                 (item) => item.category === category
@@ -49,7 +49,6 @@ export default function PreguntasFrecuentesPage() {
                 procedimientos: "Procedimientos",
                 recuperación: "Recuperación",
                 costos: "Costos y Financiamiento",
-                "turismo-médico": "Turismo Médico",
               };
 
               return (
