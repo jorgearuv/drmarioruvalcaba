@@ -223,7 +223,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                   <div className="leading-none">
                     <p className="text-sm font-semibold text-white">+5 años</p>
                     <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
-                      Experiencia en Cirugía Bariátrica
+                      Experiencia como Cirujano
                     </p>
                   </div>
                 </div>

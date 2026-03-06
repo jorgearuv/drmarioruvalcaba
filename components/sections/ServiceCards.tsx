@@ -218,9 +218,11 @@ const BENTO_GRID_CONFIGS = [
   { isFeatured: false, colSpan: "md:col-span-5", delaySeconds: 0.12 },
   { isFeatured: false, colSpan: "md:col-span-5", delaySeconds: 0.24 },
   { isFeatured: true,  colSpan: "md:col-span-7", delaySeconds: 0.36 },
+  { isFeatured: true,  colSpan: "md:col-span-7", delaySeconds: 0.48 },
+  { isFeatured: false, colSpan: "md:col-span-5", delaySeconds: 0.60 },
 ] as const;
 
-const PROCEDURES_FOR_BENTO = PROCEDURES.slice(0, 4);
+const PROCEDURES_FOR_BENTO = PROCEDURES.slice(0, 6);
 
 export default function ServiceCards() {
   const shouldReduceMotion = useReducedMotion() ?? false;

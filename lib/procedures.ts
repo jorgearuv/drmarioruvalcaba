@@ -412,6 +412,209 @@ export const PROCEDURES: Procedure[] = [
       },
     ],
   },
+  // ---------------------------------------------------------------------------
+  // 5. Cirugía para Diástasis de Rectos
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'cirugia-diastasis-rectos',
+    imagePath: '/images/procedures/diastasis-rectos.webp',
+    title: 'Cirugía para Diástasis de Rectos',
+    shortTitle: 'Diástasis de Rectos',
+    metaTitle:
+      'Cirugía para Diástasis de Rectos en Mérida | Dr. Mario Ruvalcaba',
+    metaDescription:
+      'Reparación quirúrgica de diástasis de rectos en Mérida. Técnica laparoscópica para restaurar la pared abdominal. Consulta con el Dr. Mario Ruvalcaba.',
+    heroHeadline: 'Cirugía para Diástasis de Rectos en Mérida',
+    heroSubheadline:
+      'Restaura la funcionalidad y apariencia de tu pared abdominal con técnicas quirúrgicas de mínima invasión. Resultados efectivos y recuperación optimizada.',
+    description:
+      'La diástasis de rectos es la separación de los músculos rectos del abdomen, frecuente después del embarazo o en casos de obesidad. La reparación quirúrgica restaura la integridad de la pared abdominal, mejorando tanto la función como la apariencia del abdomen.',
+    longDescription:
+      'La diástasis de rectos abdominales consiste en la separación anormal de los dos músculos rectos del abdomen a lo largo de la línea alba (línea media del abdomen). Esta condición es especialmente frecuente en mujeres después de uno o múltiples embarazos, aunque también puede presentarse en hombres con obesidad abdominal significativa o tras pérdida masiva de peso. La separación muscular provoca un abultamiento visible en la línea media del abdomen, debilidad de la pared abdominal, dolor lumbar, dificultad para realizar actividades físicas y, en algunos casos, hernias asociadas.\n\nCuando los ejercicios de rehabilitación y fisioterapia no logran corregir la diástasis, la reparación quirúrgica es el tratamiento definitivo. El Dr. Mario Ruvalcaba realiza la reparación mediante técnica laparoscópica o abierta según la severidad del caso, aproximando los músculos rectos a su posición anatómica y reforzando la línea alba. En casos seleccionados, puede combinarse con la colocación de malla para mayor soporte. El procedimiento restaura la funcionalidad de la musculatura abdominal, mejora la postura, alivia el dolor lumbar asociado y devuelve un contorno abdominal más firme y natural.',
+    benefits: [
+      {
+        title: 'Restauración funcional',
+        description:
+          'Devuelve la integridad y fuerza a la pared abdominal, mejorando la postura, la estabilidad del core y la capacidad para realizar actividades físicas sin molestias.',
+        icon: '💪',
+      },
+      {
+        title: 'Mejora estética del abdomen',
+        description:
+          'Corrige el abultamiento visible de la línea media abdominal, logrando un contorno más firme, plano y natural.',
+        icon: '✨',
+      },
+      {
+        title: 'Alivio de dolor lumbar',
+        description:
+          'Al restaurar el soporte muscular anterior, se reduce significativamente el dolor de espalda baja asociado a la debilidad de la pared abdominal.',
+        icon: '🛡️',
+      },
+      {
+        title: 'Técnica mínimamente invasiva',
+        description:
+          'En casos seleccionados, se realiza por vía laparoscópica con incisiones pequeñas, lo que reduce el dolor postoperatorio y acelera la recuperación.',
+        icon: '🔬',
+      },
+    ],
+    candidates: [
+      'Mujeres con separación de los músculos rectos del abdomen persistente después de uno o más embarazos, que no mejora con ejercicios de rehabilitación.',
+      'Personas con diástasis de rectos que presentan síntomas como dolor lumbar crónico, debilidad abdominal funcional o hernias asociadas.',
+      'Pacientes post-bariátricos o con pérdida masiva de peso que presentan diástasis de rectos con exceso de piel abdominal.',
+      'Hombres con diástasis de rectos secundaria a obesidad abdominal que persiste tras la pérdida de peso.',
+      'Adultos que han completado al menos 6 meses de rehabilitación física sin mejoría significativa y desean una solución definitiva.',
+    ],
+    recovery: [
+      {
+        period: 'Primera semana',
+        description:
+          'Reposo relativo con deambulación temprana. Uso de faja abdominal compresiva las 24 horas. Manejo del dolor con analgésicos orales. Evitar esfuerzos abdominales y levantar objetos pesados.',
+      },
+      {
+        period: '2-4 semanas',
+        description:
+          'Continuar con faja abdominal. Reincorporación gradual a actividades cotidianas y laborales sedentarias. Evitar ejercicios abdominales directos y cargar más de 5 kg.',
+      },
+      {
+        period: '1-3 meses',
+        description:
+          'Retiro progresivo de la faja abdominal según indicación médica. Inicio de ejercicios suaves de fortalecimiento del core bajo supervisión. Actividad física moderada permitida.',
+      },
+      {
+        period: '3-6 meses',
+        description:
+          'Recuperación completa. Reincorporación a actividad física sin restricciones. Los resultados finales en cuanto a contorno y firmeza abdominal se aprecian plenamente a los 3 a 6 meses.',
+      },
+    ],
+    costRange: '',
+    duration: '1.5 - 2.5 horas',
+    hospitalStay: '1 noche',
+    icon: '🏋️',
+    faq: [
+      {
+        question: '¿Cómo sé si tengo diástasis de rectos?',
+        answer:
+          'La diástasis de rectos se manifiesta como un abultamiento o cresta visible en la línea media del abdomen al realizar esfuerzo abdominal (como al incorporarse estando acostado). Puede acompañarse de debilidad abdominal, dolor lumbar y sensación de flacidez. El diagnóstico se confirma mediante exploración física y, en algunos casos, ultrasonido de pared abdominal. Una separación mayor a 2 cm entre los músculos rectos se considera diástasis significativa. El Dr. Ruvalcaba realiza una evaluación completa para determinar el grado de separación y la mejor opción de tratamiento.',
+      },
+      {
+        question: '¿Los ejercicios pueden corregir la diástasis de rectos?',
+        answer:
+          'En casos leves (separación menor a 2-3 cm), un programa de ejercicios específicos de rehabilitación del suelo pélvico y core profundo, guiado por un fisioterapeuta especializado, puede mejorar significativamente la condición. Sin embargo, en diástasis moderadas a severas (mayor a 3 cm) o cuando hay hernias asociadas, los ejercicios por sí solos no logran cerrar la separación y la reparación quirúrgica es necesaria para restaurar la integridad de la pared abdominal.',
+      },
+      {
+        question: '¿Se puede combinar con abdominoplastía?',
+        answer:
+          'Sí, en pacientes que además de la diástasis de rectos presentan exceso de piel y tejido graso abdominal (frecuente después del embarazo o pérdida masiva de peso), la reparación de la diástasis puede combinarse con una abdominoplastía en un solo tiempo quirúrgico. Esto permite corregir tanto la separación muscular como el exceso de piel, obteniendo un resultado funcional y estético integral. El Dr. Ruvalcaba trabaja en conjunto con cirujanos plásticos cuando se requiere este abordaje combinado.',
+      },
+      {
+        question: '¿La diástasis de rectos puede regresar después de la cirugía?',
+        answer:
+          'La recurrencia después de una reparación quirúrgica adecuada es poco frecuente (menos del 5%). Los factores que pueden aumentar el riesgo de recurrencia incluyen un nuevo embarazo, ganancia significativa de peso y la realización de esfuerzos abdominales intensos antes de completar la recuperación. Por ello, se recomienda esperar al menos 12 meses antes de un nuevo embarazo y seguir las indicaciones de recuperación al pie de la letra.',
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // 6. Cirugías de Urgencias 24/7
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'cirugias-urgencias',
+    imagePath: '/images/procedures/cirugias-urgencias.webp',
+    title: 'Cirugías de Urgencias 24/7',
+    shortTitle: 'Urgencias 24/7',
+    metaTitle:
+      'Cirugías de Urgencias 24/7 en Mérida | Dr. Mario Ruvalcaba',
+    metaDescription:
+      'Atención quirúrgica de urgencias las 24 horas en Mérida. Apendicitis, vesícula, hernias complicadas y más. Dr. Mario Ruvalcaba, cirujano general certificado.',
+    heroHeadline: 'Cirugías de Urgencias 24/7 en Mérida',
+    heroSubheadline:
+      'Atención quirúrgica de emergencia disponible las 24 horas del día, los 7 días de la semana. Respuesta rápida y experiencia comprobada cuando más lo necesitas.',
+    description:
+      'Atención quirúrgica de emergencia disponible las 24 horas. El Dr. Ruvalcaba atiende urgencias como apendicitis aguda, colecistitis, hernias complicadas, obstrucción intestinal y otras emergencias abdominales con rapidez y experiencia.',
+    longDescription:
+      'Las urgencias quirúrgicas abdominales requieren atención inmediata por un cirujano experimentado para evitar complicaciones graves. El Dr. Mario Ruvalcaba ofrece disponibilidad las 24 horas del día, los 7 días de la semana, para atender emergencias quirúrgicas en Mérida, Yucatán. Entre las urgencias que atiende con mayor frecuencia se encuentran: apendicitis aguda, colecistitis aguda (inflamación de la vesícula biliar), hernias inguinales o ventrales encarceladas o estranguladas, obstrucción intestinal, úlceras perforadas y abscesos intraabdominales.\n\nCada minuto cuenta en una emergencia quirúrgica. El Dr. Ruvalcaba prioriza el diagnóstico rápido y preciso, utilizando los recursos de imagen y laboratorio disponibles en los hospitales donde opera para tomar decisiones quirúrgicas oportunas. Siempre que las condiciones del paciente lo permiten, se prefiere el abordaje laparoscópico (mínima invasión) incluso en contexto de urgencia, lo que se traduce en menor dolor postoperatorio, menor riesgo de infección y una recuperación más rápida. La combinación de experiencia, disponibilidad inmediata y técnica quirúrgica depurada garantiza la mejor atención posible en el momento más crítico.',
+    benefits: [
+      {
+        title: 'Disponibilidad 24/7',
+        description:
+          'Atención quirúrgica de emergencia disponible a cualquier hora del día o la noche, los 365 días del año. Tiempo de respuesta rápido para evaluación y decisión quirúrgica.',
+        icon: '🕐',
+      },
+      {
+        title: 'Diagnóstico rápido y preciso',
+        description:
+          'Evaluación clínica experta complementada con estudios de laboratorio e imagen para un diagnóstico certero y toma de decisiones quirúrgicas oportunas.',
+        icon: '⚡',
+      },
+      {
+        title: 'Mínima invasión en urgencias',
+        description:
+          'Siempre que es posible, se utiliza técnica laparoscópica incluso en cirugías de urgencia, reduciendo el trauma quirúrgico y acelerando la recuperación del paciente.',
+        icon: '🔬',
+      },
+      {
+        title: 'Experiencia comprobada',
+        description:
+          'Cirujano general certificado con amplia experiencia en el manejo de emergencias quirúrgicas abdominales complejas.',
+        icon: '🛡️',
+      },
+    ],
+    candidates: [
+      'Pacientes con dolor abdominal agudo severo que requiere evaluación quirúrgica urgente.',
+      'Personas con diagnóstico o sospecha de apendicitis aguda que necesitan apendicectomía de emergencia.',
+      'Pacientes con colecistitis aguda (inflamación de vesícula) que no responde a tratamiento médico y requiere cirugía.',
+      'Personas con hernias inguinales o ventrales encarceladas o estranguladas que representan una emergencia quirúrgica.',
+      'Pacientes con obstrucción intestinal, úlceras perforadas u otras emergencias abdominales que requieren intervención quirúrgica inmediata.',
+    ],
+    recovery: [
+      {
+        period: 'Hospitalización',
+        description:
+          'Según la complejidad de la urgencia, la estancia hospitalaria varía de 1 a 5 días. Monitoreo estrecho de signos vitales, control del dolor y vigilancia de la evolución postquirúrgica. Inicio temprano de deambulación.',
+      },
+      {
+        period: 'Primera semana en casa',
+        description:
+          'Reposo relativo con caminatas cortas. Dieta progresiva según el tipo de cirugía realizada. Manejo del dolor con medicamentos orales. Cuidado de heridas quirúrgicas y signos de alarma.',
+      },
+      {
+        period: '2-4 semanas',
+        description:
+          'Reincorporación gradual a actividades cotidianas según la evolución. Seguimiento en consultorio para revisión de heridas y valoración de la recuperación. Evitar esfuerzos físicos intensos.',
+      },
+      {
+        period: '1-3 meses',
+        description:
+          'Recuperación completa en la mayoría de los casos. Retorno a la actividad física normal. Seguimiento final para asegurar la resolución completa de la patología que motivó la urgencia.',
+      },
+    ],
+    costRange: '',
+    duration: '30 min - 3 horas',
+    hospitalStay: '1 - 5 noches',
+    icon: '🚑',
+    faq: [
+      {
+        question: '¿Cómo contacto al Dr. Ruvalcaba en caso de urgencia?',
+        answer:
+          'En caso de emergencia quirúrgica, puede comunicarse directamente al número de WhatsApp o teléfono del consultorio, disponible las 24 horas. También puede acudir directamente al área de urgencias de los hospitales donde el Dr. Ruvalcaba tiene privilegios quirúrgicos en Mérida. Se recomienda llamar primero para coordinar la atención y reducir tiempos de espera.',
+      },
+      {
+        question: '¿Qué señales indican que necesito una cirugía de urgencia?',
+        answer:
+          'Los signos de alarma que requieren evaluación quirúrgica urgente incluyen: dolor abdominal severo y progresivo, especialmente si se acompaña de fiebre, vómitos persistentes, distensión abdominal, ausencia de evacuaciones o gases, o si el abdomen se siente rígido al tacto. También son señales de alarma el enrojecimiento, dolor intenso o crecimiento súbito de una hernia conocida. Ante cualquiera de estos síntomas, busque atención médica de emergencia de inmediato.',
+      },
+      {
+        question: '¿Se puede hacer cirugía laparoscópica en urgencias?',
+        answer:
+          'Sí, en la mayoría de las urgencias abdominales se puede y se prefiere utilizar la técnica laparoscópica siempre que las condiciones del paciente lo permitan. La apendicectomía y colecistectomía de urgencia se realizan de forma rutinaria por laparoscopia. Incluso en casos de hernias complicadas y algunas obstrucciones intestinales, el abordaje laparoscópico es factible. Las ventajas incluyen mejor visualización de la cavidad abdominal, menor dolor, menor riesgo de infección de herida y recuperación más rápida.',
+      },
+      {
+        question: '¿Qué hospitales atiende el Dr. Ruvalcaba para urgencias?',
+        answer:
+          'El Dr. Mario Ruvalcaba cuenta con privilegios quirúrgicos en hospitales de primer nivel en Mérida, Yucatán, equipados con quirófanos disponibles las 24 horas, equipo de laparoscopia, unidad de cuidados intensivos y servicios de apoyo diagnóstico completos. Durante la consulta inicial o al momento de la urgencia, se coordina la atención en el hospital más conveniente según la ubicación del paciente y la disponibilidad.',
+      },
+    ],
+  },
 ]
 
 // ---------------------------------------------------------------------------

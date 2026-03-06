@@ -102,8 +102,8 @@ export default function ContactoPage() {
                   <p className="mt-1 text-sm text-navy-600">
                     {DOCTOR_INFO.phone}
                   </p>
-                  <p className="mt-1 text-xs text-navy-400">
-                    Lunes a Viernes 9:00 am - 7:00 pm
+                  <p className="mt-1 text-xs font-semibold text-red-600">
+                    URGENCIAS 24 horas
                   </p>
                 </div>
               </a>
@@ -191,11 +191,9 @@ export default function ContactoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-navy-900">Horario de Atención</h3>
+                  <h3 className="font-display font-bold text-navy-900">Horario de Atención Consultas</h3>
                   <div className="mt-1 space-y-1 text-sm text-navy-600">
-                    <p>Lunes a Viernes: 9:00 am - 7:00 pm</p>
-                    <p>Sábados: 9:00 am - 2:00 pm</p>
-                    <p className="text-navy-400">Domingos: Cerrado</p>
+                    <p>Lunes a Viernes: 3:00 pm - 9:00 pm</p>
                   </div>
                 </div>
               </div>

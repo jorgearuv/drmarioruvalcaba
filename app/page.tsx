@@ -5,6 +5,7 @@ import ServiceCards from "@/components/sections/ServiceCards";
 import BMICalculator from "@/components/sections/BMICalculator";
 import TestimonialCarousel from "@/components/sections/TestimonialCarousel";
 import TrustBadges from "@/components/sections/TrustBadges";
+import InsurancePartners from "@/components/sections/InsurancePartners";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata = createPageMetadata({
@@ -46,7 +47,10 @@ export default function HomePage() {
       {/* 6. Institutional trust */}
       <TrustBadges />
 
-      {/* 7. Final conversion CTA */}
+      {/* 7. Insurance partners */}
+      <InsurancePartners />
+
+      {/* 8. Final conversion CTA */}
       <CTASection
         heading="¿Listo para Transformar Tu Vida?"
         description="Agenda una consulta gratuita con el Dr. Mario Ruvalcaba y descubre cuál es el mejor procedimiento para ti."
