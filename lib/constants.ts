@@ -2,7 +2,7 @@ import type { DoctorInfo, NavLink, TrustBadge } from "@/types";
 
 export const DOCTOR_INFO = {
   name: "Dr. Mario Ruvalcaba",
-  title: "Cirujano General y Bariatra Certificado",
+  title: "Cirujano General y Bariátra Certificado",
   specialties: [
     "Manga Gástrica",
     "Bypass Gástrico",

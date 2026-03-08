@@ -7,7 +7,7 @@ export const DEFAULT_OG_IMAGE = {
   url: "/images/og-default.png",
   width: 1200,
   height: 630,
-  alt: "Dr. Mario Ruvalcaba — Cirujano Bariatra en Mérida",
+  alt: "Dr. Mario Ruvalcaba — Cirujano Bariátra en Mérida",
 };
 
 interface PageMetadataConfig {

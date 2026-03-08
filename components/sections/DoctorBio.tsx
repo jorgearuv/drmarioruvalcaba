@@ -73,7 +73,7 @@ export default function DoctorBio() {
           <div className="card-glow aspect-3/4 rounded-2xl overflow-hidden border border-navy-100 max-w-md mx-auto w-full relative">
             <Image
               src="/images/doctor/profile-web.webp"
-              alt="Dr. Mario Ruvalcaba — Cirujano General y Bariatra Certificado en Mérida, Yucatán"
+              alt="Dr. Mario Ruvalcaba — Cirujano General y Bariátra Certificado en Mérida, Yucatán"
               fill
               sizes="(max-width: 768px) 90vw, 448px"
               className="object-cover"
@@ -85,7 +85,7 @@ export default function DoctorBio() {
           {/* Right: Content */}
           <div>
             <span className="inline-block glass px-4 py-1.5 rounded-full text-sm font-semibold text-teal-800">
-              Cirujano Bariatra Certificado
+              Cirujano Bariátra Certificado
             </span>
 
             <h1 className="text-4xl md:text-5xl font-display text-navy-900 mt-4">

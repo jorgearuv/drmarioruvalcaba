@@ -33,12 +33,12 @@ export default function Footer() {
                   Dr. Mario Ruvalcaba
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-navy-400">
-                  Cirujano Bariatra
+                  Cirujano Bariátra
                 </p>
               </div>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-navy-400">
-              Cirujano general y bariatra certificado en Mérida, Yucatán. Especialista en cirugía de
+              Cirujano general y bariátra certificado en Mérida, Yucatán. Especialista en cirugía de
               mínima invasión y cirugía bariátrica y metabólica.
             </p>
             <div className="section-divider mt-5" />
@@ -192,7 +192,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Dr. Mario Ruvalcaba. Todos los derechos reservados.
           </p>
           <p className="mt-1">
-            Cirujano Bariatra en Mérida, Yucatán &middot; Cédula Profesional: {DOCTOR_INFO.cedula}
+            Cirujano Bariátra en Mérida, Yucatán &middot; Cédula Profesional: {DOCTOR_INFO.cedula}
           </p>
         </div>
       </div>

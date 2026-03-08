@@ -92,7 +92,7 @@ export default function Navbar() {
               Dr. Mario Ruvalcaba
             </p>
             <p className="text-[10px] uppercase tracking-widest text-navy-400">
-              Cirujano Bariatra
+              Cirujano Bariátra
             </p>
           </div>
         </Link>

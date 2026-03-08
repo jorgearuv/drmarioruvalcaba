@@ -9,12 +9,12 @@ import InsurancePartners from "@/components/sections/InsurancePartners";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata = createPageMetadata({
-  title: "Cirujano Bariatra en Mérida | Dr. Mario Ruvalcaba",
+  title: "Cirujano Bariátra en Mérida | Dr. Mario Ruvalcaba",
   description:
-    "Cirujano general y bariatra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
+    "Cirujano general y bariátra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
   path: "/",
   keywords: [
-    "cirujano bariatra Mérida",
+    "cirujano bariátra Mérida",
     "cirugía bariátrica Yucatán",
     "manga gástrica Mérida",
     "bypass gástrico Mérida",
@@ -28,8 +28,8 @@ export default function HomePage() {
     <>
       {/* 1. Hero — trust + first impression + primary CTA */}
       <Hero
-        headline="Cirujano Bariatra en Mérida, Especialista en Mínima Invasión"
-        subheadline={"El Dr. Mario Ruvalcaba es cirujano general y bariatra certificado por el Consejo Mexicano de Cirugía General. Se especializa en cirugía bariátrica y metabólica, así como en cirugía de mínima invasión (laparoscópica), ofreciendo a sus pacientes tratamientos seguros, efectivos y con la menor invasión posible.\n\nRespaldado por experiencia en distintos tipos de cirugías y una preparación constante, brinda atención de calidad con un enfoque integral y personalizado para cada paciente.\n\nSu consultorio se encuentra en Mérida, Yucatán, donde atiende a pacientes locales y de otras partes de México y el extranjero."}
+        headline="Cirujano Bariátra en Mérida, Especialista en Mínima Invasión"
+        subheadline={"El Dr. Mario Ruvalcaba es cirujano general y bariátra certificado por el Consejo Mexicano de Cirugía General. Se especializa en cirugía bariátrica y metabólica, así como en cirugía de mínima invasión (laparoscópica), ofreciendo a sus pacientes tratamientos seguros, efectivos y con la menor invasión posible.\n\nRespaldado por experiencia en distintos tipos de cirugías y una preparación constante, brinda atención de calidad con un enfoque integral y personalizado para cada paciente.\n\nSu consultorio se encuentra en Mérida, Yucatán, donde atiende a pacientes locales y de otras partes de México y el extranjero."}
       />
 
       {/* 2. Why bariatric surgery — empathy + benefits */}

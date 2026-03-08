@@ -69,7 +69,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-400" />
                 </span>
-                <span className="text-teal-200">Cirujano General y Bariatra Certificado</span>
+                <span className="text-teal-200">Cirujano General y Bariátra Certificado</span>
                 <span className="text-white/20" aria-hidden="true">|</span>
                 <span className="text-gold-400">Mérida, Yucatán</span>
               </span>
@@ -82,7 +82,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               className="mt-8 max-w-2xl font-display text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] tracking-tight text-white"
             >
               {headline.split(" ").map((word, wordIndex) => {
-                const isTealWord = ["Bariatra", "Mínima", "Invasión"].includes(word);
+                const isTealWord = ["Bariátra", "Mínima", "Invasión"].includes(word);
                 const isGoldWord = ["Mérida", "Yucatán"].includes(word);
                 if (isTealWord) {
                   return (
@@ -250,7 +250,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
             <div className="relative mx-auto w-full max-w-md">
               <Image
                 src="/images/doctor/hero-cutout.webp"
-                alt="Dr. Mario Ruvalcaba — Cirujano General y Bariatra Certificado"
+                alt="Dr. Mario Ruvalcaba — Cirujano General y Bariátra Certificado"
                 width={1024}
                 height={1536}
                 sizes="(max-width: 1024px) 0px, 420px"

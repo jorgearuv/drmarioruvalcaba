@@ -725,7 +725,7 @@ function BariatricCriteriaSection({
         className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-navy-400"
       >
         La indicación final siempre debe realizarse de manera individualizada
-        por un cirujano bariatra certificado, tomando en cuenta la historia
+        por un cirujano bariátra certificado, tomando en cuenta la historia
         clínica completa, expectativas del paciente y riesgos asociados.
       </motion.p>
 

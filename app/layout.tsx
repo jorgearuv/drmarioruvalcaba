@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     template: "%s | Dr. Mario Ruvalcaba",
   },
   description:
-    "Cirujano general y bariatra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
+    "Cirujano general y bariátra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
   keywords: [
-    "cirujano bariatra Mérida",
+    "cirujano bariátra Mérida",
     "cirugía bariátrica Yucatán",
     "cirugía de mínima invasión Yucatán",
     "manga gástrica Mérida",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     apple: "/images/logo-apple-touch.png",
   },
   openGraph: {
-    siteName: "Dr. Mario Ruvalcaba - Cirujano Bariatra en Mérida",
+    siteName: "Dr. Mario Ruvalcaba - Cirujano Bariátra en Mérida",
     locale: "es_MX",
     type: "website",
     images: [DEFAULT_OG_IMAGE],
