@@ -537,72 +537,6 @@ textarea:focus-visible {
 }
 
 /* ================================================================== */
-/*  Theme: Teal & Gold Luxe                                            */
-/* ================================================================== */
-[data-theme="teal-gold-luxe"] {
-  --background: #F9F8F5;
-  --color-navy-950: #050810;
-
-  /* Primary CTAs → gold */
-  --color-primary-100: #faf0d5;
-  --color-primary-400: #e5a73e;
-  --color-primary-500: #d4a853;
-  --color-primary-600: #c48a2a;
-  --color-primary-700: #a36a22;
-}
-
-[data-theme="teal-gold-luxe"] .gradient-mesh-hero {
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(1, 158, 143, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(212, 168, 83, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 60% 80%, rgba(1, 158, 143, 0.1) 0%, transparent 50%),
-    linear-gradient(175deg, #050810 0%, #0c1426 35%, #0d524d 100%);
-}
-
-[data-theme="teal-gold-luxe"] .gradient-mesh-cta {
-  background:
-    radial-gradient(ellipse 80% 60% at 30% 20%, rgba(212, 168, 83, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 70% 80%, rgba(1, 158, 143, 0.12) 0%, transparent 50%),
-    linear-gradient(160deg, #019e8f 0%, #067e74 50%, #0d524d 100%);
-}
-
-[data-theme="teal-gold-luxe"] .aurora-orb-1 {
-  background: #d4a853;
-}
-
-[data-theme="teal-gold-luxe"] .aurora-orb-2 {
-  background: #d4a853;
-  --aurora-min-opacity: 0.14;
-  --aurora-max-opacity: 0.5;
-}
-
-[data-theme="teal-gold-luxe"] .aurora-orb-4 {
-  background: #e5a73e;
-}
-
-[data-theme="teal-gold-luxe"] .card-premium:hover {
-  border-color: rgba(212, 168, 83, 0.3);
-  box-shadow:
-    0 4px 6px -1px rgba(212, 168, 83, 0.06),
-    0 20px 40px -8px rgba(212, 168, 83, 0.1),
-    0 0 0 1px rgba(212, 168, 83, 0.08);
-}
-
-[data-theme="teal-gold-luxe"] .card-glow::after {
-  background: linear-gradient(135deg, rgba(212, 168, 83, 0.3), rgba(1, 158, 143, 0.15), rgba(212, 168, 83, 0.2));
-}
-
-[data-theme="teal-gold-luxe"] .heading-gradient {
-  background: linear-gradient(135deg, #0c1426 0%, #019e8f 50%, #D4A853 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-[data-theme="teal-gold-luxe"] .section-divider {
-  background: linear-gradient(90deg, #019e8f, #D4A853, #C48A2A);
-}
-
-/* ================================================================== */
 /*  Theme: Noir & Gold                                                 */
 /* ================================================================== */
 [data-theme="noir-gold"] {
@@ -614,7 +548,7 @@ textarea:focus-visible {
   --color-navy-100: #EDEDE8;
   --color-navy-200: #D4D4CC;
   --color-navy-300: #AEAEA3;
-  --color-navy-400: #8A8A7D;
+  --color-navy-400: #74746A; /* Darkened from #8A8A7D — achieves ~4.8:1 contrast on #F7F7F6, passing WCAG AA */
   --color-navy-500: #6B6B60;
   --color-navy-600: #53534A;
   --color-navy-700: #3D3D36;

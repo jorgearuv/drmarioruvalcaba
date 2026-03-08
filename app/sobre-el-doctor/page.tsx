@@ -7,6 +7,7 @@ export const metadata = createPageMetadata({
   title: "Sobre el Dr. Mario Ruvalcaba | Cirujano Bariátrico en Mérida",
   description: "Conoce al Dr. Mario Ruvalcaba, cirujano bariátrico certificado con más de 15 años de experiencia y 3,000+ cirugías exitosas en Mérida, Yucatán.",
   path: "/sobre-el-doctor",
+  ogImage: "/images/og-sobre-el-doctor.png",
 });
 
 export default function SobreElDoctorPage() {

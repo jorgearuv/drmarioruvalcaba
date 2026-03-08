@@ -92,47 +92,17 @@ function getBMICategory(bmiValue: number): BMICategory {
 interface BMIScaleBar {
   label: string;
   bmiRange: string;
-  colorClass: string;
-  widthClass: string;
+  color: string;
+  widthPercent: number;
 }
 
 const BMI_SCALE_BARS: BMIScaleBar[] = [
-  {
-    label: "Bajo peso",
-    bmiRange: "< 18.5",
-    colorClass: "bg-blue-400",
-    widthClass: "w-3/12",
-  },
-  {
-    label: "Normal",
-    bmiRange: "18.5 – 24.9",
-    colorClass: "bg-green-500",
-    widthClass: "w-5/12",
-  },
-  {
-    label: "Sobrepeso",
-    bmiRange: "25 – 29.9",
-    colorClass: "bg-amber-400",
-    widthClass: "w-8/12",
-  },
-  {
-    label: "Obesidad I",
-    bmiRange: "30 – 34.9",
-    colorClass: "bg-orange-500",
-    widthClass: "w-9/12",
-  },
-  {
-    label: "Obesidad II",
-    bmiRange: "35 – 39.9",
-    colorClass: "bg-red-500",
-    widthClass: "w-10/12",
-  },
-  {
-    label: "Obesidad III",
-    bmiRange: "≥ 40",
-    colorClass: "bg-red-700",
-    widthClass: "w-full",
-  },
+  { label: "Bajo peso",    bmiRange: "< 18.5",      color: "#7B9DBF", widthPercent: 22 },
+  { label: "Normal",       bmiRange: "18.5 – 24.9", color: "#6AAF8D", widthPercent: 38 },
+  { label: "Sobrepeso",    bmiRange: "25 – 29.9",   color: "#D4A853", widthPercent: 56 },
+  { label: "Obesidad I",   bmiRange: "30 – 34.9",   color: "#C4802A", widthPercent: 72 },
+  { label: "Obesidad II",  bmiRange: "35 – 39.9",   color: "#B85C4A", widthPercent: 88 },
+  { label: "Obesidad III", bmiRange: "≥ 40",         color: "#8B3A3A", widthPercent: 100 },
 ];
 
 const BMIScaleVisualization = () => (
@@ -140,26 +110,50 @@ const BMIScaleVisualization = () => (
     role="img"
     aria-label="Infografía de categorías de IMC: Bajo peso menos de 18.5, Normal 18.5 a 24.9, Sobrepeso 25 a 29.9, Obesidad I 30 a 34.9, Obesidad II 35 a 39.9, Obesidad III 40 o más"
   >
-    <p className="mb-6 text-sm font-semibold uppercase tracking-wider text-navy-400">
-      Escala de IMC
-    </p>
-    <div className="space-y-3">
+    {/* Ornamental centered title */}
+    <div className="flex items-center gap-3">
+      <div
+        className="h-px flex-1 bg-gradient-to-r from-transparent to-navy-200/60"
+        aria-hidden="true"
+      />
+      <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-navy-400">
+        Escala de IMC
+      </p>
+      <div
+        className="h-px flex-1 bg-gradient-to-r from-navy-200/60 to-transparent"
+        aria-hidden="true"
+      />
+    </div>
+
+    {/* Progress scale bars — labels above bars eliminate overflow */}
+    <div className="mt-6 space-y-4">
       {BMI_SCALE_BARS.map((scaleBar) => (
-        <div key={scaleBar.label} className="flex items-center gap-3">
-          {/* Proportional colored bar — decorative, meaning communicated via aria-label above */}
-          <div
-            className={`h-7 ${scaleBar.widthClass} ${scaleBar.colorClass} flex-shrink-0 rounded-md opacity-80`}
-            aria-hidden="true"
-          />
-          <div className="flex min-w-0 flex-col leading-tight">
-            <span className="text-xs font-semibold text-navy-700">
+        <div key={scaleBar.label}>
+          <div className="mb-1.5 flex items-baseline justify-between">
+            <span className="text-[13px] font-semibold text-navy-700">
               {scaleBar.label}
             </span>
-            <span className="text-[11px] text-navy-400">{scaleBar.bmiRange}</span>
+            <span className="text-[11px] font-medium tabular-nums text-navy-400">
+              {scaleBar.bmiRange}
+            </span>
+          </div>
+          <div
+            className="h-2 w-full overflow-hidden rounded-full bg-navy-100/60"
+            aria-hidden="true"
+          >
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: `${scaleBar.widthPercent}%`,
+                background: `linear-gradient(90deg, ${scaleBar.color}44, ${scaleBar.color})`,
+                boxShadow: `0 0 6px ${scaleBar.color}20`,
+              }}
+            />
           </div>
         </div>
       ))}
     </div>
+
     <p className="mt-6 text-xs leading-relaxed text-navy-400">
       El Índice de Masa Corporal (IMC) es una medida de referencia. Consulta
       siempre a un médico para una evaluación completa e individualizada.

@@ -1,39 +1,54 @@
 import Image from 'next/image'
 import { DOCTOR_INFO } from '@/lib/constants'
+import {
+  AcademicCapIcon,
+  BuildingOffice2Icon,
+  BeakerIcon,
+  GlobeAmericasIcon,
+  ShieldCheckIcon,
+  BuildingLibraryIcon,
+} from '@heroicons/react/24/outline'
+import type { ComponentType, SVGProps } from 'react'
 
-const CREDENTIALS = [
+interface Credential {
+  icon: ComponentType<SVGProps<SVGSVGElement>>
+  title: string
+  institution: string
+}
+
+const CREDENTIALS: Credential[] = [
   {
-    icon: '\u{1F393}',
+    icon: AcademicCapIcon,
     title: 'Médico Cirujano',
     institution: 'Universidad Autónoma de Guadalajara',
   },
   {
-    icon: '\u{1F3E5}',
+    icon: BuildingOffice2Icon,
     title: 'Especialidad en Cirugía General',
     institution: 'Universidad Autónoma de Yucatán',
   },
   {
-    icon: '\u2695\uFE0F',
+    icon: BeakerIcon,
     title: 'Alta Especialidad en Cirugía Endoscópica y Robótica',
     institution:
       'Centro de Formación en Cirugía de Mínima Invasión, CDMX',
   },
   {
-    icon: '\u{1F30D}',
+    icon: GlobeAmericasIcon,
     title: 'Alta Especialidad en Cirugía Bariátrica y Metabólica',
     institution: 'Universidad de las Américas Puebla',
   },
   {
-    icon: '\u2705',
+    icon: ShieldCheckIcon,
     title: 'Certificado por el Consejo Mexicano',
     institution: 'Consejo Mexicano de Cirugía General',
   },
   {
-    icon: '\u{1F3DB}\uFE0F',
+    icon: BuildingLibraryIcon,
     title: 'Miembro IFSO',
     institution: 'International Federation for the Surgery of Obesity',
   },
-] as const
+]
 
 const TIMELINE = [
   { year: '2019', description: 'Egreso de Licenciatura Médico Cirujano' },
@@ -60,8 +75,9 @@ export default function DoctorBio() {
               src="/images/doctor/profile-web.webp"
               alt="Dr. Mario Ruvalcaba — Cirujano General y Bariatra Certificado en Mérida, Yucatán"
               fill
-              sizes="(max-width: 768px) 100vw, 448px"
+              sizes="(max-width: 768px) 90vw, 448px"
               className="object-cover"
+              quality={95}
               priority
             />
           </div>
@@ -118,7 +134,7 @@ export default function DoctorBio() {
                 key={credential.title}
                 className="card-premium bg-white rounded-2xl p-6"
               >
-                <span className="text-3xl">{credential.icon}</span>
+                <credential.icon className="h-8 w-8 text-teal-600" aria-hidden="true" />
                 <h3 className="text-xl font-bold text-navy-900 mt-3">
                   {credential.title}
                 </h3>

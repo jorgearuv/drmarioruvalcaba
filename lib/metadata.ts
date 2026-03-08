@@ -15,11 +15,16 @@ interface PageMetadataConfig {
   description: string;
   path: string;
   keywords?: string[];
+  ogImage?: string;
 }
 
 export function createPageMetadata(config: PageMetadataConfig): Metadata {
-  const { title, description, path, keywords } = config;
+  const { title, description, path, keywords, ogImage } = config;
   const canonicalUrl = `${SITE_URL}${path}`;
+
+  const ogImageObject = ogImage
+    ? { url: ogImage, width: 1200, height: 630, alt: title }
+    : DEFAULT_OG_IMAGE;
 
   return {
     title,
@@ -32,13 +37,13 @@ export function createPageMetadata(config: PageMetadataConfig): Metadata {
       siteName: SITE_NAME,
       locale: "es_MX",
       type: "website",
-      images: [DEFAULT_OG_IMAGE],
+      images: [ogImageObject],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [DEFAULT_OG_IMAGE],
+      images: [ogImageObject],
     },
     alternates: {
       canonical: canonicalUrl,

@@ -1,8 +1,9 @@
 import { getProcedureBySlug, SUB_PROCEDURES } from "@/lib/procedures";
 import { createPageMetadata } from "@/lib/metadata";
-import { generateMedicalProcedureJsonLd } from "@/lib/seo";
+import { generateMedicalProcedureJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { DOCTOR_INFO } from "@/lib/constants";
 import ProcedureDetail from "@/components/sections/ProcedureDetail";
+import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
 import { notFound } from "next/navigation";
 
@@ -13,6 +14,7 @@ export const metadata = procedureData
       title: procedureData.metaTitle,
       description: procedureData.metaDescription,
       path: "/cirugia-minima-invasion",
+      ogImage: "/images/og-cirugia-minima-invasion.png",
     })
   : {};
 
@@ -20,10 +22,16 @@ export default function CirugiaMinimaInvasionPage() {
   if (!procedureData) notFound();
 
   const jsonLd = generateMedicalProcedureJsonLd(procedureData, DOCTOR_INFO.name);
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Inicio", url: DOCTOR_INFO.siteUrl },
+    { name: "Procedimientos", url: `${DOCTOR_INFO.siteUrl}/#procedimientos` },
+    { name: procedureData.title, url: `${DOCTOR_INFO.siteUrl}/cirugia-minima-invasion` },
+  ]);
 
   return (
     <>
       <ProcedureDetail procedure={procedureData} />
+      <RelatedProcedures currentHref="/cirugia-minima-invasion" />
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-navy-900 text-center">Procedimientos que Realizamos</h2>
@@ -46,6 +54,10 @@ export default function CirugiaMinimaInvasionPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     </>
   );

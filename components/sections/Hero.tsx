@@ -255,6 +255,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                 height={1536}
                 sizes="(max-width: 1024px) 0px, 420px"
                 className="relative z-10 h-auto w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                quality={85}
                 priority
               />
             </div>

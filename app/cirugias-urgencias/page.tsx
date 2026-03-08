@@ -3,6 +3,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { generateMedicalProcedureJsonLd } from "@/lib/seo";
 import { DOCTOR_INFO } from "@/lib/constants";
 import ProcedureDetail from "@/components/sections/ProcedureDetail";
+import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
 import { notFound } from "next/navigation";
 
@@ -24,6 +25,7 @@ export default function CirugiasUrgenciasPage() {
   return (
     <>
       <ProcedureDetail procedure={procedureData} />
+      <RelatedProcedures currentHref="/cirugias-urgencias" />
       <CTASection
         heading="¿Tienes una Urgencia Quirúrgica?"
         description="Contacta al Dr. Mario Ruvalcaba las 24 horas del día, los 7 días de la semana."

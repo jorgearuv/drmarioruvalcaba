@@ -1,12 +1,19 @@
 import { createPageMetadata } from "@/lib/metadata";
 import { DOCTOR_INFO, WHATSAPP_URL } from "@/lib/constants";
 import ContactForm from "@/components/sections/ContactForm";
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ClockIcon,
+} from "@heroicons/react/24/outline";
 
 export const metadata = createPageMetadata({
   title: "Contacto | Dr. Mario Ruvalcaba - Cirujano Bariátrico",
   description:
-    "Contacta al Dr. Mario Ruvalcaba. Agenda tu consulta de cirugía bariátrica en Mérida, Yucatán. WhatsApp, teléfono, correo electrónico.",
+    "Contacta al Dr. Mario Ruvalcaba, cirujano bariátrico en Mérida. Agenda tu consulta vía WhatsApp, teléfono o correo. Atención de lunes a viernes.",
   path: "/contacto",
+  ogImage: "/images/og-contacto.png",
 });
 
 export default function ContactoPage() {
@@ -83,19 +90,7 @@ export default function ContactoPage() {
                 className="card-premium flex items-start gap-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
+                  <PhoneIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-navy-900">Teléfono</h3>
@@ -114,19 +109,7 @@ export default function ContactoPage() {
                 className="card-premium flex items-start gap-4 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+                  <EnvelopeIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-navy-900">Correo Electrónico</h3>
@@ -142,25 +125,7 @@ export default function ContactoPage() {
               {/* Address Card */}
               <div className="card-premium flex items-start gap-4 p-6">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                  <MapPinIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-navy-900">Consultorio</h3>
@@ -176,19 +141,7 @@ export default function ContactoPage() {
               {/* Hours Card */}
               <div className="card-premium flex items-start gap-4 p-6">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <ClockIcon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-navy-900">Horario de Atención Consultas</h3>
@@ -198,13 +151,18 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Google Maps */}
               <div className="overflow-hidden rounded-2xl border border-navy-100">
-                <div className="flex h-64 items-center justify-center bg-gradient-to-br from-teal-600/10 to-navy-900/10">
-                  <p className="text-sm text-navy-400">
-                    Google Maps - Próximamente
-                  </p>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.752418271581!2d-89.60473116164039!3d21.00255928109106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5676cbf27c0fdd%3A0x7d7a6cb1bd9d727f!2sLaboratorio%20Cl%C3%ADnico%20en%20M%C3%A9rida%20-%20Quimialab%20Laboratorio%20de%20An%C3%A1lisis%20Cl%C3%ADnicos!5e0!3m2!1ses-419!2smx!4v1772921950149!5m2!1ses-419!2smx"
+                  width="100%"
+                  height="256"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación del consultorio del Dr. Mario Ruvalcaba en Mérida"
+                />
               </div>
             </div>
           </div>

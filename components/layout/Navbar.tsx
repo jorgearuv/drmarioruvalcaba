@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_URL } from "@/lib/constants";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
@@ -15,7 +16,7 @@ function NavItem({ link }: { link: NavLink }) {
     return (
       <Link
         href={link.href}
-        className="text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:text-teal-600"
+        className="text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-1 rounded-sm"
       >
         {link.label}
       </Link>
@@ -29,7 +30,9 @@ function NavItem({ link }: { link: NavLink }) {
       onMouseLeave={() => setIsDropdownOpen(false)}
     >
       <button
-        className="flex items-center gap-1 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:text-teal-600"
+        className="flex items-center gap-1 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-1 rounded-sm"
+        aria-expanded={isDropdownOpen}
+        aria-haspopup="true"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         {link.label}
@@ -55,7 +58,7 @@ function NavItem({ link }: { link: NavLink }) {
               <Link
                 key={child.href}
                 href={child.href}
-                className="block rounded-xl px-4 py-3 text-sm text-navy-700 transition-all hover:bg-teal-50/50 hover:text-teal-600"
+                className="block rounded-xl px-4 py-3 text-sm text-navy-700 transition-all hover:bg-teal-50/50 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-inset"
               >
                 {child.label}
               </Link>
@@ -75,20 +78,15 @@ export default function Navbar() {
     <header className="glass-nav sticky top-0 z-50 border-b border-navy-200/50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white text-sm font-bold text-navy-900">
-            {/* Gradient border ring */}
-            <span
-              className="absolute inset-0 rounded-full p-[2px]"
-              style={{
-                background: "var(--logo-ring-gradient)",
-                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "xor",
-                maskComposite: "exclude",
-              }}
-            />
-            MR
-          </div>
+        <Link href="/" className="flex items-center gap-3" aria-label="Ir al inicio — Dr. Mario Ruvalcaba">
+          <Image
+            src="/images/logo.svg"
+            alt=""
+            width={36}
+            height={44}
+            className="h-11 w-auto"
+            priority
+          />
           <div>
             <p className="font-display text-sm font-semibold leading-tight text-navy-900">
               Dr. Mario Ruvalcaba
@@ -118,8 +116,9 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-navy-50 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-navy-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-1 lg:hidden"
           aria-label="Menú de navegación"
+          aria-expanded={isMobileMenuOpen}
         >
           <svg className="h-6 w-6 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {isMobileMenuOpen ? (
@@ -150,7 +149,7 @@ export default function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block rounded-xl px-4 py-3 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:bg-teal-50/50 hover:text-teal-600"
+                      className="block rounded-xl px-4 py-3 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:bg-teal-50/50 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-inset"
                     >
                       {link.label}
                     </Link>
@@ -164,7 +163,9 @@ export default function Navbar() {
                           mobileDropdownOpen === link.label ? null : link.label
                         )
                       }
-                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:bg-teal-50/50 hover:text-teal-600"
+                      aria-expanded={mobileDropdownOpen === link.label}
+                      aria-haspopup="true"
+                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-[13px] font-medium uppercase tracking-wide text-navy-600 transition-all hover:bg-teal-50/50 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-inset"
                     >
                       {link.label}
                       <svg
@@ -190,7 +191,7 @@ export default function Navbar() {
                               key={child.href}
                               href={child.href}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="block rounded-xl py-2 pl-8 pr-4 text-sm text-navy-500 transition-all hover:bg-teal-50/50 hover:pl-9 hover:text-teal-600"
+                              className="block rounded-xl py-2 pl-8 pr-4 text-sm text-navy-500 transition-all hover:bg-teal-50/50 hover:pl-9 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-inset"
                             >
                               {child.label}
                             </Link>

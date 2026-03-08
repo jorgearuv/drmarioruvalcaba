@@ -1,4 +1,4 @@
-import type { DoctorInfo, Procedure, FAQItem, Testimonial } from "@/types";
+import type { DoctorInfo, Procedure, FAQItem, Testimonial, BlogPost } from "@/types";
 
 // ---------------------------------------------------------------------------
 // Physician (schema.org/Physician)
@@ -24,7 +24,6 @@ export function generatePhysicianJsonLd(doctor: DoctorInfo) {
     sameAs: [
       doctor.socialMedia.facebook,
       doctor.socialMedia.instagram,
-      doctor.socialMedia.youtube,
       doctor.socialMedia.tiktok,
       doctor.socialMedia.doctoralia,
     ],
@@ -150,6 +149,38 @@ function parseSpanishDateToIso(timeAgo: string): string | undefined {
   if (!month || !/^\d{4}$/.test(year)) return undefined;
   return `${year}-${month}-01`;
 }
+
+// ---------------------------------------------------------------------------
+// Blog Article (schema.org/BlogPosting)
+// ---------------------------------------------------------------------------
+
+export function generateBlogArticleJsonLd(
+  post: BlogPost,
+  siteUrl: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author,
+      url: `${siteUrl}/sobre-el-doctor`,
+    },
+    url: `${siteUrl}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${post.slug}`,
+    },
+    ...(post.imagePath && { image: `${siteUrl}${post.imagePath}` }),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Reviews / AggregateRating (schema.org/Physician + Review)
+// ---------------------------------------------------------------------------
 
 export function generateReviewsJsonLd(
   doctor: DoctorInfo,

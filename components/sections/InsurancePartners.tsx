@@ -1,14 +1,15 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
 const CUBIC_EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 const INSURANCE_PARTNERS = [
-  { name: "GNP Seguros", shortName: "GNP" },
-  { name: "AXA Seguros", shortName: "AXA" },
-  { name: "MetLife", shortName: "MetLife" },
-  { name: "Mapfre", shortName: "Mapfre" },
+  { name: "GNP Seguros", shortName: "GNP", logoPath: "/images/logos/gnp.webp" },
+  { name: "AXA Seguros", shortName: "AXA", logoPath: "/images/logos/axa.webp" },
+  { name: "MetLife", shortName: "MetLife", logoPath: "/images/logos/metlife.webp" },
+  { name: "Mapfre", shortName: "Mapfre", logoPath: "/images/logos/mapfre.webp" },
 ] as const;
 
 export default function InsurancePartners() {
@@ -106,23 +107,15 @@ export default function InsurancePartners() {
               }
               className="group flex flex-col items-center justify-center rounded-2xl border border-navy-100/60 bg-white px-6 py-8 transition-all duration-300 hover:border-teal-200/80 hover:shadow-lg hover:shadow-teal-600/[0.06]"
             >
-              {/* Shield icon */}
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 ring-1 ring-teal-200/60 transition-transform duration-300 group-hover:scale-105"
-                aria-hidden="true"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
+              {/* Partner logo */}
+              <div className="flex h-14 w-24 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src={partner.logoPath}
+                  alt={partner.shortName}
+                  width={96}
+                  height={56}
+                  className="max-h-full w-auto max-w-full object-contain"
+                />
               </div>
 
               {/* Partner name */}

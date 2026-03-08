@@ -25,7 +25,6 @@ export interface DoctorInfo {
   socialMedia: {
     facebook: string;
     instagram: string;
-    youtube: string;
     tiktok: string;
     doctoralia: string;
   };
@@ -33,7 +32,10 @@ export interface DoctorInfo {
 
 export interface TrustBadge {
   name: string;
+  abbreviation: string;
   type: "hospital" | "certification" | "association";
+  logoPath?: string;
+  url?: string;
 }
 
 export interface Procedure {
@@ -92,6 +94,12 @@ export interface FAQItem {
   category?: string;
 }
 
+export type ContentBlock =
+  | { type: "heading"; level: 2 | 3; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; style: "bullet" | "ordered"; items: string[] }
+  | { type: "callout"; text: string };
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -100,31 +108,7 @@ export interface BlogPost {
   readTime: string;
   date: string;
   author: string;
+  imagePath?: string;
+  content: ContentBlock[];
 }
 
-export interface MedicalTourismPackage {
-  title: string;
-  features: string[];
-  highlighted?: boolean;
-}
-
-export interface LogisticsStep {
-  step: number;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface MeridaHighlight {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface ContactFormData {
-  name: string;
-  phone: string;
-  email: string;
-  reason: string;
-  message: string;
-}

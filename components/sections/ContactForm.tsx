@@ -4,13 +4,19 @@ import { useState } from "react";
 import { DOCTOR_INFO } from "@/lib/constants";
 
 const CONSULTATION_REASONS = [
-  "",
   "Manga Gástrica",
   "Bypass Gástrico",
   "Balón Intragástrico",
   "Cirugía de Mínima Invasión",
   "Otra consulta",
 ] as const;
+
+const FIELD_LIMITS = {
+  fullName: 120,
+  phoneNumber: 30,
+  emailAddress: 254,
+  messageBody: 2000,
+} as const;
 
 const INPUT_CLASS =
   "w-full rounded-xl border border-navy-200/60 bg-navy-50/30 px-4 py-3.5 text-navy-900 placeholder:text-navy-400 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 outline-none transition-all duration-200";
@@ -57,9 +63,34 @@ export default function ContactForm() {
   const [emailAddress, setEmailAddress] = useState("");
   const [consultationReason, setConsultationReason] = useState("");
   const [messageBody, setMessageBody] = useState("");
+  // Inline validation error shown near the submit button
+  const [validationError, setValidationError] = useState("");
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Validate required fields — native browser validation is suppressed by
+    // preventDefault, so we enforce it manually before opening WhatsApp.
+    if (!fullName.trim()) {
+      setValidationError("Por favor ingresa tu nombre completo.");
+      return;
+    }
+    if (!phoneNumber.trim()) {
+      setValidationError("Por favor ingresa tu número de teléfono.");
+      return;
+    }
+    if (!emailAddress.trim()) {
+      setValidationError("Por favor ingresa tu correo electrónico.");
+      return;
+    }
+    if (!consultationReason) {
+      setValidationError("Por favor selecciona un motivo de consulta.");
+      return;
+    }
+
+    // All required fields are present — clear any prior error and proceed.
+    setValidationError("");
+
     const whatsAppUrl = buildWhatsAppUrl(
       fullName,
       phoneNumber,
@@ -77,6 +108,7 @@ export default function ContactForm() {
     setEmailAddress("");
     setConsultationReason("");
     setMessageBody("");
+    setValidationError("");
     setIsSubmitted(false);
   };
 
@@ -121,6 +153,7 @@ export default function ContactForm() {
             id="contact-name"
             type="text"
             required
+            maxLength={FIELD_LIMITS.fullName}
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
             className={INPUT_CLASS}
@@ -137,6 +170,7 @@ export default function ContactForm() {
               id="contact-phone"
               type="tel"
               required
+              maxLength={FIELD_LIMITS.phoneNumber}
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className={INPUT_CLASS}
@@ -152,6 +186,7 @@ export default function ContactForm() {
               id="contact-email"
               type="email"
               required
+              maxLength={FIELD_LIMITS.emailAddress}
               value={emailAddress}
               onChange={(event) => setEmailAddress(event.target.value)}
               className={INPUT_CLASS}
@@ -174,13 +209,11 @@ export default function ContactForm() {
             <option value="" disabled>
               Selecciona un motivo
             </option>
-            {CONSULTATION_REASONS.filter((reason) => reason !== "").map(
-              (reason) => (
-                <option key={reason} value={reason}>
-                  {reason}
-                </option>
-              ),
-            )}
+            {CONSULTATION_REASONS.map((reason) => (
+              <option key={reason} value={reason}>
+                {reason}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -191,6 +224,7 @@ export default function ContactForm() {
           <textarea
             id="contact-message"
             rows={4}
+            maxLength={FIELD_LIMITS.messageBody}
             value={messageBody}
             onChange={(event) => setMessageBody(event.target.value)}
             className={INPUT_CLASS}
@@ -198,9 +232,20 @@ export default function ContactForm() {
           />
         </div>
 
+        {/* Inline validation error — announced to screen readers via role="alert" */}
+        {validationError && (
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-sm font-medium text-red-600"
+          >
+            {validationError}
+          </p>
+        )}
+
         <button
           type="submit"
-          className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 py-4 text-lg font-semibold text-white shadow-lg shadow-teal-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-teal-500 hover:to-teal-600 hover:shadow-xl"
+          className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 py-4 text-lg font-semibold text-white shadow-lg shadow-teal-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-teal-500 hover:to-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
         >
           Enviar mensaje
         </button>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Badge from "@/components/ui/Badge";
 import type { BlogPost } from "@/types";
@@ -16,9 +17,21 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`}>
       <div className="card-premium card-glow overflow-hidden group">
-        {/* Image placeholder */}
-        <div className="h-48 bg-gradient-to-br from-teal-600/5 to-navy-900/5 flex items-center justify-center">
-          <span className="text-navy-400 text-sm">{post.category}</span>
+        <div className="relative h-48">
+          {post.imagePath ? (
+            <Image
+              src={post.imagePath}
+              alt={post.title}
+              fill
+              quality={85}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 420px"
+              className="object-cover"
+            />
+          ) : (
+            <div className="h-full bg-gradient-to-br from-teal-600/5 to-navy-900/5 flex items-center justify-center">
+              <span className="text-navy-400 text-sm">{post.category}</span>
+            </div>
+          )}
         </div>
 
         {/* Content */}

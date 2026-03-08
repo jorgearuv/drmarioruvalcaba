@@ -24,10 +24,9 @@ export const DOCTOR_INFO = {
   longitude: -89.5926,
   siteUrl: "https://drmarioruvalcaba.com",
   socialMedia: {
-    facebook: "https://facebook.com/drmarioruvalcaba",
-    instagram: "https://instagram.com/drmarioruvalcaba",
-    youtube: "https://youtube.com/@drmarioruvalcaba",
-    tiktok: "https://tiktok.com/@drmarioruvalcaba",
+    facebook: "https://www.facebook.com/profile.php?id=61575118417070",
+    instagram: "https://www.instagram.com/drmarioruvalcaba",
+    tiktok: "https://www.tiktok.com/@cirujanomarioruvalcaba",
     doctoralia: "https://www.doctoralia.com.mx/jose-mario-ruvalcaba-vallarta/cirujano-general/yucatan",
   },
 } as const satisfies DoctorInfo;
@@ -73,10 +72,11 @@ export const HERO_TRUST_SIGNALS = [
 ] as const;
 
 export const TRUST_BADGES = [
-  { name: "Consejo Mexicano de Cirugía General, A.C.", type: "certification" },
-  { name: "Asociación Mexicana de Cirugía General (AMCG)", type: "association" },
-  { name: "Asociación Mexicana de Cirugía Endoscópica (AMCE)", type: "association" },
-  { name: "Colegio Mexicano de Cirugía para la Obesidad y Enfermedades Metabólicas (CMCOEM)", type: "association" },
+  { name: "Consejo Mexicano de Cirugía General, A.C.", abbreviation: "CMCG", type: "certification", logoPath: "/images/logos/cmcg.webp" },
+  { name: "International Federation for the Surgery of Obesity and Metabolic Disorders (IFSO)", abbreviation: "IFSO", type: "association", logoPath: "/images/logos/ifso.webp" },
+  { name: "Asociación Mexicana de Cirugía General (AMCG)", abbreviation: "AMCG", type: "association", logoPath: "/images/logos/amcg.webp" },
+  { name: "Asociación Mexicana de Cirugía Endoscópica (AMCE)", abbreviation: "AMCE", type: "association", logoPath: "/images/logos/amce.webp" },
+  { name: "Colegio Mexicano de Cirugía para la Obesidad y Enfermedades Metabólicas (CMCOEM)", abbreviation: "CMCOEM", type: "association", logoPath: "/images/logos/cmcoem.webp" },
 ] as const satisfies readonly TrustBadge[];
 
 export const WHATSAPP_MESSAGE = encodeURIComponent(

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { TRUST_BADGES } from "@/lib/constants";
 import type { TrustBadge } from "@/types";
@@ -10,74 +11,28 @@ import type { TrustBadge } from "@/types";
 
 interface BadgeTypeVisuals {
   label: string;
-  iconContainerClass: string;
-  icon: React.ReactNode;
+  containerClass: string;
+  textClass: string;
 }
 
 const BADGE_TYPE_VISUALS: Record<TrustBadge["type"], BadgeTypeVisuals> = {
   hospital: {
     label: "Hospital",
-    iconContainerClass:
-      "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 ring-1 ring-teal-200/60",
-    icon: (
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6"
-      >
-        <path d="M3 21h18" />
-        <path d="M5 21V7l8-4v18" />
-        <path d="M19 21V11l-6-4" />
-        <path d="M9 9h1" />
-        <path d="M9 13h1" />
-        <path d="M9 17h1" />
-      </svg>
-    ),
+    containerClass:
+      "bg-gradient-to-br from-teal-50 to-teal-100 ring-1 ring-teal-200/60",
+    textClass: "text-teal-700",
   },
   certification: {
     label: "Certificación",
-    iconContainerClass:
-      "bg-gradient-to-br from-gold-50 to-gold-100 text-gold-700 ring-1 ring-gold-200/60",
-    icon: (
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6"
-      >
-        <circle cx="12" cy="8" r="6" />
-        <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
-      </svg>
-    ),
+    containerClass:
+      "bg-gradient-to-br from-gold-50 to-gold-100 ring-1 ring-gold-200/60",
+    textClass: "text-gold-700",
   },
   association: {
     label: "Asociación",
-    iconContainerClass:
-      "bg-gradient-to-br from-navy-50 to-navy-100 text-navy-600 ring-1 ring-navy-200/60",
-    icon: (
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-6 w-6"
-      >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
+    containerClass:
+      "bg-gradient-to-br from-navy-50 to-navy-100 ring-1 ring-navy-200/60",
+    textClass: "text-navy-600",
   },
 };
 
@@ -122,22 +77,38 @@ const TrustBadgeCard = ({
               ease: CUBIC_EASE_OUT,
             }
       }
-      className="group flex items-start gap-4 rounded-2xl border border-navy-100/60 bg-white p-5 transition-all duration-300 hover:border-teal-200/80 hover:shadow-lg hover:shadow-teal-600/[0.06]"
+      className="group flex w-full flex-col items-center rounded-2xl border border-navy-100/60 bg-white px-6 py-8 text-center transition-all duration-300 hover:border-gold-300/70 hover:shadow-lg hover:shadow-gold-500/[0.08] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
     >
-      {/* Icon container */}
+      {/* Logo or typographic abbreviation fallback */}
       <div
-        className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 ${visuals.iconContainerClass}`}
-        aria-hidden="true"
+        className="flex h-28 w-full items-center justify-center transition-transform duration-300 group-hover:scale-105"
       >
-        {visuals.icon}
+        {badge.logoPath ? (
+          <Image
+            src={badge.logoPath}
+            alt={badge.name}
+            width={160}
+            height={160}
+            sizes="160px"
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <div
+            className={`flex h-20 w-20 items-center justify-center rounded-2xl ${visuals.containerClass}`}
+          >
+            <span className={`text-lg font-bold tracking-wide ${visuals.textClass}`}>
+              {badge.abbreviation}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Text content */}
-      <div className="min-w-0 pt-0.5">
+      <div className="mt-5 min-w-0">
         <p className="text-sm font-semibold leading-snug text-navy-900">
           {badge.name}
         </p>
-        <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-navy-400">
+        <p className="mt-2.5 inline-block rounded-full bg-navy-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-navy-400">
           {visuals.label}
         </p>
       </div>
@@ -225,7 +196,7 @@ export default function TrustBadges() {
         <ul
           role="list"
           aria-label="Certificaciones y asociaciones a sociedades médicas"
-          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 flex flex-wrap justify-center gap-5"
         >
           {TRUST_BADGES.map((badge, badgeIndex) => (
             <TrustBadgeCard

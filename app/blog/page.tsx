@@ -1,6 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import { BLOG_POSTS } from "@/lib/blog";
-import BlogCard from "@/components/sections/BlogCard";
+import BlogListingWithFilters from "@/components/sections/BlogListingWithFilters";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata = createPageMetadata({
@@ -14,6 +14,7 @@ export const metadata = createPageMetadata({
     "nutrición bariátrica",
     "estilo de vida saludable",
   ],
+  ogImage: "/images/og-blog.png",
 });
 
 export default function BlogPage() {
@@ -35,33 +36,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Category Tags */}
-      <section className="border-b border-navy-100 bg-white py-6">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 px-4">
-          <span className="rounded-full bg-gradient-to-r from-teal-600 to-teal-700 px-4 py-2 text-sm font-semibold text-white">
-            Todos
-          </span>
-          {categories.map((category) => (
-            <span
-              key={category}
-              className="cursor-pointer rounded-full border border-navy-200/60 px-4 py-2 text-sm font-medium text-navy-600 transition-colors hover:border-teal-400 hover:text-teal-600"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Blog Grid */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <BlogListingWithFilters posts={BLOG_POSTS} categories={categories} />
 
       <CTASection
         heading="¿Tienes Dudas sobre Cirugía Bariátrica?"

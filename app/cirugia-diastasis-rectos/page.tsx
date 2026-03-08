@@ -3,6 +3,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { generateMedicalProcedureJsonLd } from "@/lib/seo";
 import { DOCTOR_INFO } from "@/lib/constants";
 import ProcedureDetail from "@/components/sections/ProcedureDetail";
+import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
 import { notFound } from "next/navigation";
 
@@ -24,6 +25,7 @@ export default function CirugiaDiastasisRectosPage() {
   return (
     <>
       <ProcedureDetail procedure={procedureData} />
+      <RelatedProcedures currentHref="/cirugia-diastasis-rectos" />
       <CTASection
         heading="¿Necesitas Reparación de Diástasis de Rectos?"
         description="Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."

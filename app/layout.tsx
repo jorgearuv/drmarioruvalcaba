@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import ThemeToggle from "@/components/layout/ThemeToggle";
 import { DOCTOR_INFO } from "@/lib/constants";
 import { DEFAULT_OG_IMAGE } from "@/lib/metadata";
 import { generatePhysicianJsonLd, generateLocalBusinessJsonLd } from "@/lib/seo";
@@ -35,11 +34,11 @@ const headingFont = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Dr. Mario Ruvalcaba | Cirujano Bariatra en Mérida | Cirugía de Mínima Invasión en Yucatán",
+    default: "Cirujano Bariátrico en Mérida | Dr. Mario Ruvalcaba",
     template: "%s | Dr. Mario Ruvalcaba",
   },
   description:
-    "Cirujano general y bariatra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, SADI-S, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
+    "Cirujano general y bariatra certificado en Mérida, Yucatán. Manga gástrica, bypass gástrico, cirugía de mínima invasión. Agenda tu consulta: 999 260 3030.",
   keywords: [
     "cirujano bariatra Mérida",
     "cirugía bariátrica Yucatán",
@@ -55,6 +54,13 @@ export const metadata: Metadata = {
     "cirugía metabólica",
   ],
   metadataBase: new URL(DOCTOR_INFO.siteUrl),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/images/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: "/images/logo-apple-touch.png",
+  },
   openGraph: {
     siteName: "Dr. Mario Ruvalcaba - Cirujano Bariatra en Mérida",
     locale: "es_MX",
@@ -80,15 +86,7 @@ export default function RootLayout({
   const localBusinessJsonLd = generateLocalBusinessJsonLd(DOCTOR_INFO);
 
   return (
-    <html lang="es" suppressHydrationWarning>
-
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t&&t!=='original')document.documentElement.dataset.theme=t}catch(e){}})();`,
-          }}
-        />
-      </head>
+    <html lang="es" data-theme="noir-gold">
       <body
         className={`${bodyFont.variable} ${headingFont.variable} font-sans antialiased`}
       >
@@ -99,7 +97,6 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppButton />
-        <ThemeToggle />
 
         <script
           type="application/ld+json"

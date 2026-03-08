@@ -1,11 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Explicitly exclude source maps from production bundles to reduce bundle
+  // size and avoid leaking implementation details to end users.
+  productionBrowserSourceMaps: false,
+  // Force blocking metadata rendering for all requests to avoid hydration
+  // mismatch in MetadataWrapper (<div hidden> server vs client discrepancy).
+  // Safe because all metadata in this site is static.
+  // https://github.com/vercel/next.js/issues/XXXXX
+  htmlLimitedBots: /./,
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; frame-src https://www.google.com; connect-src 'self'",
+          },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

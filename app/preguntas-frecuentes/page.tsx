@@ -4,7 +4,7 @@ import FAQAccordion from "@/components/sections/FAQAccordion";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata = createPageMetadata({
-  title: "Preguntas Frecuentes | Cirugía Bariátrica - Dr. Mario Ruvalcaba",
+  title: "Preguntas Frecuentes | Cirugía Bariátrica Mérida",
   description:
     "Resuelve tus dudas sobre cirugía bariátrica en Mérida. Preguntas frecuentes sobre manga gástrica, bypass gástrico, costos, recuperación y más.",
   path: "/preguntas-frecuentes",
