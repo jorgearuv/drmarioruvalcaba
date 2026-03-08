@@ -1,0 +1,19 @@
+{
+  "overline": "Blog",
+  "heading": "Blog",
+  "subtitle": "Informative articles about bariatric surgery, nutrition, and a healthy lifestyle.",
+  "allCategories": "All",
+  "noArticles": "No articles in this category yet.",
+  "noPosts": "No articles in this category yet.",
+  "heroDescription": "Informative articles about bariatric surgery, nutrition, and a healthy lifestyle.",
+  "readTime": "read",
+  "breadcrumb": {
+    "home": "Home",
+    "blog": "Blog"
+  },
+  "ctaHeading": "Have Questions About Bariatric Surgery?",
+  "ctaDescription": "Schedule a consultation with Dr. Mario Ruvalcaba and get all your questions answered.",
+  "articleCtaHeading": "Have more questions about bariatric surgery?",
+  "articleCtaDescription": "Schedule an evaluation consultation. Together we'll review your case, answer your questions, and if surgery is the right option for you, we'll accompany you every step of the way.",
+  "articleInSpanish": "This article is available in Spanish only."
+}

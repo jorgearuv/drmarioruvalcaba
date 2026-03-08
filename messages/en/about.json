@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "badge": "Board-Certified Bariatric Surgeon",
+    "name": "Dr. Mario Ruvalcaba",
+    "specialty": "Specialist in Bariatric & Metabolic Surgery",
+    "bio1": "With over 5 years of practice as a surgeon, Dr. Mario Ruvalcaba has developed expertise in multiple procedures, not only in general surgery but also in bariatric surgery, maintaining a comprehensive and personalized approach for each patient.",
+    "bio2": "His training includes work with leading surgeons and ongoing education in minimally invasive and bariatric surgery, enabling him to offer a comprehensive approach to various procedures with high standards of quality and safety.",
+    "cedulaLabel": "Medical License",
+    "cedulaEspecialidadLabel": "Specialty License",
+    "imageAlt": "Dr. Mario Ruvalcaba — Board-Certified General and Bariatric Surgeon in Mérida, Yucatán"
+  },
+  "credentials": {
+    "heading": "Training & Credentials",
+    "items": {
+      "medicalDegree": {
+        "title": "Medical Doctor",
+        "institution": "Universidad Autónoma de Guadalajara"
+      },
+      "generalSurgery": {
+        "title": "General Surgery Specialty",
+        "institution": "Universidad Autónoma de Yucatán"
+      },
+      "endoscopicSurgery": {
+        "title": "Advanced Fellowship in Endoscopic & Robotic Surgery",
+        "institution": "Center for Minimally Invasive Surgery Training, Mexico City"
+      },
+      "bariatricSurgery": {
+        "title": "Advanced Fellowship in Bariatric & Metabolic Surgery",
+        "institution": "Universidad de las Américas Puebla"
+      },
+      "boardCertified": {
+        "title": "Certified by the Mexican Board",
+        "institution": "Mexican Board of General Surgery"
+      },
+      "ifsoMember": {
+        "title": "IFSO Member",
+        "institution": "International Federation for the Surgery of Obesity"
+      }
+    }
+  },
+  "timeline": {
+    "overline": "Career Path",
+    "heading": "Professional Career",
+    "items": {
+      "degree": {
+        "year": "2019",
+        "description": "Medical Doctor Degree"
+      },
+      "specialty": {
+        "year": "2020",
+        "description": "General Surgery Specialty"
+      },
+      "endoscopicBariatric": {
+        "year": "2024",
+        "description": "Advanced Fellowship in Endoscopic & Bariatric Surgery"
+      },
+      "bariatricMetabolic": {
+        "year": "2025",
+        "description": "Advanced Fellowship in Bariatric & Metabolic Surgery"
+      }
+    }
+  },
+  "ctaHeading": "Schedule Your Consultation with Dr. Ruvalcaba",
+  "ctaDescription": "Take the first step toward a healthier life. Personalized consultation with no obligation."
+}

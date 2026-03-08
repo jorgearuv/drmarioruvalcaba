@@ -1,0 +1,53 @@
+{
+  "heroLabel": "Contact",
+  "heroTitle": "Contact Us",
+  "heroDescription": "We're here to help. Schedule your consultation or send us a message.",
+  "formTitle": "Send Us a Message",
+  "formDescription": "Fill out the form and we'll get back to you shortly.",
+  "infoTitle": "Contact Information",
+  "officeLabel": "Office",
+  "phoneLabel": "Phone",
+  "emailLabel": "Email",
+  "emailNote": "Response within 24-48 hours",
+  "hoursLabel": "Office Hours",
+  "hoursValue": "Monday to Friday: 3:00 pm - 9:00 pm",
+  "whatsappNote": "Quick response · Mon to Fri 9am - 7pm",
+  "emergencyNote": "24-HOUR EMERGENCIES",
+  "mapTitle": "Location of Dr. Mario Ruvalcaba's office in Mérida",
+  "form": {
+    "name": "Full name",
+    "namePlaceholder": "Your full name",
+    "phone": "Phone",
+    "phonePlaceholder": "Your phone number",
+    "email": "Email address",
+    "emailPlaceholder": "you@email.com",
+    "reason": "Reason for consultation",
+    "reasonPlaceholder": "Select a reason",
+    "message": "Message",
+    "messagePlaceholder": "Tell us more about your consultation (optional)",
+    "submit": "Send message",
+    "reasons": {
+      "gastricSleeve": "Gastric Sleeve",
+      "gastricBypass": "Gastric Bypass",
+      "intragastricBalloon": "Intragastric Balloon",
+      "minimallyInvasiveSurgery": "Minimally Invasive Surgery",
+      "otherInquiry": "Other inquiry"
+    }
+  },
+  "validation": {
+    "nameRequired": "Please enter your full name.",
+    "phoneRequired": "Please enter your phone number.",
+    "emailRequired": "Please enter your email address.",
+    "reasonRequired": "Please select a reason for consultation."
+  },
+  "success": {
+    "heading": "Redirected to WhatsApp!",
+    "fallback": "If WhatsApp didn't open,",
+    "sendEmail": "send an email",
+    "followUp": "and we'll get back to you.",
+    "sendAnother": "Send another message"
+  },
+  "whatsappIntro": "Hello Dr. Ruvalcaba, I would like to schedule a consultation.",
+  "emailSubjectPrefix": "Consultation",
+  "emailDefaultBody": "I would like to schedule a consultation."
+}

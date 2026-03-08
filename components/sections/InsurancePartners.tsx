@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const CUBIC_EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -14,6 +15,7 @@ const INSURANCE_PARTNERS = [
 
 export default function InsurancePartners() {
   const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("home.insurance");
 
   const sectionHeadingId = "insurance-partners-heading";
 
@@ -52,7 +54,7 @@ export default function InsurancePartners() {
             }
             className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
           >
-            Cobertura de Seguros
+            {t("overline")}
           </motion.p>
 
           <motion.h2
@@ -67,7 +69,7 @@ export default function InsurancePartners() {
             }
             className="mx-auto mt-3 max-w-2xl font-display text-2xl text-navy-900 md:text-3xl"
           >
-            Trabajamos con las Principales Aseguradoras Médicas
+            {t("heading")}
           </motion.h2>
 
           <motion.div
@@ -87,7 +89,7 @@ export default function InsurancePartners() {
         {/* Insurance partner cards */}
         <ul
           role="list"
-          aria-label="Aseguradoras médicas con las que trabajamos"
+          aria-label={t("listAriaLabel")}
           className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
         >
           {INSURANCE_PARTNERS.map((partner, partnerIndex) => (
@@ -138,7 +140,7 @@ export default function InsurancePartners() {
           }
           className="mt-8 text-center text-sm text-navy-400"
         >
-          Consulta disponibilidad de cobertura para tu procedimiento
+          {t("footnote")}
         </motion.p>
       </div>
     </section>

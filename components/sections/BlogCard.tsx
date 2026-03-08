@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import Badge from "@/components/ui/Badge";
 import type { BlogPost } from "@/types";
 
@@ -8,14 +11,20 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
-  const formattedDate = new Date(post.date).toLocaleDateString("es-MX", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const locale = useLocale();
+  const t = useTranslations("blog");
+
+  const formattedDate = new Date(post.date).toLocaleDateString(
+    locale === "en" ? "en-US" : "es-MX",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  );
 
   return (
-    <Link href={`/blog/${post.slug}`}>
+    <Link href={`/blog/${post.slug}` as any}>
       <div className="card-premium card-glow overflow-hidden group">
         <div className="relative h-48">
           {post.imagePath ? (
@@ -49,7 +58,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           {/* Footer */}
           <div className="flex justify-between items-center mt-4 text-xs text-navy-400">
             <span>{formattedDate}</span>
-            <span>{post.readTime} de lectura</span>
+            <span>{post.readTime} {t("readTime")}</span>
           </div>
         </div>
       </div>

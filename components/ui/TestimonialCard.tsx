@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { Testimonial } from "@/types";
 
 // ---------------------------------------------------------------------------
@@ -7,12 +10,13 @@ import type { Testimonial } from "@/types";
 interface StarRatingProps {
   rating: number;
   maximumRating?: number;
+  starsLabel: string;
 }
 
-export const StarRating = ({ rating, maximumRating = 5 }: StarRatingProps) => (
+export const StarRating = ({ rating, maximumRating = 5, starsLabel }: StarRatingProps) => (
   <div
     role="img"
-    aria-label={`${rating} de ${maximumRating} estrellas`}
+    aria-label={starsLabel}
     className="flex gap-1"
   >
     {Array.from({ length: maximumRating }, (_, starIndex) => (
@@ -44,10 +48,12 @@ export const TestimonialCard = ({
   cardPosition,
   totalCards,
 }: TestimonialCardProps) => {
+  const t = useTranslations("home.testimonials");
+
   const ariaLabel =
     cardPosition != null && totalCards != null
-      ? `Testimonio ${cardPosition} de ${totalCards}`
-      : `Testimonio de ${testimonial.name}`;
+      ? t("slideLabel", { position: cardPosition, total: totalCards })
+      : t("testimonialOf", { name: testimonial.name });
 
   const isCarouselContext = cardPosition != null && totalCards != null;
 
@@ -68,7 +74,7 @@ export const TestimonialCard = ({
       </span>
 
       <div className="mt-1 flex flex-1 flex-col">
-        <StarRating rating={testimonial.rating} />
+        <StarRating rating={testimonial.rating} starsLabel={t("stars", { rating: testimonial.rating, max: 5 })} />
 
         <p className="mt-4 flex-1 font-serif text-base italic leading-relaxed text-navy-700 md:text-[17px]">
           &ldquo;{testimonial.text}&rdquo;
@@ -84,7 +90,7 @@ export const TestimonialCard = ({
           <p className="font-semibold text-navy-900">{testimonial.name}</p>
           {(testimonial.age || testimonial.procedure) && (
             <p className="mt-0.5 text-sm text-navy-500">
-              {testimonial.age ? `${testimonial.age} años` : ""}
+              {testimonial.age ? t("years", { age: testimonial.age }) : ""}
               {testimonial.age && testimonial.procedure ? " · " : ""}
               {testimonial.procedure ?? ""}
             </p>
@@ -93,7 +99,7 @@ export const TestimonialCard = ({
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {testimonial.weightLost && (
               <span className="inline-flex items-center rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
-                -{testimonial.weightLost} perdidos
+                {t("weightLost", { amount: testimonial.weightLost })}
               </span>
             )}
             {testimonial.source && (

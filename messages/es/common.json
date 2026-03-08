@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "procedures": "Procedimientos",
+    "gastricSleeve": "Manga Gástrica",
+    "gastricBypass": "Bypass Gástrico",
+    "intragastricBalloon": "Balón Intragástrico",
+    "minimallyInvasiveSurgery": "Cirugía de Mínima Invasión",
+    "aboutDoctor": "Sobre el Doctor",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "description": "Cirujano general y bariátra certificado en Mérida, Yucatán. Especialista en cirugía de mínima invasión y cirugía bariátrica y metabólica.",
+    "procedures": "Procedimientos",
+    "quickLinks": "Enlaces Rápidos",
+    "contactTitle": "Contacto",
+    "copyright": "Dr. Mario Ruvalcaba. Todos los derechos reservados.",
+    "subtitle": "Cirujano Bariátra",
+    "bariatricSurgeon": "Cirujano Bariátra en Mérida, Yucatán",
+    "professionalLicense": "Cédula Profesional"
+  },
+  "cta": {
+    "scheduleAppointment": "Agendar Cita",
+    "scheduleAppointmentWhatsApp": "Agendar Cita por WhatsApp",
+    "scheduleEvaluation": "Agendar Valoración",
+    "learnMore": "Conocer más",
+    "learnProcedures": "Ver Procedimientos",
+    "meetDoctor": "Conocer al Doctor",
+    "viewProcedure": "Ver procedimiento",
+    "sendMessage": "Enviar mensaje",
+    "sendAnother": "Enviar otro mensaje",
+    "goHome": "Ir al Inicio",
+    "contactUs": "Contactar",
+    "scheduleAssessment": "Agendar Valoración",
+    "scheduleBariatricAssessmentAria": "Agendar valoración bariátrica"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hola Dr. Ruvalcaba, me gustaría agendar una consulta para cirugía bariátrica.",
+    "needHelp": "¿Necesitas ayuda?",
+    "contactVia": "Contactar por WhatsApp",
+    "responseTime": "Respuesta en menos de 2 horas",
+    "scheduleConsultation": "Agenda tu consulta",
+    "writeUsAria": "Escríbenos por WhatsApp al {number}",
+    "opensNewTab": "abre WhatsApp en una nueva pestaña"
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido principal",
+    "navigationMenu": "Menú de navegación",
+    "goToHome": "Ir al inicio — Dr. Mario Ruvalcaba",
+    "doctorCredentials": "Credenciales del doctor"
+  },
+  "availability": {
+    "consultationsAvailable": "Consultas disponibles esta semana"
+  },
+  "language": {
+    "es": "ES",
+    "en": "EN",
+    "spanish": "Español",
+    "english": "English"
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "goHome": "Ir al Inicio",
+    "contact": "Contactar"
+  }
+}

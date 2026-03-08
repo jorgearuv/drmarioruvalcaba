@@ -2,39 +2,9 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { TRUST_BADGES } from "@/lib/constants";
 import type { TrustBadge } from "@/types";
-
-// ---------------------------------------------------------------------------
-// Visual config per badge type — icon, color palette, label
-// ---------------------------------------------------------------------------
-
-interface BadgeTypeVisuals {
-  label: string;
-  containerClass: string;
-  textClass: string;
-}
-
-const BADGE_TYPE_VISUALS: Record<TrustBadge["type"], BadgeTypeVisuals> = {
-  hospital: {
-    label: "Hospital",
-    containerClass:
-      "bg-gradient-to-br from-teal-50 to-teal-100 ring-1 ring-teal-200/60",
-    textClass: "text-teal-700",
-  },
-  certification: {
-    label: "Certificación",
-    containerClass:
-      "bg-gradient-to-br from-gold-50 to-gold-100 ring-1 ring-gold-200/60",
-    textClass: "text-gold-700",
-  },
-  association: {
-    label: "Asociación",
-    containerClass:
-      "bg-gradient-to-br from-navy-50 to-navy-100 ring-1 ring-navy-200/60",
-    textClass: "text-navy-600",
-  },
-};
 
 // ---------------------------------------------------------------------------
 // Animation helpers
@@ -50,15 +20,19 @@ interface TrustBadgeCardProps {
   badge: TrustBadge;
   animationDelaySeconds: number;
   shouldReduceMotion: boolean | null;
+  badgeTypeLabel: string;
+  containerClass: string;
+  textClass: string;
 }
 
 const TrustBadgeCard = ({
   badge,
   animationDelaySeconds,
   shouldReduceMotion,
+  badgeTypeLabel,
+  containerClass,
+  textClass,
 }: TrustBadgeCardProps) => {
-  const visuals = BADGE_TYPE_VISUALS[badge.type];
-
   return (
     <motion.li
       initial={
@@ -94,9 +68,9 @@ const TrustBadgeCard = ({
           />
         ) : (
           <div
-            className={`flex h-20 w-20 items-center justify-center rounded-2xl ${visuals.containerClass}`}
+            className={`flex h-20 w-20 items-center justify-center rounded-2xl ${containerClass}`}
           >
-            <span className={`text-lg font-bold tracking-wide ${visuals.textClass}`}>
+            <span className={`text-lg font-bold tracking-wide ${textClass}`}>
               {badge.abbreviation}
             </span>
           </div>
@@ -109,11 +83,38 @@ const TrustBadgeCard = ({
           {badge.name}
         </p>
         <p className="mt-2.5 inline-block rounded-full bg-navy-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-navy-400">
-          {visuals.label}
+          {badgeTypeLabel}
         </p>
       </div>
     </motion.li>
   );
+};
+
+// ---------------------------------------------------------------------------
+// Visual config per badge type — icon, color palette
+// ---------------------------------------------------------------------------
+
+interface BadgeTypeVisuals {
+  containerClass: string;
+  textClass: string;
+}
+
+const BADGE_TYPE_VISUALS: Record<TrustBadge["type"], BadgeTypeVisuals> = {
+  hospital: {
+    containerClass:
+      "bg-gradient-to-br from-teal-50 to-teal-100 ring-1 ring-teal-200/60",
+    textClass: "text-teal-700",
+  },
+  certification: {
+    containerClass:
+      "bg-gradient-to-br from-gold-50 to-gold-100 ring-1 ring-gold-200/60",
+    textClass: "text-gold-700",
+  },
+  association: {
+    containerClass:
+      "bg-gradient-to-br from-navy-50 to-navy-100 ring-1 ring-navy-200/60",
+    textClass: "text-navy-600",
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -122,6 +123,7 @@ const TrustBadgeCard = ({
 
 export default function TrustBadges() {
   const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("home.trustBadges");
 
   const sectionHeadingId = "trust-badges-heading";
 
@@ -160,7 +162,7 @@ export default function TrustBadges() {
             }
             className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
           >
-            Confianza y Respaldo
+            {t("overline")}
           </motion.p>
 
           <motion.h2
@@ -175,7 +177,7 @@ export default function TrustBadges() {
             }
             className="mx-auto mt-3 max-w-lg font-display text-2xl text-navy-900 md:text-3xl"
           >
-            Certificaciones y Asociaciones a Sociedades Médicas
+            {t("heading")}
           </motion.h2>
 
           <motion.div
@@ -192,20 +194,26 @@ export default function TrustBadges() {
           />
         </div>
 
-        {/* Badge grid — 3 cols desktop, 2 cols tablet/mobile */}
+        {/* Badge grid */}
         <ul
           role="list"
-          aria-label="Certificaciones y asociaciones a sociedades médicas"
+          aria-label={t("listAriaLabel")}
           className="mt-12 flex flex-wrap justify-center gap-5"
         >
-          {TRUST_BADGES.map((badge, badgeIndex) => (
-            <TrustBadgeCard
-              key={badge.name}
-              badge={badge}
-              animationDelaySeconds={badgeIndex * 0.08}
-              shouldReduceMotion={shouldReduceMotion}
-            />
-          ))}
+          {TRUST_BADGES.map((badge, badgeIndex) => {
+            const visuals = BADGE_TYPE_VISUALS[badge.type];
+            return (
+              <TrustBadgeCard
+                key={badge.name}
+                badge={badge}
+                animationDelaySeconds={badgeIndex * 0.08}
+                shouldReduceMotion={shouldReduceMotion}
+                badgeTypeLabel={t(`badgeTypes.${badge.type}`)}
+                containerClass={visuals.containerClass}
+                textClass={visuals.textClass}
+              />
+            );
+          })}
         </ul>
       </div>
     </section>

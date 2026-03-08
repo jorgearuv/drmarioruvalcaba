@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { DOCTOR_INFO } from "@/lib/constants";
 
-const CONSULTATION_REASONS = [
-  "Manga Gástrica",
-  "Bypass Gástrico",
-  "Balón Intragástrico",
-  "Cirugía de Mínima Invasión",
-  "Otra consulta",
+const CONSULTATION_REASON_KEYS = [
+  "gastricSleeve",
+  "gastricBypass",
+  "intragastricBalloon",
+  "minimallyInvasiveSurgery",
+  "otherInquiry",
 ] as const;
 
 const FIELD_LIMITS = {
@@ -30,18 +31,19 @@ function buildWhatsAppUrl(
   emailAddress: string,
   consultationReason: string,
   messageBody: string,
+  introMessage: string,
 ): string {
   const whatsAppNumber = DOCTOR_INFO.whatsapp.replace(/\D/g, "");
   const messageLines = [
-    `Hola Dr. Ruvalcaba, me gustaría agendar una consulta.`,
+    introMessage,
     ``,
-    `*Nombre:* ${fullName}`,
-    `*Teléfono:* ${phoneNumber}`,
-    `*Correo:* ${emailAddress}`,
-    `*Motivo:* ${consultationReason}`,
+    `*${fullName}*`,
+    `*${phoneNumber}*`,
+    `*${emailAddress}*`,
+    `*${consultationReason}*`,
   ];
   if (messageBody.trim()) {
-    messageLines.push(`*Mensaje:* ${messageBody}`);
+    messageLines.push(`*${messageBody}*`);
   }
   return `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(messageLines.join("\n"))}`;
 }
@@ -50,45 +52,45 @@ function buildMailtoUrl(
   fullName: string,
   consultationReason: string,
   messageBody: string,
+  subjectPrefix: string,
+  defaultBody: string,
 ): string {
-  const subject = encodeURIComponent(`Consulta: ${consultationReason} — ${fullName}`);
-  const body = encodeURIComponent(messageBody || "Me gustaría agendar una consulta.");
+  const subject = encodeURIComponent(`${subjectPrefix}: ${consultationReason} — ${fullName}`);
+  const body = encodeURIComponent(messageBody || defaultBody);
   return `mailto:${DOCTOR_INFO.email}?subject=${subject}&body=${body}`;
 }
 
 export default function ContactForm() {
+  const t = useTranslations("contact");
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [consultationReason, setConsultationReason] = useState("");
   const [messageBody, setMessageBody] = useState("");
-  // Inline validation error shown near the submit button
   const [validationError, setValidationError] = useState("");
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Validate required fields — native browser validation is suppressed by
-    // preventDefault, so we enforce it manually before opening WhatsApp.
     if (!fullName.trim()) {
-      setValidationError("Por favor ingresa tu nombre completo.");
+      setValidationError(t("validation.nameRequired"));
       return;
     }
     if (!phoneNumber.trim()) {
-      setValidationError("Por favor ingresa tu número de teléfono.");
+      setValidationError(t("validation.phoneRequired"));
       return;
     }
     if (!emailAddress.trim()) {
-      setValidationError("Por favor ingresa tu correo electrónico.");
+      setValidationError(t("validation.emailRequired"));
       return;
     }
     if (!consultationReason) {
-      setValidationError("Por favor selecciona un motivo de consulta.");
+      setValidationError(t("validation.reasonRequired"));
       return;
     }
 
-    // All required fields are present — clear any prior error and proceed.
     setValidationError("");
 
     const whatsAppUrl = buildWhatsAppUrl(
@@ -97,6 +99,7 @@ export default function ContactForm() {
       emailAddress,
       consultationReason,
       messageBody,
+      t("whatsappIntro"),
     );
     window.open(whatsAppUrl, "_blank", "noopener,noreferrer");
     setIsSubmitted(true);
@@ -119,24 +122,30 @@ export default function ContactForm() {
           &#10003;
         </div>
         <h3 className="font-display text-2xl text-navy-900">
-          &#161;Redirigido a WhatsApp!
+          {t("success.heading")}
         </h3>
         <p className="mt-3 text-navy-500">
-          Si WhatsApp no se abrió,{" "}
+          {t("success.fallback")}{" "}
           <a
-            href={buildMailtoUrl(fullName, consultationReason, messageBody)}
+            href={buildMailtoUrl(
+              fullName,
+              consultationReason,
+              messageBody,
+              t("emailSubjectPrefix"),
+              t("emailDefaultBody"),
+            )}
             className="font-semibold text-teal-600 underline underline-offset-2 hover:text-teal-700"
           >
-            envía un correo
+            {t("success.sendEmail")}
           </a>{" "}
-          y nos pondremos en contacto contigo.
+          {t("success.followUp")}
         </p>
         <button
           type="button"
           onClick={handleResetForm}
           className="mt-8 rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 px-8 py-3 font-semibold text-white shadow-lg shadow-teal-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
         >
-          Enviar otro mensaje
+          {t("success.sendAnother")}
         </button>
       </div>
     );
@@ -147,7 +156,7 @@ export default function ContactForm() {
       <form onSubmit={handleFormSubmit} className="space-y-5">
         <div>
           <label htmlFor="contact-name" className={LABEL_CLASS}>
-            Nombre completo
+            {t("form.name")}
           </label>
           <input
             id="contact-name"
@@ -157,14 +166,14 @@ export default function ContactForm() {
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
             className={INPUT_CLASS}
-            placeholder="Tu nombre completo"
+            placeholder={t("form.namePlaceholder")}
           />
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="contact-phone" className={LABEL_CLASS}>
-              Teléfono
+              {t("form.phone")}
             </label>
             <input
               id="contact-phone"
@@ -174,13 +183,13 @@ export default function ContactForm() {
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               className={INPUT_CLASS}
-              placeholder="Tu número de teléfono"
+              placeholder={t("form.phonePlaceholder")}
             />
           </div>
 
           <div>
             <label htmlFor="contact-email" className={LABEL_CLASS}>
-              Correo electrónico
+              {t("form.email")}
             </label>
             <input
               id="contact-email"
@@ -190,14 +199,14 @@ export default function ContactForm() {
               value={emailAddress}
               onChange={(event) => setEmailAddress(event.target.value)}
               className={INPUT_CLASS}
-              placeholder="tu@correo.com"
+              placeholder={t("form.emailPlaceholder")}
             />
           </div>
         </div>
 
         <div>
           <label htmlFor="contact-reason" className={LABEL_CLASS}>
-            Motivo de consulta
+            {t("form.reason")}
           </label>
           <select
             id="contact-reason"
@@ -207,11 +216,11 @@ export default function ContactForm() {
             className={INPUT_CLASS}
           >
             <option value="" disabled>
-              Selecciona un motivo
+              {t("form.reasonPlaceholder")}
             </option>
-            {CONSULTATION_REASONS.map((reason) => (
-              <option key={reason} value={reason}>
-                {reason}
+            {CONSULTATION_REASON_KEYS.map((reasonKey) => (
+              <option key={reasonKey} value={t(`form.reasons.${reasonKey}`)}>
+                {t(`form.reasons.${reasonKey}`)}
               </option>
             ))}
           </select>
@@ -219,7 +228,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="contact-message" className={LABEL_CLASS}>
-            Mensaje
+            {t("form.message")}
           </label>
           <textarea
             id="contact-message"
@@ -228,11 +237,11 @@ export default function ContactForm() {
             value={messageBody}
             onChange={(event) => setMessageBody(event.target.value)}
             className={INPUT_CLASS}
-            placeholder="Cuéntanos más sobre tu consulta (opcional)"
+            placeholder={t("form.messagePlaceholder")}
           />
         </div>
 
-        {/* Inline validation error — announced to screen readers via role="alert" */}
+        {/* Inline validation error */}
         {validationError && (
           <p
             role="alert"
@@ -247,7 +256,7 @@ export default function ContactForm() {
           type="submit"
           className="w-full rounded-xl bg-gradient-to-r from-teal-600 to-teal-700 py-4 text-lg font-semibold text-white shadow-lg shadow-teal-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-teal-500 hover:to-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
         >
-          Enviar mensaje
+          {t("form.submit")}
         </button>
       </form>
     </div>

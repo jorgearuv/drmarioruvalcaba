@@ -1,0 +1,180 @@
+{
+  "hero": {
+    "badge": "Board-Certified General & Bariatric Surgeon",
+    "location": "Mérida, Yucatán",
+    "headline": "Bariatric Surgeon in Mérida, Minimally Invasive Specialist",
+    "subheadline": "Dr. Mario Ruvalcaba is a board-certified general and bariatric surgeon by the Mexican Board of General Surgery. He specializes in bariatric and metabolic surgery, as well as minimally invasive (laparoscopic) surgery, offering patients safe, effective treatments with the least possible invasion.\n\nBacked by experience in various types of surgeries and ongoing training, he provides quality care with a comprehensive and personalized approach for each patient.\n\nHis office is located in Mérida, Yucatán, where he treats local patients and those from other parts of Mexico and abroad.",
+    "doctorImageAlt": "Dr. Mario Ruvalcaba — Board-Certified General & Bariatric Surgeon",
+    "trustSignals": {
+      "ariaLabel": "Dr. Mario Ruvalcaba trust indicators",
+      "doctoralia": "Doctoralia",
+      "verifiedReviews": "23 verified reviews",
+      "certified": "Board Certified",
+      "certificationBody": "Mexican Board of General Surgery",
+      "experience": "5+ years",
+      "experienceLabel": "Experience as Surgeon"
+    },
+    "highlightWords": {
+      "teal": ["Bariatric", "Minimally", "Invasive"],
+      "gold": ["Mérida", "Yucatán"]
+    }
+  },
+  "stats": {
+    "overline": "Why Choose Bariatric Surgery",
+    "heading": "Transform Your Health, Transform Your Life",
+    "description": "Bariatric surgery is not just an operation — it's the start of a comprehensive transformation. Thousands of patients have regained their health, mobility, and confidence through minimally invasive procedures backed by decades of clinical evidence.",
+    "benefitsAriaLabel": "Benefits of bariatric surgery",
+    "meetDoctorAriaLabel": "Meet Dr. Mario Ruvalcaba",
+    "benefits": {
+      "provenResults": {
+        "title": "Proven Results",
+        "description": "60–80% excess weight loss in the first year, with sustained long-term results backed by thousands of patients."
+      },
+      "improvesDiseases": {
+        "title": "Improves Medical Conditions",
+        "description": "Remission of type 2 diabetes, hypertension, and sleep apnea in most patients, comprehensively improving quality of life."
+      },
+      "minimalInvasion": {
+        "title": "Minimally Invasive",
+        "description": "Advanced laparoscopic techniques with incisions from 3 to 12 mm, faster recovery, less pain, and virtually invisible scars."
+      }
+    }
+  },
+  "services": {
+    "overline": "Specialties",
+    "heading": "Our Procedures",
+    "subtitle": "Surgical solutions customized to each patient's needs",
+    "allProcedures": "All Our Procedures",
+    "bariatricSurgery": "Bariatric Surgery",
+    "minimallyInvasiveSurgery": "Minimally Invasive General Surgery",
+    "mainBenefits": "Main benefits",
+    "viewMoreAbout": "Learn more about"
+  },
+  "bmi": {
+    "heading": "Calculate Your Body Mass Index",
+    "subtitle": "Find out if you're a candidate for bariatric surgery",
+    "form": {
+      "title": "Enter your measurements",
+      "subtitle": "Use accurate values for a precise result.",
+      "weight": "Weight",
+      "height": "Height",
+      "weightPlaceholder": "e.g. 185",
+      "heightPlaceholder": "e.g. 67",
+      "calculate": "Calculate BMI",
+      "ariaLabel": "BMI calculation form",
+      "disclaimer": "This tool is for informational reference only. Results do not replace a professional medical evaluation."
+    },
+    "weightUnit": "kg",
+    "heightUnit": "cm",
+    "scale": {
+      "ariaLabel": "BMI Scale",
+      "title": "BMI Scale",
+      "disclaimer": "The Body Mass Index (BMI) is a reference measure. Always consult a doctor for a complete, individualized evaluation."
+    },
+    "result": {
+      "ariaLabel": "BMI calculation result",
+      "yourBMI": "Your BMI",
+      "ariaResult": "Result: BMI {value}, category {category}",
+      "ariaPlaceholder": "The calculation result will appear here"
+    },
+    "categories": {
+      "underweight": {
+        "label": "Underweight",
+        "description": "Your weight is below the healthy range. We recommend consulting a nutrition specialist to reach an adequate weight."
+      },
+      "normal": {
+        "label": "Normal",
+        "description": "Congratulations! Your weight is within the healthy range. Maintain your eating habits and physical activity."
+      },
+      "overweight": {
+        "label": "Overweight",
+        "description": "Your weight is above the healthy range. Changes in eating habits and regular exercise can help. Consider a medical consultation."
+      },
+      "obesityI": {
+        "label": "Obesity Grade I",
+        "description": "Your BMI indicates grade I obesity. Bariatric surgery could be an option for you. We recommend scheduling a medical evaluation."
+      },
+      "obesityII": {
+        "label": "Obesity Grade II",
+        "description": "Your BMI indicates grade II obesity. You are a potential candidate for bariatric surgery. Schedule an evaluation to learn about your options."
+      },
+      "obesityIII": {
+        "label": "Obesity Grade III / Morbid",
+        "description": "Your BMI indicates morbid obesity. Bariatric surgery is highly recommended in your case. It's important to seek specialized medical care as soon as possible."
+      }
+    },
+    "scaleLabels": {
+      "underweight": "Underweight",
+      "normal": "Normal",
+      "overweight": "Overweight",
+      "obesityI": "Obesity I",
+      "obesityII": "Obesity II",
+      "obesityIII": "Obesity III"
+    },
+    "candidacy": {
+      "overline": "Are You a Candidate?",
+      "heading": "Who qualifies for bariatric surgery?",
+      "subtitle": "According to international criteria, the following patients may be candidates for bariatric surgery:",
+      "description": "According to international criteria, the following patients may be candidates for bariatric surgery:",
+      "criteria": {
+        "severObesity": {
+          "title": "BMI ≥ 40 (severe obesity)",
+          "description": "Patients with a body mass index of 40 or higher, even without associated diseases."
+        },
+        "obesityWithComorbidities": {
+          "title": "BMI ≥ 35 with comorbidities",
+          "description": "Type 2 diabetes, hypertension, obstructive sleep apnea, dyslipidemia, degenerative joint disease, or non-alcoholic steatohepatitis."
+        },
+        "obesityWithDiabetes": {
+          "title": "BMI 30–34.9 with poorly controlled type 2 diabetes",
+          "description": "Patients with grade I obesity and type 2 diabetes who cannot achieve adequate metabolic control with medical treatment (metabolic surgery)."
+        },
+        "failedTreatments": {
+          "title": "Failed previous treatments",
+          "description": "Patients who have tried to lose weight through diet, exercise, and/or medications without sustained results for at least 6 months."
+        },
+        "favorableEvaluation": {
+          "title": "Favorable comprehensive evaluation",
+          "description": "Multidisciplinary assessment (nutritional, psychological, medical) confirming the patient as a suitable candidate committed to lifestyle changes."
+        }
+      },
+      "disclaimer": "The final indication should always be made individually by a board-certified bariatric surgeon, taking into account the complete medical history, patient expectations, and associated risks.",
+      "reference": "Reference: Eisenberg D, Shikora SA, Aarts E, Aminian A, et al. 2022 American Society of Metabolic and Bariatric Surgery (ASMBS) and International Federation for the Surgery of Obesity and Metabolic Disorders (IFSO) Indications for Metabolic and Bariatric Surgery. Obes Surg. 2023 Jan;33(1):3-14."
+    }
+  },
+  "testimonials": {
+    "overline": "Testimonials",
+    "heading": "What Our Patients Say",
+    "carouselAriaLabel": "Patient testimonials",
+    "showingTestimonials": "Showing testimonials {start} to {end} of {total}",
+    "previousAriaLabel": "Previous testimonial",
+    "nextAriaLabel": "Next testimonial",
+    "goToTestimonial": "Go to testimonial {number}",
+    "dotNavigationAriaLabel": "Testimonial navigation",
+    "slideLabel": "Testimonial {position} of {total}",
+    "testimonialOf": "Testimonial from {name}",
+    "stars": "{rating} of {max} stars",
+    "weightLost": "-{amount} lost",
+    "years": "{age} years old"
+  },
+  "trustBadges": {
+    "overline": "Trust & Endorsement",
+    "heading": "Certifications & Medical Society Memberships",
+    "listAriaLabel": "Certifications and medical society memberships",
+    "badgeTypes": {
+      "hospital": "Hospital",
+      "certification": "Certification",
+      "association": "Association"
+    }
+  },
+  "insurance": {
+    "overline": "Insurance Coverage",
+    "heading": "We Work with Leading Medical Insurance Companies",
+    "listAriaLabel": "Medical insurance companies we work with",
+    "footnote": "Check coverage availability for your procedure"
+  },
+  "ctaSection": {
+    "readyToTransform": "Ready to Transform Your Life?",
+    "readyToTransformDescription": "Schedule a free consultation with Dr. Mario Ruvalcaba and discover the best procedure for you."
+  }
+}

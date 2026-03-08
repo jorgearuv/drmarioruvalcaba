@@ -8,7 +8,7 @@ import {
   useId,
 } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { TESTIMONIALS } from "@/lib/testimonials";
+import { useTranslations } from "next-intl";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import type { Testimonial } from "@/types";
 
@@ -25,10 +25,6 @@ const VISIBLE_CARDS_MOBILE = 1;
 // Helpers
 // ---------------------------------------------------------------------------
 
-/**
- * Derives the number of visible cards based on a CSS-driven breakpoint sentinel.
- * Falls back to VISIBLE_CARDS_DESKTOP during SSR.
- */
 const deriveVisibleCardCount = (): number => {
   if (typeof window === "undefined") return VISIBLE_CARDS_DESKTOP;
   const viewportWidth = window.innerWidth;
@@ -37,10 +33,6 @@ const deriveVisibleCardCount = (): number => {
   return VISIBLE_CARDS_DESKTOP;
 };
 
-/**
- * Computes which testimonials are visible for a given page start index.
- * Wraps around the testimonials array to fill any remaining slots.
- */
 const deriveVisibleTestimonials = (
   allTestimonials: Testimonial[],
   pageStartIndex: number,
@@ -59,13 +51,14 @@ const deriveVisibleTestimonials = (
 // ---------------------------------------------------------------------------
 
 interface TestimonialCarouselProps {
-  testimonials?: Testimonial[];
+  testimonials: Testimonial[];
 }
 
 export default function TestimonialCarousel({
-  testimonials = TESTIMONIALS,
+  testimonials,
 }: TestimonialCarouselProps) {
   const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("home.testimonials");
 
   const sectionHeadingId = useId();
   const carouselLiveRegionId = useId();
@@ -166,13 +159,13 @@ export default function TestimonialCarousel({
             aria-hidden="true"
             className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600"
           >
-            Testimonios
+            {t("overline")}
           </p>
           <h2
             id={sectionHeadingId}
             className="mt-3 font-display text-4xl text-navy-900 md:text-5xl"
           >
-            Lo Que Dicen Nuestros Pacientes
+            {t("heading")}
           </h2>
           <div aria-hidden="true" className="section-divider mx-auto mt-4 mb-2" />
         </div>
@@ -182,7 +175,7 @@ export default function TestimonialCarousel({
           ref={carouselRegionRef}
           role="region"
           aria-roledescription="carousel"
-          aria-label="Testimonios de pacientes"
+          aria-label={t("carouselAriaLabel")}
           aria-labelledby={carouselLiveRegionId}
           className="mt-12"
           onMouseEnter={() => setIsAutoPlayPaused(true)}
@@ -197,9 +190,11 @@ export default function TestimonialCarousel({
             aria-atomic="true"
             className="sr-only"
           >
-            Mostrando testimonios {pageStartIndex + 1} a{" "}
-            {Math.min(pageStartIndex + visibleCardCount, totalTestimonials)} de{" "}
-            {totalTestimonials}
+            {t("showingTestimonials", {
+              start: pageStartIndex + 1,
+              end: Math.min(pageStartIndex + visibleCardCount, totalTestimonials),
+              total: totalTestimonials,
+            })}
           </p>
 
           {/* Arrow + cards row */}
@@ -207,7 +202,7 @@ export default function TestimonialCarousel({
             {/* Previous button */}
             <button
               type="button"
-              aria-label="Testimonio anterior"
+              aria-label={t("previousAriaLabel")}
               onClick={navigateToPrevious}
               className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
             >
@@ -265,7 +260,7 @@ export default function TestimonialCarousel({
             {/* Next button */}
             <button
               type="button"
-              aria-label="Siguiente testimonio"
+              aria-label={t("nextAriaLabel")}
               onClick={navigateToNext}
               className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
             >
@@ -289,7 +284,7 @@ export default function TestimonialCarousel({
           {/* Dot navigation */}
           <div
             role="group"
-            aria-label="Navegación de testimonios"
+            aria-label={t("dotNavigationAriaLabel")}
             className="mt-8 flex justify-center gap-2"
           >
             {Array.from({ length: dotCount }, (_, dotIndex) => {
@@ -299,7 +294,7 @@ export default function TestimonialCarousel({
                   key={dotIndex}
                   type="button"
                   aria-current={isActiveDot ? "true" : undefined}
-                  aria-label={`Ir al testimonio ${dotIndex + 1}`}
+                  aria-label={t("goToTestimonial", { number: dotIndex + 1 })}
                   onClick={() => navigateToDot(dotIndex)}
                   className={`h-2 cursor-pointer rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 ${
                     isActiveDot

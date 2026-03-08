@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "whatsapp";
 type ButtonSize = "sm" | "md" | "lg";
@@ -57,7 +57,7 @@ export default function Button({
   if ("href" in props && props.href) {
     const { href, ...linkProps } = props;
     return (
-      <Link href={href} className={combinedClassName} {...linkProps}>
+      <Link href={href as any} className={combinedClassName} {...linkProps}>
         {children}
       </Link>
     );

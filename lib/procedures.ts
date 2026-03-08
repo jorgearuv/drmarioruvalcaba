@@ -1,6 +1,10 @@
+import type { Locale } from '@/i18n/routing'
 import { Procedure, SubProcedure } from '@/types'
 
-export const PROCEDURES: Procedure[] = [
+// =============================================================================
+// PROCEDURES — Spanish
+// =============================================================================
+const PROCEDURES_ES: Procedure[] = [
   // ---------------------------------------------------------------------------
   // 1. Manga Gástrica
   // ---------------------------------------------------------------------------
@@ -617,10 +621,649 @@ export const PROCEDURES: Procedure[] = [
   },
 ]
 
-// ---------------------------------------------------------------------------
-// Sub-procedimientos bariátricos
-// ---------------------------------------------------------------------------
-export const BARIATRIC_SUB_PROCEDURES: SubProcedure[] = [
+// =============================================================================
+// PROCEDURES — English
+// =============================================================================
+const PROCEDURES_EN: Procedure[] = [
+  // ---------------------------------------------------------------------------
+  // 1. Gastric Sleeve
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'manga-gastrica-merida',
+    imagePath: '/images/procedures/manga-gastrica.webp',
+    title: 'Gastric Sleeve',
+    shortTitle: 'Gastric Sleeve',
+    metaTitle:
+      'Gastric Sleeve in Merida | Dr. Mario Ruvalcaba - Bariatric Surgeon',
+    metaDescription:
+      'Gastric sleeve surgery in Merida with Dr. Mario Ruvalcaba. Lose up to 70% of your excess weight with safe laparoscopic surgery. Schedule your consultation today.',
+    heroHeadline: 'Gastric Sleeve in Merida',
+    heroSubheadline:
+      'Transform your life with the most widely performed bariatric procedure in the world. Proven results, fast recovery, and comprehensive support.',
+    description:
+      'The gastric sleeve (vertical sleeve gastrectomy) reduces the size of the stomach by 75% to 85%, limiting food intake and decreasing the production of ghrelin, the hunger hormone. It is the most requested bariatric procedure worldwide due to its effectiveness and safety.',
+    longDescription:
+      'Vertical sleeve gastrectomy is a surgical procedure that removes approximately 80% of the stomach, reshaping it into a thin, sleeve-shaped tube. By drastically reducing gastric capacity, patients experience early satiety with small portions of food. Additionally, by removing the gastric fundus — the primary producer of ghrelin — the sensation of hunger is significantly reduced, making it easier to adhere to a healthy long-term eating plan.\n\nDr. Mario Ruvalcaba performs this procedure laparoscopically, using 4 to 5 small incisions that minimize postoperative pain, infection risk, and recovery time. Patients typically lose between 60% and 70% of their excess weight during the first 12 to 18 months. The surgery not only promotes sustained weight loss but also contributes to the improvement or resolution of obesity-related conditions such as type 2 diabetes mellitus, high blood pressure, obstructive sleep apnea, dyslipidemia, and gastroesophageal reflux disease. Each patient receives a personalized multidisciplinary plan that includes nutritional, psychological, and medical follow-up to ensure optimal and lasting results.',
+    benefits: [
+      {
+        title: 'Significant weight loss',
+        description:
+          'Lose between 60% and 70% of your excess weight in the first 12 to 18 months, with sustained long-term results thanks to hormonal appetite reduction.',
+        icon: '📉',
+      },
+      {
+        title: 'Improvement of comorbidities',
+        description:
+          'Resolution or improvement of type 2 diabetes, hypertension, sleep apnea, dyslipidemia, and joint diseases associated with excess weight.',
+        icon: '❤️',
+      },
+      {
+        title: 'Minimally invasive procedure',
+        description:
+          'Laparoscopic surgery with 3 to 12 mm incisions that reduce pain, complications, and leave virtually imperceptible scars.',
+        icon: '🔬',
+      },
+      {
+        title: 'Fast recovery',
+        description:
+          'Most patients return to daily activities within 1 to 2 weeks and to full physical activity within 4 to 6 weeks.',
+        icon: '⚡',
+      },
+    ],
+    candidates: [
+      'Individuals with a Body Mass Index (BMI) of 35 or higher with associated comorbidities, or a BMI of 40 or higher without comorbidities.',
+      'Patients who have tried conventional weight loss methods (diet, exercise, medications) without achieving sustained results for at least 6 months.',
+      'Individuals diagnosed with obesity-related conditions such as type 2 diabetes, high blood pressure, sleep apnea, or degenerative joint disease.',
+      'Adults between 18 and 65 years of age willing to commit to permanent lifestyle changes, dietary adjustments, and postoperative medical follow-up.',
+      'Patients without serious surgical contraindications or uncontrolled active eating disorders, and who have received a favorable psychological evaluation.',
+    ],
+    recovery: [
+      {
+        period: 'First week',
+        description:
+          'Clear liquid diet only (water, fat-free broth, sugar-free gelatin, oral rehydration solution). Relative rest at home with short walks to prevent thrombosis. Mild discomfort managed with oral analgesics. Surgical wound check at 7 days.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Gradual transition to full liquids and pureed foods (protein shakes, soft purees, sugar-free yogurt). Beginning of vitamin and protein supplementation. Sedentary work activities may resume. In-person or virtual nutritional follow-up.',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Progressive introduction of soft and solid foods in controlled portions. Start of moderate cardiovascular exercise (walking, stationary bike, swimming). Patients typically have lost 30% to 40% of their excess weight by this point.',
+      },
+      {
+        period: '6-12 months',
+        description:
+          'Varied diet emphasizing proteins, vegetables, and proper hydration. Regular physical activity without restrictions. Loss of 60% to 70% of excess weight. Quarterly follow-up with lab work to monitor nutritional and metabolic levels.',
+      },
+    ],
+    costRange: '',
+    duration: '1 - 1.5 hours',
+    hospitalStay: '1 - 2 nights',
+    icon: '🩺',
+    faq: [
+      {
+        question: 'Is gastric sleeve surgery reversible?',
+        answer:
+          'No, gastric sleeve surgery is an irreversible procedure because approximately 80% of the stomach is permanently removed. However, in specific cases it can be converted to a gastric bypass or biliopancreatic diversion if the patient requires it. It is essential that the patient understands the permanent nature of the procedure before surgery and is committed to the necessary lifestyle changes.',
+      },
+      {
+        question: 'How much weight can I expect to lose with gastric sleeve surgery?',
+        answer:
+          'On average, patients lose between 60% and 70% of their excess weight during the first 12 to 18 months after surgery. For example, if a patient has 40 kg (88 lbs) of excess weight, they can expect to lose between 24 and 28 kg (53 to 62 lbs). Results vary depending on adherence to the nutritional plan, physical activity, and medical follow-up. Dr. Ruvalcaba and his multidisciplinary team design a personalized plan to maximize each patient\'s results.',
+      },
+      {
+        question: 'What are the risks of gastric sleeve surgery?',
+        answer:
+          'As with any surgery, gastric sleeve carries risks, although the complication rate is low (between 1% and 3%). The most common risks include staple line bleeding, gastric leak or fistula, stenosis (narrowing), gastroesophageal reflux, and long-term nutritional deficiencies. Dr. Ruvalcaba uses advanced staple line sealing and reinforcement techniques to minimize these complications, and each patient receives a rigorous follow-up protocol.',
+      },
+      {
+        question:
+          'Can I drink alcohol or carbonated beverages after gastric sleeve surgery?',
+        answer:
+          'Carbonated beverages should be permanently avoided, as the gas can cause gastric distension, discomfort, and dilation of the remaining stomach over time. As for alcohol, it should be avoided for at least the first 6 months and subsequently consumed with extreme moderation. After surgery, the body absorbs alcohol more quickly and intensely, increasing the risk of intoxication and developing dependence.',
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // 2. Gastric Bypass
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'bypass-gastrico-merida',
+    imagePath: '/images/procedures/bypass-gastrico.webp',
+    title: 'Gastric Bypass',
+    shortTitle: 'Gastric Bypass',
+    metaTitle:
+      'Gastric Bypass in Merida | Dr. Mario Ruvalcaba - Bariatric Surgeon',
+    metaDescription:
+      'Roux-en-Y gastric bypass in Merida. The gold standard bariatric procedure for severe obesity and type 2 diabetes. Consult with Dr. Ruvalcaba.',
+    heroHeadline: 'Gastric Bypass in Merida',
+    heroSubheadline:
+      'The gold standard in bariatric surgery. Exceptional results for severe obesity and type 2 diabetes resolution with advanced laparoscopic technique.',
+    description:
+      'Roux-en-Y gastric bypass combines stomach size restriction with an intestinal bypass that modifies nutrient absorption and produces powerful hormonal changes. It is considered the gold standard procedure for patients with severe obesity and metabolic diseases.',
+    longDescription:
+      'Roux-en-Y gastric bypass is a restrictive and malabsorptive procedure that involves creating a smaller stomach pouch from the upper portion of the stomach, which is then connected directly to a segment of the small intestine (alimentary limb), bypassing most of the stomach, the duodenum, and the first portion of the jejunum. This configuration limits the amount of food the patient can eat, reduces caloric absorption, and crucially triggers profound hormonal changes — including increased GLP-1, PYY, and reduced ghrelin — that improve insulin sensitivity and contribute to type 2 diabetes resolution in up to 80% of cases.\n\nDr. Mario Ruvalcaba performs gastric bypass laparoscopically with refined technique developed under world-class mentors. Patients can expect to lose between 70% and 80% of their excess weight in the first 18 to 24 months. This procedure is particularly effective for patients with a BMI above 45, poorly controlled type 2 diabetes, metabolic syndrome, and severe gastroesophageal reflux disease. Postoperative follow-up includes lifelong vitamin supplementation (iron, calcium, vitamin B12, fat-soluble vitamins), periodic nutritional monitoring, and laboratory testing to prevent nutritional deficiencies.\n\n* To maintain metabolic control and sustained weight loss over time, multidisciplinary follow-up is the most important factor.',
+    benefits: [
+      {
+        title: 'Greater weight loss',
+        description:
+          'Average loss of 70% to 80% of excess weight in 18 to 24 months, making it one of the bariatric procedures with the best long-term results.',
+        icon: '🏋️',
+      },
+      {
+        title: 'Type 2 diabetes resolution',
+        description:
+          'Up to 80% of patients achieve complete remission of type 2 diabetes thanks to the powerful hormonal and metabolic changes produced by gastric bypass.',
+        icon: '🩺',
+      },
+      {
+        title: 'Anti-reflux effect',
+        description:
+          'Elimination of gastroesophageal reflux by diverting bile and acid flow away from the esophagus, making it the ideal option for obese patients with severe GERD.',
+        icon: '🛡️',
+      },
+      {
+        title: 'Favorable hormonal changes',
+        description:
+          'Significant increase in satiety hormones (GLP-1, PYY) and reduction of ghrelin, which decreases appetite and improves glucose metabolism on a sustained basis.',
+        icon: '🧬',
+      },
+    ],
+    candidates: [
+      'Patients with a Body Mass Index (BMI) of 40 or higher, or a BMI of 35 or higher with severe metabolic comorbidities such as uncontrolled type 2 diabetes.',
+      'Individuals with poorly controlled type 2 diabetes who could benefit from the metabolic effects of bypass, even with a BMI between 30 and 35 (metabolic surgery).',
+      'Patients with severe gastroesophageal reflux disease (GERD) associated with obesity, as gastric bypass is the bariatric procedure that best controls reflux.',
+      'Individuals with a prior gastric sleeve who require a revision procedure due to weight regain or intractable reflux.',
+      'Motivated adults who understand the need for lifelong vitamin supplementation and strict nutritional follow-up as an integral part of treatment.',
+    ],
+    recovery: [
+      {
+        period: 'First week',
+        description:
+          'Strict clear liquid diet with fractionated hydration (small, frequent sips). Rest at home with early ambulation to prevent thromboembolism. Pain management with oral analgesics. Wound check and oral tolerance assessment at 7 days.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Progression to full liquids and protein-rich purees. Start of mandatory vitamin supplementation (multivitamin, iron, calcium with vitamin D, vitamin B12). Gradual return to low-demand work activities.',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Progressive introduction of soft solid foods, prioritizing lean proteins. Start of supervised moderate physical activity. It is essential to learn to identify and avoid dumping syndrome, which occurs when consuming simple sugars or large meals.',
+      },
+      {
+        period: '6-12 months',
+        description:
+          'Balanced and varied diet without major restrictions, maintaining protein priority and avoiding concentrated sugars. Regular physical activity. Quarterly lab tests to detect iron, B12, calcium, and fat-soluble vitamin deficiencies. Expected loss of 70% to 80% of excess weight.',
+      },
+    ],
+    costRange: '',
+    duration: '2 - 3 hours',
+    hospitalStay: '2 - 3 nights',
+    icon: '💜',
+    faq: [
+      {
+        question:
+          'What is the difference between gastric bypass and gastric sleeve?',
+        answer:
+          'Gastric sleeve is a purely restrictive procedure that reduces the size of the stomach, while gastric bypass combines restriction with intestinal bypass, producing more pronounced hormonal and metabolic changes. Gastric bypass offers greater weight loss (70-80% vs. 60-70% of excess weight), a higher diabetes resolution rate (up to 80%), and is superior for controlling gastroesophageal reflux. However, it requires lifelong vitamin supplementation and stricter nutritional follow-up. Dr. Ruvalcaba evaluates each case individually to recommend the most appropriate procedure.',
+      },
+      {
+        question: 'What is dumping syndrome?',
+        answer:
+          'Dumping syndrome is a side effect that can occur after gastric bypass when consuming foods high in simple sugars or fats. It presents as dizziness, nausea, sweating, rapid heartbeat, abdominal cramps, and diarrhea, usually within 10 to 30 minutes after eating. Although uncomfortable, dumping acts as a negative feedback mechanism that helps patients avoid unhealthy foods. It is prevented by following nutritional recommendations and avoiding sweets, sodas, and processed foods.',
+      },
+      {
+        question:
+          'Will I need to take vitamins for life after gastric bypass?',
+        answer:
+          'Yes, lifelong vitamin and mineral supplementation is mandatory after gastric bypass. By bypassing a portion of the small intestine, the surface area for absorbing essential nutrients is reduced. Basic supplements include: daily multivitamin with minerals, calcium citrate with vitamin D (1,200-1,500 mg/day), vitamin B12 (sublingual or monthly injection), elemental iron (45-60 mg/day, especially for premenopausal women), and in some cases, fat-soluble vitamins (A, D, E, K). Periodic lab tests allow dose adjustments based on individual needs.',
+      },
+      {
+        question: 'Is gastric bypass reversible?',
+        answer:
+          'Technically, gastric bypass can be surgically reversed since the excluded stomach is preserved within the abdomen. However, reversal is a complex procedure with significant risks and is rarely performed. In practice, gastric bypass is considered a permanent procedure. What is possible and more common is bypass revision — adjusting the size of the gastric pouch or the length of the intestinal limb — in patients who experience weight regain or long-term complications. Dr. Ruvalcaba also performs bariatric revision surgeries.',
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // 3. Intragastric Balloon
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'balon-intragastrico',
+    imagePath: '/images/procedures/balon-intragastrico.webp',
+    title: 'Intragastric Balloon',
+    shortTitle: 'Gastric Balloon',
+    metaTitle:
+      'Intragastric Balloon in Merida | Dr. Mario Ruvalcaba - Non-Surgical Treatment',
+    metaDescription:
+      'Intragastric balloon in Merida: lose weight without surgery. 20-minute outpatient procedure. Ideal for BMI 27-35. Consult with Dr. Ruvalcaba.',
+    heroHeadline: 'Intragastric Balloon in Merida',
+    heroSubheadline:
+      'Lose weight effectively without surgery. A quick, safe outpatient procedure that helps you transform your eating habits.',
+    description:
+      'The intragastric balloon is a silicone device placed inside the stomach endoscopically, without the need for incisions or surgery. It occupies space in the stomach, producing early satiety and helping the patient reduce portion sizes and adopt healthy eating habits.',
+    longDescription:
+      'The intragastric balloon consists of a medical-grade silicone sphere that is inserted deflated through the mouth using a flexible endoscope and, once inside the stomach, is filled with sterile saline solution tinted with methylene blue (between 400 and 700 ml depending on the model). The balloon occupies approximately one-third of the gastric volume, inducing a feeling of fullness and satiety with smaller amounts of food. It requires no incisions and the entire procedure takes 20 to 30 minutes under light sedation (in most cases). The patient goes home the same day.\n\nThe balloon remains in the stomach for 6 to 12 months (depending on the type of device) and is removed endoscopically in a manner similar to placement. During this period, the patient works with a multidisciplinary team — nutritionist, psychologist, and bariatric physician — to retrain eating habits and establish a physical activity routine. Expected weight loss is 10% to 15% of total body weight (or 30% to 40% of excess weight). The intragastric balloon is ideal for patients with overweight or grade I obesity (BMI between 27 and 35) who do not qualify for or do not wish to undergo bariatric surgery, as well as for patients with severe obesity as a bridge therapy before a definitive surgical procedure.',
+    benefits: [
+      {
+        title: 'No surgery or incisions',
+        description:
+          'An endoscopic procedure that requires no cuts, sutures, or staples. Placed and removed orally under light sedation, eliminating the risks associated with surgery.',
+        icon: '✨',
+      },
+      {
+        title: 'Outpatient procedure',
+        description:
+          'Takes only 20 to 30 minutes with same-day discharge. No hospitalization or extended rest needed — you can return to your activities in 2 to 3 days.',
+        icon: '🕐',
+      },
+      {
+        title: 'Habit retraining',
+        description:
+          'The balloon acts as a therapeutic tool that teaches you to eat appropriate portions and recognize satiety signals, fostering lasting habit changes.',
+        icon: '🍎',
+      },
+      {
+        title: 'Fully reversible',
+        description:
+          'The balloon is easily removed via endoscopy at the end of treatment (6 to 12 months), leaving no permanent changes to your digestive anatomy.',
+        icon: '🔄',
+      },
+    ],
+    candidates: [
+      'Individuals with overweight or grade I obesity (BMI between 27 and 35) who have not achieved sufficient results with conventional diet and exercise.',
+      'Patients who wish to lose weight without undergoing bariatric surgery, whether due to personal preference, medical conditions, or because they do not meet surgical criteria.',
+      'Individuals with severe obesity (BMI above 40 or 50) who need to lose weight prior to bariatric or other surgery to reduce surgical risk (bridge therapy).',
+      'Motivated adults willing to actively participate in a multidisciplinary program of dietary habit change and physical activity throughout the treatment period.',
+      'Patients without endoscopic contraindications such as prior gastric surgery, large hiatal hernias, active ulcers, or uncontrolled coagulation disorders.',
+    ],
+    recovery: [
+      {
+        period: 'First week',
+        description:
+          'The first 3 to 5 days are the most intense in terms of adaptation: nausea, vomiting, and abdominal cramps are common as the stomach adjusts to the balloon. These are managed with antiemetic and antispasmodic medications. Clear liquid diet only. Constant hydration in small sips.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Discomfort decreases significantly as the body adapts. Transition to full liquids and then pureed foods. Formal start of the nutritional program with meal planning, food tracking, and education on appropriate portions.',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Regular eating with controlled portions. The patient learns to identify signals of true satiety and hunger. Start or intensification of exercise routine. Weight loss is usually most accelerated during this phase, reaching 5% to 8% of total body weight.',
+      },
+      {
+        period: '6-12 months',
+        description:
+          'Habit consolidation phase before balloon removal. The patient should have adopted a sustainable healthy lifestyle. Expected total loss of 10% to 15% of body weight. Upon endoscopic balloon removal, nutritional follow-up continues to prevent weight regain.',
+      },
+    ],
+    costRange: '',
+    duration: '20 - 30 minutes',
+    hospitalStay: 'Outpatient (same day)',
+    icon: '⭕',
+    faq: [
+      {
+        question: 'Is the intragastric balloon procedure painful?',
+        answer:
+          'Balloon placement is performed under intravenous sedation, so the patient does not experience pain or discomfort during the procedure. In the first 3 to 5 days afterward, it is normal to experience nausea, a feeling of stomach heaviness, cramps, and in some cases vomiting, as part of the stomach\'s adaptation to the balloon. These symptoms are effectively controlled with antiemetic, antispasmodic, and gastric protectant medications prescribed from the day of placement.',
+      },
+      {
+        question: 'How much weight can I lose with an intragastric balloon?',
+        answer:
+          'Average weight loss with the intragastric balloon is 10% to 15% of total body weight, equivalent to 30% to 40% of excess weight. For example, a person weighing 220 lbs (100 kg) can expect to lose 22 to 33 lbs (10 to 15 kg). Results largely depend on the patient\'s commitment to the nutritional and physical activity program. Highly committed patients can achieve losses exceeding 15%. It is important to understand that the balloon is a tool that facilitates habit change, not a substitute for it.',
+      },
+      {
+        question: 'What happens if the balloon deflates inside the stomach?',
+        answer:
+          'Modern intragastric balloons are filled with saline solution tinted with methylene blue, a safe dye that acts as an alert system. If the balloon punctures or deflates, the methylene blue is released into the stomach and absorbed, turning the urine blue or greenish. If the patient notices this change in urine color, they should immediately contact Dr. Ruvalcaba to schedule endoscopic removal of the deflated balloon and prevent it from migrating into the intestine. Although spontaneous deflation is rare (less than 1%), it is important to know this warning sign.',
+      },
+      {
+        question: 'Is the intragastric balloon better than bariatric surgery?',
+        answer:
+          'It is neither better nor worse — they are different treatments for different patient profiles. The intragastric balloon is ideal for overweight and mild to moderate obesity (BMI 27-35), requires no surgery, is reversible, and offers more modest weight loss (10-15% of total weight). Bariatric surgery (gastric sleeve or bypass) is indicated for severe obesity (BMI above 35-40), offers more dramatic results (60-80% of excess weight), and is permanent. Dr. Ruvalcaba evaluates each case comprehensively to recommend the option that offers the best results based on the patient\'s needs and goals.',
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // 4. Minimally Invasive Surgery
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'cirugia-minima-invasion',
+    imagePath: '/images/procedures/cirugia-minima-invasion.webp',
+    title: 'Minimally Invasive Surgery',
+    shortTitle: 'Minimally Invasive',
+    metaTitle:
+      'Minimally Invasive Surgery in Merida | Dr. Mario Ruvalcaba - Laparoscopic Surgery',
+    metaDescription:
+      'Laparoscopic surgery in Merida: gallbladder, hernias, appendix, and more. Less pain, fewer scars, faster recovery. Dr. Mario Ruvalcaba, expert surgeon.',
+    heroHeadline: 'Minimally Invasive Surgery in Merida',
+    heroSubheadline:
+      'Advanced surgical solutions with minimal invasion. Less pain, nearly invisible scars, and a remarkably faster recovery.',
+    description:
+      'Minimally invasive surgery uses advanced laparoscopic techniques to treat various abdominal conditions through 3 to 12 mm incisions. It includes cholecystectomy (gallbladder), hernia repair, appendectomy, and fundoplication for reflux, among other procedures.',
+    longDescription:
+      'Laparoscopic or minimally invasive surgery represents one of the most significant advances in modern surgery. Unlike traditional open surgery that requires large incisions (10-20 cm), laparoscopy allows the same procedures to be performed through 3 to 4 small incisions (3-12 mm) through which a high-definition camera and specialized surgical instruments are inserted. This translates into less tissue trauma, reduced postoperative pain, lower risk of wound infection and incisional hernias, better cosmetic results, and a significantly faster recovery.\n\nDr. Mario Ruvalcaba has extensive experience in general laparoscopic surgery and abdominal wall surgery. Among the procedures he most frequently performs are: laparoscopic cholecystectomy (gallbladder removal for gallstones or polyps), laparoscopic repair of inguinal, umbilical, incisional, and abdominal wall hernias with or without mesh placement, laparoscopic appendectomy (appendix removal in acute appendicitis), and laparoscopic Nissen fundoplication for the definitive treatment of severe gastroesophageal reflux disease that does not respond to medical therapy. Each procedure is planned on an individual basis, prioritizing patient safety and excellence in outcomes.\n\nSome of these procedures can also be performed using Single-Port Surgery, an advanced laparoscopic technique that uses a single incision — usually in the navel — to achieve a superior cosmetic result with virtually invisible scars.',
+    benefits: [
+      {
+        title: 'Less postoperative pain',
+        description:
+          'The 3 to 12 mm incisions cause significantly less tissue trauma than open surgery, reducing the need for strong analgesics and pain during recovery.',
+        icon: '💪',
+      },
+      {
+        title: 'Minimal scarring',
+        description:
+          'The small laparoscopic incisions leave nearly imperceptible scars that fade over time, offering a far superior cosmetic result compared to open surgery.',
+        icon: '✂️',
+      },
+      {
+        title: 'Accelerated recovery',
+        description:
+          'Patients typically return to daily activities within 3 to 7 days, compared to 2 to 6 weeks required by conventional open surgery for the same procedures.',
+        icon: '🚀',
+      },
+      {
+        title: 'Lower risk of complications',
+        description:
+          'Laparoscopic technique reduces the incidence of surgical wound infections, incisional hernias, adhesions, and pulmonary complications associated with prolonged bed rest.',
+        icon: '🛡️',
+      },
+    ],
+    candidates: [
+      'Patients with symptomatic gallstones (cholelithiasis), gallbladder polyps, or chronic cholecystitis requiring gallbladder removal.',
+      'Individuals with inguinal, umbilical, epigastric, or incisional hernias causing pain, discomfort, or risk of incarceration or strangulation.',
+      'Patients with acute appendicitis requiring urgent or scheduled surgical removal of the cecal appendix.',
+      'Individuals with severe gastroesophageal reflux disease (GERD) that does not respond adequately to proton pump inhibitor medications and requires surgical correction.',
+      'Adults and adolescents with abdominal conditions amenable to laparoscopic approach, in whom preoperative evaluation confirms they are safe candidates for general anesthesia.',
+    ],
+    recovery: [
+      {
+        period: 'First week',
+        description:
+          'Depending on the procedure performed, the patient may go home the same day or the next day. Relative rest with short walks from day one. Diet may resume hours after surgery, liquid or soft depending on the type of surgery. Pain managed with oral analgesics. Care of small incisions by keeping them clean and dry.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Most patients return to work and daily activities between 5 and 14 days depending on the complexity of the procedure. Regular diet without significant restrictions. Avoid lifting heavy objects (over 5 kg / 11 lbs) and intense exercise.',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Nearly complete recovery. Gradual return to intense physical activity and weight training. In the case of hernia repair with mesh, the prosthetic material integrates and consolidates. Follow-up medical appointment to verify proper healing.',
+      },
+      {
+        period: '6-12 months',
+        description:
+          'Full recovery without restrictions. Scars progressively fade to become nearly invisible. In the case of fundoplication, reflux symptoms should have completely resolved. Routine annual follow-up depending on the procedure performed.',
+      },
+    ],
+    costRange: '',
+    duration: '30 min - 2 hours',
+    hospitalStay: 'Outpatient - 1 night',
+    icon: '✨',
+    faq: [
+      {
+        question: 'When is gallbladder surgery necessary?',
+        answer:
+          'Cholecystectomy (gallbladder removal) is indicated when gallstones cause symptoms such as pain in the upper right abdomen (biliary colic), nausea, vomiting, intolerance to fatty foods, or when complications arise such as acute cholecystitis (inflammation), choledocholithiasis (stones in the bile duct), or biliary pancreatitis. It is also recommended for gallbladder polyps larger than 10 mm due to malignancy risk. Gallstones do not dissolve with medications or alternative treatments; laparoscopic surgery is the definitive and safe treatment.',
+      },
+      {
+        question: 'Does laparoscopic surgery leave scars?',
+        answer:
+          'Yes, but they are minimal. Laparoscopic surgery is performed through 3 to 4 incisions between 3 and 12 mm, producing very small scars compared to the 10 to 20 cm incisions of open surgery. Over time, these marks become virtually invisible. Dr. Ruvalcaba uses cosmetic closure techniques and, when possible, places incisions in less visible areas (such as the navel) to optimize the cosmetic result.',
+      },
+      {
+        question:
+          'How long after surgery can I return to work?',
+        answer:
+          'The time varies depending on the procedure and type of work. For office jobs or sedentary activities, most patients can return within 5 to 7 days after a cholecystectomy or appendectomy. For hernia repair, 7 to 14 days may be required depending on the size and location of the hernia. For jobs involving moderate to intense physical effort, it is recommended to wait 3 to 4 weeks. Dr. Ruvalcaba provides personalized medical leave according to each patient\'s needs.',
+      },
+      {
+        question: 'What types of hernias can be repaired laparoscopically?',
+        answer:
+          'Virtually all abdominal wall hernias can be repaired laparoscopically: inguinal hernias (direct and indirect), umbilical hernias, epigastric hernias, incisional hernias (appearing at previous surgical scars), and Spigelian hernias, among others. Laparoscopic repair usually includes placement of a prosthetic mesh that reinforces the abdominal wall and significantly reduces the recurrence rate (from 10-15% without mesh to less than 2% with mesh). This technique is especially advantageous for bilateral or recurrent hernias.',
+      },
+    ],
+  },
+  // ---------------------------------------------------------------------------
+  // 5. Diastasis Recti Surgery
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'cirugia-diastasis-rectos',
+    imagePath: '/images/procedures/diastasis-rectos.webp',
+    title: 'Diastasis Recti Surgery',
+    shortTitle: 'Diastasis Recti',
+    metaTitle:
+      'Diastasis Recti Surgery in Merida | Dr. Mario Ruvalcaba',
+    metaDescription:
+      'Surgical repair of diastasis recti in Merida. Laparoscopic technique to restore the abdominal wall. Consult with Dr. Mario Ruvalcaba.',
+    heroHeadline: 'Diastasis Recti Surgery in Merida',
+    heroSubheadline:
+      'Restore the function and appearance of your abdominal wall with minimally invasive surgical techniques. Effective results and optimized recovery.',
+    description:
+      'Diastasis recti is the separation of the rectus abdominis muscles, common after pregnancy or in cases of obesity. Surgical repair restores the integrity of the abdominal wall, improving both function and appearance of the abdomen.',
+    longDescription:
+      'Diastasis recti consists of the abnormal separation of the two rectus abdominis muscles along the linea alba (the midline of the abdomen). This condition is especially common in women after one or multiple pregnancies, although it can also occur in men with significant abdominal obesity or after massive weight loss. The muscle separation causes a visible bulge along the abdominal midline, abdominal wall weakness, lower back pain, difficulty performing physical activities, and in some cases, associated hernias.\n\nWhen rehabilitation exercises and physical therapy fail to correct the diastasis, surgical repair is the definitive treatment. Dr. Mario Ruvalcaba performs the repair using laparoscopic or open technique depending on the severity of the case, bringing the rectus muscles back to their anatomical position and reinforcing the linea alba. In selected cases, mesh placement may be combined for additional support. The procedure restores abdominal muscle function, improves posture, relieves associated lower back pain, and restores a firmer, more natural abdominal contour.',
+    benefits: [
+      {
+        title: 'Functional restoration',
+        description:
+          'Restores integrity and strength to the abdominal wall, improving posture, core stability, and the ability to perform physical activities without discomfort.',
+        icon: '💪',
+      },
+      {
+        title: 'Cosmetic abdominal improvement',
+        description:
+          'Corrects the visible midline abdominal bulge, achieving a firmer, flatter, and more natural contour.',
+        icon: '✨',
+      },
+      {
+        title: 'Lower back pain relief',
+        description:
+          'By restoring anterior muscular support, lower back pain associated with abdominal wall weakness is significantly reduced.',
+        icon: '🛡️',
+      },
+      {
+        title: 'Minimally invasive technique',
+        description:
+          'In selected cases, performed laparoscopically with small incisions, reducing postoperative pain and accelerating recovery.',
+        icon: '🔬',
+      },
+    ],
+    candidates: [
+      'Women with persistent rectus abdominis muscle separation after one or more pregnancies that does not improve with rehabilitation exercises.',
+      'Individuals with diastasis recti presenting symptoms such as chronic lower back pain, functional abdominal weakness, or associated hernias.',
+      'Post-bariatric patients or those with massive weight loss who have diastasis recti with excess abdominal skin.',
+      'Men with diastasis recti secondary to abdominal obesity that persists after weight loss.',
+      'Adults who have completed at least 6 months of physical rehabilitation without significant improvement and desire a definitive solution.',
+    ],
+    recovery: [
+      {
+        period: 'First week',
+        description:
+          'Relative rest with early ambulation. Use of compressive abdominal binder 24 hours a day. Pain managed with oral analgesics. Avoid abdominal strain and lifting heavy objects.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Continue with abdominal binder. Gradual return to daily and sedentary work activities. Avoid direct abdominal exercises and lifting more than 5 kg (11 lbs).',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Progressive removal of abdominal binder as directed by the physician. Start of gentle supervised core strengthening exercises. Moderate physical activity permitted.',
+      },
+      {
+        period: '3-6 months',
+        description:
+          'Complete recovery. Return to physical activity without restrictions. Final results in terms of abdominal contour and firmness are fully appreciated at 3 to 6 months.',
+      },
+    ],
+    costRange: '',
+    duration: '1.5 - 2.5 hours',
+    hospitalStay: '1 night',
+    icon: '🏋️',
+    faq: [
+      {
+        question: 'How do I know if I have diastasis recti?',
+        answer:
+          'Diastasis recti presents as a visible bulge or ridge along the abdominal midline when performing abdominal effort (such as when sitting up from a lying position). It may be accompanied by abdominal weakness, lower back pain, and a feeling of laxity. The diagnosis is confirmed through physical examination and, in some cases, abdominal wall ultrasound. A separation greater than 2 cm between the rectus muscles is considered significant diastasis. Dr. Ruvalcaba performs a comprehensive evaluation to determine the degree of separation and the best treatment option.',
+      },
+      {
+        question: 'Can exercises correct diastasis recti?',
+        answer:
+          'In mild cases (separation less than 2-3 cm), a specific exercise program for pelvic floor and deep core rehabilitation, guided by a specialized physical therapist, can significantly improve the condition. However, in moderate to severe diastasis (greater than 3 cm) or when associated hernias are present, exercises alone cannot close the separation, and surgical repair is necessary to restore abdominal wall integrity.',
+      },
+      {
+        question: 'Can it be combined with a tummy tuck?',
+        answer:
+          'Yes, in patients who have excess skin and fatty tissue in addition to diastasis recti (common after pregnancy or massive weight loss), the diastasis repair can be combined with an abdominoplasty in a single surgical session. This allows correction of both the muscle separation and excess skin, achieving a comprehensive functional and cosmetic result. Dr. Ruvalcaba works in conjunction with plastic surgeons when this combined approach is required.',
+      },
+      {
+        question: 'Can diastasis recti return after surgery?',
+        answer:
+          'Recurrence after proper surgical repair is uncommon (less than 5%). Factors that may increase the risk of recurrence include a new pregnancy, significant weight gain, and performing intense abdominal exertion before completing recovery. For this reason, it is recommended to wait at least 12 months before a new pregnancy and to follow recovery instructions carefully.',
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
+  // 6. Emergency Surgery 24/7
+  // ---------------------------------------------------------------------------
+  {
+    slug: 'cirugias-urgencias',
+    imagePath: '/images/procedures/cirugias-urgencias.webp',
+    title: 'Emergency Surgery 24/7',
+    shortTitle: 'Emergency 24/7',
+    metaTitle:
+      'Emergency Surgery 24/7 in Merida | Dr. Mario Ruvalcaba',
+    metaDescription:
+      '24-hour emergency surgical care in Merida. Appendicitis, gallbladder, complicated hernias, and more. Dr. Mario Ruvalcaba, board-certified general surgeon.',
+    heroHeadline: 'Emergency Surgery 24/7 in Merida',
+    heroSubheadline:
+      'Emergency surgical care available 24 hours a day, 7 days a week. Rapid response and proven experience when you need it most.',
+    description:
+      'Emergency surgical care available 24 hours a day. Dr. Ruvalcaba handles emergencies such as acute appendicitis, cholecystitis, complicated hernias, bowel obstruction, and other abdominal emergencies with speed and expertise.',
+    longDescription:
+      'Abdominal surgical emergencies require immediate attention from an experienced surgeon to prevent serious complications. Dr. Mario Ruvalcaba offers 24/7 availability to handle surgical emergencies in Merida, Yucatan. Among the emergencies he most frequently treats are: acute appendicitis, acute cholecystitis (gallbladder inflammation), incarcerated or strangulated inguinal or ventral hernias, bowel obstruction, perforated ulcers, and intra-abdominal abscesses.\n\nEvery minute counts in a surgical emergency. Dr. Ruvalcaba prioritizes rapid and accurate diagnosis, using the imaging and laboratory resources available at the hospitals where he operates to make timely surgical decisions. Whenever patient conditions allow, the laparoscopic (minimally invasive) approach is preferred even in emergency settings, resulting in less postoperative pain, lower infection risk, and faster recovery. The combination of experience, immediate availability, and refined surgical technique ensures the best possible care at the most critical moment.',
+    benefits: [
+      {
+        title: '24/7 availability',
+        description:
+          'Emergency surgical care available at any hour of the day or night, 365 days a year. Rapid response time for evaluation and surgical decision-making.',
+        icon: '🕐',
+      },
+      {
+        title: 'Rapid and accurate diagnosis',
+        description:
+          'Expert clinical evaluation complemented by laboratory and imaging studies for an accurate diagnosis and timely surgical decision-making.',
+        icon: '⚡',
+      },
+      {
+        title: 'Minimally invasive in emergencies',
+        description:
+          'Whenever possible, laparoscopic technique is used even in emergency surgeries, reducing surgical trauma and accelerating patient recovery.',
+        icon: '🔬',
+      },
+      {
+        title: 'Proven experience',
+        description:
+          'Board-certified general surgeon with extensive experience managing complex abdominal surgical emergencies.',
+        icon: '🛡️',
+      },
+    ],
+    candidates: [
+      'Patients with severe acute abdominal pain requiring urgent surgical evaluation.',
+      'Individuals diagnosed with or suspected of having acute appendicitis requiring emergency appendectomy.',
+      'Patients with acute cholecystitis (gallbladder inflammation) unresponsive to medical treatment and requiring surgery.',
+      'Individuals with incarcerated or strangulated inguinal or ventral hernias representing a surgical emergency.',
+      'Patients with bowel obstruction, perforated ulcers, or other abdominal emergencies requiring immediate surgical intervention.',
+    ],
+    recovery: [
+      {
+        period: 'Hospitalization',
+        description:
+          'Depending on the complexity of the emergency, hospital stay ranges from 1 to 5 days. Close monitoring of vital signs, pain control, and postoperative progress surveillance. Early ambulation is encouraged.',
+      },
+      {
+        period: 'First week at home',
+        description:
+          'Relative rest with short walks. Progressive diet depending on the type of surgery performed. Pain managed with oral medications. Surgical wound care and awareness of warning signs.',
+      },
+      {
+        period: '2-4 weeks',
+        description:
+          'Gradual return to daily activities depending on progress. Office follow-up for wound check and recovery assessment. Avoid intense physical exertion.',
+      },
+      {
+        period: '1-3 months',
+        description:
+          'Complete recovery in most cases. Return to normal physical activity. Final follow-up to ensure complete resolution of the condition that prompted the emergency.',
+      },
+    ],
+    costRange: '',
+    duration: '30 min - 3 hours',
+    hospitalStay: '1 - 5 nights',
+    icon: '🚑',
+    faq: [
+      {
+        question: 'How do I contact Dr. Ruvalcaba in an emergency?',
+        answer:
+          'In a surgical emergency, you can reach out directly via the WhatsApp number or office phone, available 24 hours a day. You may also go directly to the emergency department of the hospitals where Dr. Ruvalcaba has surgical privileges in Merida. It is recommended to call first to coordinate care and reduce wait times.',
+      },
+      {
+        question: 'What signs indicate I need emergency surgery?',
+        answer:
+          'Warning signs that require urgent surgical evaluation include: severe and progressive abdominal pain, especially if accompanied by fever, persistent vomiting, abdominal distension, absence of bowel movements or gas, or if the abdomen feels rigid to the touch. Redness, intense pain, or sudden growth of a known hernia are also warning signs. If you experience any of these symptoms, seek emergency medical care immediately.',
+      },
+      {
+        question: 'Can laparoscopic surgery be performed in emergencies?',
+        answer:
+          'Yes, in most abdominal emergencies, laparoscopic technique can be and is preferred whenever patient conditions allow. Emergency appendectomy and cholecystectomy are routinely performed laparoscopically. Even in cases of complicated hernias and some bowel obstructions, the laparoscopic approach is feasible. Advantages include better visualization of the abdominal cavity, less pain, lower wound infection risk, and faster recovery.',
+      },
+      {
+        question: 'Which hospitals does Dr. Ruvalcaba attend for emergencies?',
+        answer:
+          'Dr. Mario Ruvalcaba has surgical privileges at top-tier hospitals in Merida, Yucatan, equipped with 24-hour operating rooms, laparoscopic equipment, intensive care units, and comprehensive diagnostic support services. During the initial consultation or at the time of the emergency, care is coordinated at the most convenient hospital based on the patient\'s location and availability.',
+      },
+    ],
+  },
+]
+
+// =============================================================================
+// PROCEDURES — Locale map
+// =============================================================================
+const PROCEDURES_BY_LOCALE: Record<Locale, Procedure[]> = {
+  es: PROCEDURES_ES,
+  en: PROCEDURES_EN,
+}
+
+export function getProcedures(locale: Locale = 'es'): Procedure[] {
+  return PROCEDURES_BY_LOCALE[locale]
+}
+
+export function getProcedureBySlug(
+  slug: string,
+  locale: Locale = 'es',
+): Procedure | undefined {
+  return getProcedures(locale).find((p) => p.slug === slug)
+}
+
+// =============================================================================
+// BARIATRIC SUB-PROCEDURES — Spanish
+// =============================================================================
+const BARIATRIC_SUB_PROCEDURES_ES: SubProcedure[] = [
   {
     title: 'Manga Gástrica',
     description:
@@ -665,10 +1308,72 @@ export const BARIATRIC_SUB_PROCEDURES: SubProcedure[] = [
   },
 ]
 
-// ---------------------------------------------------------------------------
-// Sub-procedimientos (Cirugía de Mínima Invasión)
-// ---------------------------------------------------------------------------
-export const SUB_PROCEDURES: SubProcedure[] = [
+// =============================================================================
+// BARIATRIC SUB-PROCEDURES — English
+// =============================================================================
+const BARIATRIC_SUB_PROCEDURES_EN: SubProcedure[] = [
+  {
+    title: 'Gastric Sleeve',
+    description:
+      '80% stomach reduction to limit food intake and decrease the hunger hormone.',
+    icon: '🔬',
+  },
+  {
+    title: 'Gastric Bypass',
+    description:
+      'Combined restrictive-malabsorptive procedure, the gold standard for severe obesity and type 2 diabetes.',
+    icon: '⚕️',
+  },
+  {
+    title: 'Intragastric Balloon',
+    description:
+      'Non-surgical endoscopic device for weight loss in overweight and mild to moderate obesity.',
+    icon: '🎈',
+  },
+  {
+    title: 'Intestinal Transit Bipartition',
+    description:
+      'Technique combining gastric sleeve with partial intestinal bypass to optimize metabolic outcomes.',
+    icon: '🔄',
+  },
+  {
+    title: 'SADI-S',
+    description:
+      'Single-anastomosis duodeno-ileal bypass with sleeve gastrectomy for severe obesity and diabetes.',
+    icon: '⚡',
+  },
+  {
+    title: 'Revision Surgery',
+    description:
+      'Correction of prior bariatric procedures with insufficient results or complications.',
+    icon: '🔧',
+  },
+  {
+    title: 'Conversion Surgery',
+    description:
+      'Conversion from one type of bariatric surgery to another to improve outcomes.',
+    icon: '🔀',
+  },
+]
+
+// =============================================================================
+// BARIATRIC SUB-PROCEDURES — Locale map
+// =============================================================================
+const BARIATRIC_SUB_PROCEDURES_BY_LOCALE: Record<Locale, SubProcedure[]> = {
+  es: BARIATRIC_SUB_PROCEDURES_ES,
+  en: BARIATRIC_SUB_PROCEDURES_EN,
+}
+
+export function getBariatricSubProcedures(
+  locale: Locale = 'es',
+): SubProcedure[] {
+  return BARIATRIC_SUB_PROCEDURES_BY_LOCALE[locale]
+}
+
+// =============================================================================
+// SUB-PROCEDURES (Minimally Invasive Surgery) — Spanish
+// =============================================================================
+const SUB_PROCEDURES_ES: SubProcedure[] = [
   {
     title: 'Colecistectomía Laparoscópica',
     description:
@@ -712,9 +1417,61 @@ export const SUB_PROCEDURES: SubProcedure[] = [
   },
 ]
 
-// ---------------------------------------------------------------------------
-// Helper
-// ---------------------------------------------------------------------------
-export function getProcedureBySlug(slug: string): Procedure | undefined {
-  return PROCEDURES.find(procedure => procedure.slug === slug)
+// =============================================================================
+// SUB-PROCEDURES (Minimally Invasive Surgery) — English
+// =============================================================================
+const SUB_PROCEDURES_EN: SubProcedure[] = [
+  {
+    title: 'Laparoscopic Cholecystectomy',
+    description:
+      'Gallbladder removal via laparoscopy to treat gallstones, gallbladder polyps, and cholecystitis. Outpatient procedure with recovery in 5 to 7 days and minimal postoperative pain.',
+    icon: '🫁',
+  },
+  {
+    title: 'Laparoscopic Appendectomy',
+    description:
+      'Laparoscopic removal of the cecal appendix in cases of acute appendicitis. Allows for faster recovery, lower wound infection risk, and return to normal activity within days.',
+    icon: '⚡',
+  },
+  {
+    title: 'Fundoplication',
+    description:
+      'Laparoscopic anti-reflux surgery (Nissen fundoplication) for the definitive treatment of severe gastroesophageal reflux disease. Wraps the gastric fundus around the lower esophagus to permanently restore the anti-reflux barrier.',
+    icon: '🔧',
+  },
+  {
+    title: 'Achalasia Surgery',
+    description:
+      'Laparoscopic Heller myotomy for esophageal motility disorder.',
+    icon: '🫁',
+  },
+  {
+    title: 'Ventral Hernia Surgery',
+    description:
+      'Laparoscopic repair of anterior abdominal wall hernias with mesh.',
+    icon: '🩹',
+  },
+  {
+    title: 'Inguinal Hernia Surgery',
+    description: 'Laparoscopic inguinal hernioplasty using TEP or TAPP technique.',
+    icon: '🩹',
+  },
+  {
+    title: 'Single-Port Surgery',
+    description:
+      'Advanced laparoscopic technique that performs the procedure through a single incision, usually in the navel, for a superior cosmetic result.',
+    icon: '🔘',
+  },
+]
+
+// =============================================================================
+// SUB-PROCEDURES — Locale map
+// =============================================================================
+const SUB_PROCEDURES_BY_LOCALE: Record<Locale, SubProcedure[]> = {
+  es: SUB_PROCEDURES_ES,
+  en: SUB_PROCEDURES_EN,
+}
+
+export function getSubProcedures(locale: Locale = 'es'): SubProcedure[] {
+  return SUB_PROCEDURES_BY_LOCALE[locale]
 }

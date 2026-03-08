@@ -1,0 +1,42 @@
+{
+  "shared": {
+    "whatIs": "What is {procedure}?",
+    "benefits": "Benefits",
+    "whoIsCandidate": "Who Is a Candidate?",
+    "candidates": "Who Is a Candidate?",
+    "recoveryProcess": "Recovery Process",
+    "recovery": "Recovery Process",
+    "faqAbout": "Frequently Asked Questions about {procedure}",
+    "faq": "Frequently Asked Questions about {procedure}",
+    "otherProcedures": "Other Procedures",
+    "procedureIllustration": "Procedure illustration",
+    "proceduresWePerform": "Procedures We Perform",
+    "imageAlt": "{procedure} illustration",
+    "imagePlaceholder": "Procedure illustration",
+    "viewProcedure": "View procedure"
+  },
+  "mangaGastrica": {
+    "ctaHeading": "Is Gastric Sleeve Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "bypassGastrico": {
+    "ctaHeading": "Is Gastric Bypass Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "balonIntragastrico": {
+    "ctaHeading": "Is the Intragastric Balloon Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaMinimaInvasion": {
+    "ctaHeading": "Do You Need Minimally Invasive Surgery?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaDiastasisRectos": {
+    "ctaHeading": "Do You Need Diastasis Recti Repair?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiasUrgencias": {
+    "ctaHeading": "Do You Have a Surgical Emergency?",
+    "ctaDescription": "Contact Dr. Mario Ruvalcaba 24 hours a day, 7 days a week."
+  }
+}

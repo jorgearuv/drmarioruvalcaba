@@ -1,0 +1,53 @@
+{
+  "heroLabel": "Contacto",
+  "heroTitle": "Contáctanos",
+  "heroDescription": "Estamos aquí para ayudarte. Agenda tu consulta o envíanos un mensaje.",
+  "formTitle": "Envíanos un Mensaje",
+  "formDescription": "Completa el formulario y nos pondremos en contacto contigo a la brevedad.",
+  "infoTitle": "Información de Contacto",
+  "officeLabel": "Consultorio",
+  "phoneLabel": "Teléfono",
+  "emailLabel": "Correo Electrónico",
+  "emailNote": "Respuesta en 24-48 horas",
+  "hoursLabel": "Horario de Atención Consultas",
+  "hoursValue": "Lunes a Viernes: 3:00 pm - 9:00 pm",
+  "whatsappNote": "Respuesta rápida · Lun a Vie 9am - 7pm",
+  "emergencyNote": "URGENCIAS 24 horas",
+  "mapTitle": "Ubicación del consultorio del Dr. Mario Ruvalcaba en Mérida",
+  "form": {
+    "name": "Nombre completo",
+    "namePlaceholder": "Tu nombre completo",
+    "phone": "Teléfono",
+    "phonePlaceholder": "Tu número de teléfono",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "reason": "Motivo de consulta",
+    "reasonPlaceholder": "Selecciona un motivo",
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntanos más sobre tu consulta (opcional)",
+    "submit": "Enviar mensaje",
+    "reasons": {
+      "gastricSleeve": "Manga Gástrica",
+      "gastricBypass": "Bypass Gástrico",
+      "intragastricBalloon": "Balón Intragástrico",
+      "minimallyInvasiveSurgery": "Cirugía de Mínima Invasión",
+      "otherInquiry": "Otra consulta"
+    }
+  },
+  "validation": {
+    "nameRequired": "Por favor ingresa tu nombre completo.",
+    "phoneRequired": "Por favor ingresa tu número de teléfono.",
+    "emailRequired": "Por favor ingresa tu correo electrónico.",
+    "reasonRequired": "Por favor selecciona un motivo de consulta."
+  },
+  "success": {
+    "heading": "¡Redirigido a WhatsApp!",
+    "fallback": "Si WhatsApp no se abrió,",
+    "sendEmail": "envía un correo",
+    "followUp": "y nos pondremos en contacto contigo.",
+    "sendAnother": "Enviar otro mensaje"
+  },
+  "whatsappIntro": "Hola Dr. Ruvalcaba, me gustaría agendar una consulta.",
+  "emailSubjectPrefix": "Consulta",
+  "emailDefaultBody": "Me gustaría agendar una consulta."
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import BlogCard from "@/components/sections/BlogCard";
 import type { BlogPost } from "@/types";
 
@@ -14,6 +15,7 @@ export default function BlogListingWithFilters({
   categories,
 }: BlogListingWithFiltersProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const t = useTranslations("blog");
 
   const filteredPosts = selectedCategory
     ? posts.filter((post) => post.category === selectedCategory)
@@ -32,7 +34,7 @@ export default function BlogListingWithFilters({
                 : "border border-navy-200/60 text-navy-600 hover:border-teal-400 hover:text-teal-600"
             }`}
           >
-            Todos
+            {t("allCategories")}
           </button>
           {categories.map((category) => (
             <button
@@ -61,7 +63,7 @@ export default function BlogListingWithFilters({
             </div>
           ) : (
             <p className="text-center text-lg text-navy-500">
-              No hay artículos en esta categoría todavía.
+              {t("noPosts")}
             </p>
           )}
         </div>

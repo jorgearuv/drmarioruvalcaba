@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, useReducedMotion } from "framer-motion";
-import { WHATSAPP_URL, HERO_TRUST_SIGNALS } from "@/lib/constants";
+import { useTranslations, useLocale } from "next-intl";
+import { HERO_TRUST_SIGNALS } from "@/lib/constants";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import type { Locale } from "@/i18n/routing";
 
 interface HeroProps {
   headline: string;
@@ -13,6 +16,13 @@ interface HeroProps {
 
 export default function Hero({ headline, subheadline }: HeroProps) {
   const shouldReduceMotion = useReducedMotion();
+  const tHero = useTranslations("home.hero");
+  const tCta = useTranslations("common.cta");
+  const locale = useLocale() as Locale;
+  const whatsAppUrl = getWhatsAppUrl(locale);
+
+  const tealHighlightWords: string[] = tHero.raw("highlightWords.teal") as string[];
+  const goldHighlightWords: string[] = tHero.raw("highlightWords.gold") as string[];
 
   const CUBIC_EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
@@ -69,9 +79,9 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-400" />
                 </span>
-                <span className="text-teal-200">Cirujano General y Bariátra Certificado</span>
+                <span className="text-teal-200">{tHero("badge")}</span>
                 <span className="text-white/20" aria-hidden="true">|</span>
-                <span className="text-gold-400">Mérida, Yucatán</span>
+                <span className="text-gold-400">{tHero("location")}</span>
               </span>
             </motion.div>
 
@@ -82,8 +92,8 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               className="mt-8 max-w-2xl font-display text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] tracking-tight text-white"
             >
               {headline.split(" ").map((word, wordIndex) => {
-                const isTealWord = ["Bariátra", "Mínima", "Invasión"].includes(word);
-                const isGoldWord = ["Mérida", "Yucatán"].includes(word);
+                const isTealWord = tealHighlightWords.includes(word);
+                const isGoldWord = goldHighlightWords.includes(word);
                 if (isTealWord) {
                   return (
                     <span key={wordIndex} className="text-teal-400">
@@ -123,19 +133,19 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
             >
               <a
-                href={WHATSAPP_URL}
+                href={whatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-primary-500 to-primary-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-600/30"
               >
                 <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
-                Agendar Cita
+                {tCta("scheduleAppointment")}
               </a>
-              <Link
+              <a
                 href="#procedimientos"
                 className="group inline-flex items-center gap-2 rounded-2xl border border-white/[0.12] px-8 py-4 text-lg font-medium text-white/90 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
               >
-                Conocer Procedimientos
+                {tCta("learnProcedures")}
                 <svg
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
                   fill="none"
@@ -146,14 +156,14 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
-              </Link>
+              </a>
             </motion.div>
 
             {/* Trust credentials bar */}
             <motion.div
               {...animationProps(0.6)}
               className="mt-12"
-              aria-label="Credenciales del doctor"
+              aria-label={tHero("trustSignals.ariaLabel")}
               role="list"
             >
               {/* Gradient accent line */}
@@ -183,7 +193,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                   <div className="leading-none">
                     <span className="text-sm font-semibold text-white">5.0</span>
                     <span className="ml-1.5 text-xs text-navy-300/80 transition-colors duration-200 group-hover:text-teal-400">
-                      Doctoralia
+                      {tHero("trustSignals.doctoralia")}
                     </span>
                     <span className="ml-0.5 inline-block transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
                       <svg className="inline h-2.5 w-2.5 text-navy-300/50" viewBox="0 0 20 20" fill="currentColor">
@@ -191,7 +201,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                       </svg>
                     </span>
                     <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
-                      23 opiniones verificadas
+                      {tHero("trustSignals.verifiedReviews")}
                     </p>
                   </div>
                 </a>
@@ -205,9 +215,9 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                     <path fillRule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
                   </svg>
                   <div className="leading-none">
-                    <p className="text-sm font-semibold text-white">Certificado</p>
+                    <p className="text-sm font-semibold text-white">{tHero("trustSignals.certified")}</p>
                     <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
-                      Consejo Mexicano de Cirugía General
+                      {tHero("trustSignals.certificationBody")}
                     </p>
                   </div>
                 </div>
@@ -221,9 +231,9 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
                   </svg>
                   <div className="leading-none">
-                    <p className="text-sm font-semibold text-white">+5 años</p>
+                    <p className="text-sm font-semibold text-white">{tHero("trustSignals.experience")}</p>
                     <p className="mt-1 text-[11px] tracking-wide text-navy-400/60">
-                      Experiencia como Cirujano
+                      {tHero("trustSignals.experienceLabel")}
                     </p>
                   </div>
                 </div>
@@ -250,7 +260,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
             <div className="relative mx-auto w-full max-w-md">
               <Image
                 src="/images/doctor/hero-cutout.webp"
-                alt="Dr. Mario Ruvalcaba — Cirujano General y Bariátra Certificado"
+                alt={tHero("doctorImageAlt")}
                 width={1024}
                 height={1536}
                 sizes="(max-width: 1024px) 0px, 420px"

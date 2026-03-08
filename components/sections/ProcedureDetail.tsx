@@ -1,12 +1,14 @@
-import Image from 'next/image'
-import type { Procedure } from '@/types'
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import type { Procedure } from "@/types";
 
 interface ProcedureDetailProps {
-  procedure: Procedure
+  procedure: Procedure;
 }
 
-export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
-  const descriptionParagraphs = procedure.longDescription.split('\n\n')
+export default async function ProcedureDetail({ procedure }: ProcedureDetailProps) {
+  const t = await getTranslations("procedures.shared");
+  const descriptionParagraphs = procedure.longDescription.split("\n\n");
 
   return (
     <>
@@ -28,14 +30,14 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
 
           <div className="mt-8 flex gap-4 flex-wrap">
             <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-              {'\u23F1\uFE0F'} {procedure.duration}
+              {"\u23F1\uFE0F"} {procedure.duration}
             </span>
             <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-              {'\u{1F3E5}'} {procedure.hospitalStay}
+              {"\u{1F3E5}"} {procedure.hospitalStay}
             </span>
             {procedure.costRange && (
               <span className="glass-dark text-white px-4 py-2 rounded-full text-sm">
-                {'\u{1F4B0}'} {procedure.costRange}
+                {"\u{1F4B0}"} {procedure.costRange}
               </span>
             )}
           </div>
@@ -49,7 +51,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
             {/* Text column */}
             <div className="max-w-2xl">
               <h2 className="font-display text-3xl text-navy-900">
-                ¿Qué es la {procedure.shortTitle}?
+                {t("whatIs", { procedure: procedure.shortTitle })}
               </h2>
 
               <div className="mt-6 space-y-6">
@@ -70,7 +72,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
                 {procedure.imagePath ? (
                   <Image
                     src={procedure.imagePath}
-                    alt={`Ilustración del procedimiento de ${procedure.shortTitle}`}
+                    alt={t("imageAlt", { procedure: procedure.shortTitle })}
                     width={800}
                     height={600}
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -82,7 +84,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
                       {procedure.icon}
                     </div>
                     <p className="mt-4 text-sm font-medium text-navy-400">
-                      Ilustración del procedimiento
+                      {t("imagePlaceholder")}
                     </p>
                     <p className="mt-1 text-xs text-navy-300">
                       {procedure.shortTitle}
@@ -99,11 +101,11 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
       <section className="py-16 bg-navy-50">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-center font-display text-3xl text-navy-900">
-            Beneficios
+            {t("benefits")}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-            {procedure.benefits.map(benefit => (
+            {procedure.benefits.map((benefit) => (
               <div
                 key={benefit.title}
                 className="card-premium bg-white rounded-2xl p-6"
@@ -123,11 +125,11 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="font-display text-3xl text-navy-900">
-            ¿Quién es Candidato?
+            {t("candidates")}
           </h2>
 
           <ul className="space-y-4 mt-8">
-            {procedure.candidates.map(candidateDescription => (
+            {procedure.candidates.map((candidateDescription) => (
               <li key={candidateDescription} className="flex items-start gap-3">
                 <span className="h-6 w-6 rounded-full bg-linear-to-br from-teal-50 to-teal-100 text-teal-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                   ✓
@@ -145,7 +147,7 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
       <section className="py-16 bg-navy-50">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-center font-display text-3xl text-navy-900">
-            Proceso de Recuperación
+            {t("recovery")}
           </h2>
 
           <div className="mt-10">
@@ -180,11 +182,11 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="font-display text-3xl text-navy-900">
-            Preguntas Frecuentes sobre {procedure.shortTitle}
+            {t("faq", { procedure: procedure.shortTitle })}
           </h2>
 
           <div className="mt-8">
-            {procedure.faq.map(faqItem => (
+            {procedure.faq.map((faqItem) => (
               <div
                 key={faqItem.question}
                 className="border-b border-navy-100 py-6"
@@ -199,5 +201,5 @@ export default function ProcedureDetail({ procedure }: ProcedureDetailProps) {
         </div>
       </section>
     </>
-  )
+  );
 }

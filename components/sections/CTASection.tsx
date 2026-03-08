@@ -1,10 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, useReducedMotion } from "framer-motion";
-import { WHATSAPP_URL, DOCTOR_INFO } from "@/lib/constants";
+import { useTranslations, useLocale } from "next-intl";
+import { DOCTOR_INFO } from "@/lib/constants";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { useId } from "react";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import type { Locale } from "@/i18n/routing";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -45,12 +48,14 @@ interface ContactCardProps {
   buttonText: string;
   buttonHref: string;
   isExternalLink: boolean;
+  tWhatsapp: (key: string, values?: Record<string, string>) => string;
 }
 
 const ContactCard = ({
   buttonText,
   buttonHref,
   isExternalLink,
+  tWhatsapp,
 }: ContactCardProps) => {
   const formattedWhatsAppNumber = DOCTOR_INFO.whatsapp;
 
@@ -59,7 +64,7 @@ const ContactCard = ({
 
   return (
     <div className="glass-dark rounded-3xl p-8">
-      <h3 className="font-display text-2xl text-white">Agenda tu consulta</h3>
+      <h3 className="font-display text-2xl text-white">{tWhatsapp("scheduleConsultation")}</h3>
 
       {/* WhatsApp number display */}
       <div className="mt-5 flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
@@ -68,7 +73,7 @@ const ContactCard = ({
           href={`https://wa.me/${formattedWhatsAppNumber.replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Escríbenos por WhatsApp al ${formattedWhatsAppNumber}`}
+          aria-label={tWhatsapp("writeUsAria", { number: formattedWhatsAppNumber })}
           className="font-mono text-sm tracking-wide text-white/90 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white hover:decoration-white"
         >
           {formattedWhatsAppNumber}
@@ -82,28 +87,28 @@ const ContactCard = ({
             href={buttonHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${buttonText} — abre WhatsApp en una nueva pestaña`}
+            aria-label={`${buttonText} — ${tWhatsapp("opensNewTab")}`}
             className={whatsAppButtonClasses}
           >
             <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
             {buttonText}
           </a>
         ) : (
-          <Link
+          <a
             href={buttonHref}
             aria-label={buttonText}
             className={whatsAppButtonClasses}
           >
             <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
             {buttonText}
-          </Link>
+          </a>
         )}
       </div>
 
       {/* Trust micro-copy */}
       <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-white/50">
         <ClockIcon />
-        Respuesta en menos de 2 horas
+        {tWhatsapp("responseTime")}
       </p>
     </div>
   );
@@ -117,14 +122,23 @@ export default function CTASection({
   variant = "teal",
   heading,
   description,
-  buttonText = "Agendar Cita",
-  buttonHref = WHATSAPP_URL,
+  buttonText,
+  buttonHref,
 }: CTASectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const sectionHeadingId = useId();
 
+  const tCta = useTranslations("common.cta");
+  const tWhatsapp = useTranslations("common.whatsapp");
+  const tAvailability = useTranslations("common.availability");
+  const locale = useLocale() as Locale;
+  const whatsAppUrl = getWhatsAppUrl(locale);
+
+  const resolvedButtonText = buttonText ?? tCta("scheduleAppointment");
+  const resolvedButtonHref = buttonHref ?? whatsAppUrl;
+
   const isTealVariant = variant === "teal";
-  const isExternalLink = buttonHref.startsWith("http");
+  const isExternalLink = resolvedButtonHref.startsWith("http");
 
   const sectionBackgroundClass = isTealVariant
     ? "gradient-mesh-cta"
@@ -214,7 +228,7 @@ export default function CTASection({
                 />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
               </span>
-              Consultas disponibles esta semana
+              {tAvailability("consultationsAvailable")}
             </motion.p>
           </div>
 
@@ -224,9 +238,10 @@ export default function CTASection({
             className="w-full lg:w-5/12"
           >
             <ContactCard
-              buttonText={buttonText}
-              buttonHref={buttonHref}
+              buttonText={resolvedButtonText}
+              buttonHref={resolvedButtonHref}
               isExternalLink={isExternalLink}
+              tWhatsapp={tWhatsapp}
             />
           </motion.div>
         </div>

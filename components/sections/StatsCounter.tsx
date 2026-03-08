@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 // ---------------------------------------------------------------------------
 // Framer-motion easing constant — typed as const tuple so TypeScript narrows
@@ -13,16 +14,9 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 const CUBIC_EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 // ---------------------------------------------------------------------------
-// Bariatric benefit data — defined as a typed constant for declarative JSX
+// SVG icon components — each marked aria-hidden at usage site
 // ---------------------------------------------------------------------------
 
-interface BariatricBenefit {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-// SVG icon components — each marked aria-hidden at usage site
 const TrophyIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -76,26 +70,13 @@ const ScalpelIcon = () => (
   </svg>
 );
 
-const BARIATRIC_BENEFITS: BariatricBenefit[] = [
-  {
-    icon: <TrophyIcon />,
-    title: "Resultados Comprobados",
-    description:
-      "Pérdida del 60–80% del exceso de peso en el primer año, con resultados sostenidos a largo plazo respaldados por miles de pacientes.",
-  },
-  {
-    icon: <HeartPulseIcon />,
-    title: "Mejora Enfermedades",
-    description:
-      "Remisión de diabetes tipo 2, hipertensión y apnea del sueño en la mayoría de los pacientes, mejorando su calidad de vida de forma integral.",
-  },
-  {
-    icon: <ScalpelIcon />,
-    title: "Mínima Invasión",
-    description:
-      "Técnicas laparoscópicas avanzadas con incisiones desde 3 hasta 12 mm, recuperación más rápida, menos dolor y cicatrices prácticamente invisibles.",
-  },
-];
+// ---------------------------------------------------------------------------
+// Bariatric benefit data — icons are static, text comes from translations
+// ---------------------------------------------------------------------------
+
+const BENEFIT_ICONS = [<TrophyIcon key="trophy" />, <HeartPulseIcon key="heart" />, <ScalpelIcon key="scalpel" />] as const;
+
+const BENEFIT_KEYS = ["provenResults", "improvesDiseases", "minimalInvasion"] as const;
 
 // ---------------------------------------------------------------------------
 // Animation variant factories
@@ -145,15 +126,19 @@ function buildSlideInVariants(
 // ---------------------------------------------------------------------------
 
 interface BenefitCardProps {
-  benefit: BariatricBenefit;
+  benefitKey: string;
+  icon: React.ReactNode;
   cardIndex: number;
   shouldReduceMotion: boolean;
+  t: (key: string) => string;
 }
 
 const BenefitCard = ({
-  benefit,
+  benefitKey,
+  icon,
   cardIndex,
   shouldReduceMotion,
+  t,
 }: BenefitCardProps) => {
   const fadeUpVariants = buildFadeUpVariants(shouldReduceMotion);
   const animationDelaySeconds = 0.2 + cardIndex * 0.14;
@@ -172,13 +157,15 @@ const BenefitCard = ({
         className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-md shadow-teal-600/25"
         aria-hidden="true"
       >
-        {benefit.icon}
+        {icon}
       </div>
 
       <div>
-        <h3 className="font-display text-lg text-navy-900">{benefit.title}</h3>
+        <h3 className="font-display text-lg text-navy-900">
+          {t(`benefits.${benefitKey}.title`)}
+        </h3>
         <p className="mt-1.5 text-sm leading-relaxed text-navy-500">
-          {benefit.description}
+          {t(`benefits.${benefitKey}.description`)}
         </p>
       </div>
     </motion.article>
@@ -187,16 +174,12 @@ const BenefitCard = ({
 
 // ---------------------------------------------------------------------------
 // StatsCounter — "Why bariatric surgery?" empathy section
-//
-// The export name is kept as `StatsCounter` to avoid changing upstream
-// page-level imports. The count-up animation logic has been removed entirely
-// in favour of this editorial two-column layout.
-//
-// useRef and useState are retained per spec (reserved for future use).
 // ---------------------------------------------------------------------------
 
 export default function StatsCounter() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("home.stats");
+  const tCta = useTranslations("common.cta");
 
   const shouldReduceMotion = useReducedMotion() ?? false;
   const leftColumnVariants = buildSlideInVariants(shouldReduceMotion, "left");
@@ -234,7 +217,7 @@ export default function StatsCounter() {
           >
             {/* Overline */}
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-teal-600">
-              Por Qué Elegir Cirugía Bariátrica
+              {t("overline")}
             </p>
 
             {/* Section heading */}
@@ -242,7 +225,7 @@ export default function StatsCounter() {
               id={sectionHeadingId}
               className="heading-gradient mt-3 font-display text-3xl leading-tight md:text-4xl lg:text-5xl"
             >
-              Transforma Tu Salud, Transforma Tu Vida
+              {t("heading")}
             </h2>
 
             {/* Teal/gold gradient divider */}
@@ -250,10 +233,7 @@ export default function StatsCounter() {
 
             {/* Empathetic lead paragraph */}
             <p className="mt-6 text-base leading-relaxed text-navy-600 md:text-lg">
-              La cirugía bariátrica no es solo una operación — es el inicio de
-              una transformación integral. Miles de pacientes han recuperado su
-              salud, su movilidad y su confianza gracias a procedimientos
-              mínimamente invasivos respaldados por décadas de evidencia clínica.
+              {t("description")}
             </p>
 
             {/* Doctor profile CTA */}
@@ -268,9 +248,9 @@ export default function StatsCounter() {
               <Link
                 href="/sobre-el-doctor"
                 className="inline-flex items-center gap-2 rounded-xl border border-teal-600/30 bg-teal-50 px-6 py-3 text-sm font-semibold text-teal-700 transition-all duration-300 hover:border-teal-600/60 hover:bg-teal-100 hover:shadow-md hover:shadow-teal-600/10"
-                aria-label="Conocer más sobre el Dr. Mario Ruvalcaba"
+                aria-label={t("meetDoctorAriaLabel")}
               >
-                Conocer al Doctor
+                {tCta("meetDoctor")}
                 <svg
                   className="h-4 w-4"
                   fill="none"
@@ -294,14 +274,16 @@ export default function StatsCounter() {
           ---------------------------------------------------------------- */}
           <div
             className="flex flex-col gap-4 md:w-7/12"
-            aria-label="Beneficios de la cirugía bariátrica"
+            aria-label={t("benefitsAriaLabel")}
           >
-            {BARIATRIC_BENEFITS.map((benefit, benefitIndex) => (
+            {BENEFIT_KEYS.map((benefitKey, benefitIndex) => (
               <BenefitCard
-                key={benefit.title}
-                benefit={benefit}
+                key={benefitKey}
+                benefitKey={benefitKey}
+                icon={BENEFIT_ICONS[benefitIndex]}
                 cardIndex={benefitIndex}
                 shouldReduceMotion={shouldReduceMotion}
+                t={t}
               />
             ))}
           </div>

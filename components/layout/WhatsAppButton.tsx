@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { WHATSAPP_URL } from "@/lib/constants";
+import { useTranslations, useLocale } from "next-intl";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import type { Locale } from "@/i18n/routing";
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const t = useTranslations("common.whatsapp");
+  const locale = useLocale() as Locale;
+  const whatsAppUrl = getWhatsAppUrl(locale);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,14 +37,14 @@ export default function WhatsAppButton() {
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="glass-dark whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-white"
               >
-                ¿Necesitas ayuda?
+                {t("needHelp")}
               </motion.span>
             )}
           </AnimatePresence>
 
           {/* WhatsApp Button */}
           <motion.a
-            href={WHATSAPP_URL}
+            href={whatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ scale: 0, opacity: 0 }}
@@ -49,7 +54,7 @@ export default function WhatsAppButton() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-xl shadow-green-500/25 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/30 hover:scale-105"
-            aria-label="Contactar por WhatsApp"
+            aria-label={t("contactVia")}
           >
             <WhatsAppIcon className="h-7 w-7" />
           </motion.a>

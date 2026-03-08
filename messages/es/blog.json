@@ -1,0 +1,19 @@
+{
+  "overline": "Blog",
+  "heading": "Blog",
+  "subtitle": "Artículos informativos sobre cirugía bariátrica, nutrición y estilo de vida saludable.",
+  "allCategories": "Todos",
+  "noArticles": "No hay artículos en esta categoría todavía.",
+  "noPosts": "No hay artículos en esta categoría todavía.",
+  "heroDescription": "Artículos informativos sobre cirugía bariátrica, nutrición y estilo de vida saludable.",
+  "readTime": "de lectura",
+  "breadcrumb": {
+    "home": "Inicio",
+    "blog": "Blog"
+  },
+  "ctaHeading": "¿Tienes Dudas sobre Cirugía Bariátrica?",
+  "ctaDescription": "Agenda una consulta con el Dr. Mario Ruvalcaba y resuelve todas tus preguntas.",
+  "articleCtaHeading": "¿Tienes más preguntas sobre la cirugía bariátrica?",
+  "articleCtaDescription": "Agenda una consulta de valoración. Juntos revisamos tu caso, resolvemos tus dudas y, si la cirugía es la opción adecuada para ti, te acompañamos en cada paso del camino.",
+  "articleInSpanish": "Este artículo está disponible en español."
+}

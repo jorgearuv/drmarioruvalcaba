@@ -65,6 +65,7 @@ export function generateLocalBusinessJsonLd(doctor: DoctorInfo) {
 export function generateMedicalProcedureJsonLd(
   procedure: Procedure,
   doctorName: string,
+  locale: string = "es",
 ) {
   return {
     "@context": "https://schema.org",
@@ -73,6 +74,7 @@ export function generateMedicalProcedureJsonLd(
     description: procedure.description,
     howPerformed: procedure.longDescription,
     procedureType: "Surgical",
+    inLanguage: locale === "en" ? "en" : "es",
     followup: procedure.recovery.map((step) => step.description).join(". "),
     performedBy: {
       "@type": "Physician",
@@ -127,8 +129,9 @@ export function generateBreadcrumbJsonLd(
  * Converts a Spanish month-year string like "Noviembre 2025" to an ISO date.
  * Falls back to undefined if parsing fails.
  */
-function parseSpanishDateToIso(timeAgo: string): string | undefined {
+function parseMonthYearToIso(timeAgo: string): string | undefined {
   const monthMap: Record<string, string> = {
+    // Spanish
     enero: "01",
     febrero: "02",
     marzo: "03",
@@ -141,6 +144,19 @@ function parseSpanishDateToIso(timeAgo: string): string | undefined {
     octubre: "10",
     noviembre: "11",
     diciembre: "12",
+    // English
+    january: "01",
+    february: "02",
+    march: "03",
+    april: "04",
+    may: "05",
+    june: "06",
+    july: "07",
+    august: "08",
+    september: "09",
+    october: "10",
+    november: "11",
+    december: "12",
   };
   const parts = timeAgo.trim().toLowerCase().split(/\s+/);
   if (parts.length !== 2) return undefined;
@@ -157,22 +173,25 @@ function parseSpanishDateToIso(timeAgo: string): string | undefined {
 export function generateBlogArticleJsonLd(
   post: BlogPost,
   siteUrl: string,
+  locale: string = "es",
 ) {
+  const urlPrefix = locale === "en" ? "/en" : "";
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    inLanguage: locale === "en" ? "en" : "es",
     author: {
       "@type": "Person",
       name: post.author,
-      url: `${siteUrl}/sobre-el-doctor`,
+      url: `${siteUrl}${urlPrefix}/${locale === "en" ? "about-the-doctor" : "sobre-el-doctor"}`,
     },
-    url: `${siteUrl}/blog/${post.slug}`,
+    url: `${siteUrl}${urlPrefix}/blog/${post.slug}`,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteUrl}/blog/${post.slug}`,
+      "@id": `${siteUrl}${urlPrefix}/blog/${post.slug}`,
     },
     ...(post.imagePath && { image: `${siteUrl}${post.imagePath}` }),
   };
@@ -204,7 +223,7 @@ export function generateReviewsJsonLd(
       bestRating: 5,
     },
     review: testimonials.map((testimonial) => {
-      const datePublished = parseSpanishDateToIso(testimonial.timeAgo);
+      const datePublished = parseMonthYearToIso(testimonial.timeAgo);
       return {
         "@type": "Review",
         author: { "@type": "Person", name: testimonial.name },

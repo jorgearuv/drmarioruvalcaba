@@ -1,0 +1,42 @@
+{
+  "shared": {
+    "whatIs": "¿Qué es la {procedure}?",
+    "benefits": "Beneficios",
+    "whoIsCandidate": "¿Quién es Candidato?",
+    "candidates": "¿Quién es Candidato?",
+    "recoveryProcess": "Proceso de Recuperación",
+    "recovery": "Proceso de Recuperación",
+    "faqAbout": "Preguntas Frecuentes sobre {procedure}",
+    "faq": "Preguntas Frecuentes sobre {procedure}",
+    "otherProcedures": "Otros Procedimientos",
+    "procedureIllustration": "Ilustración del procedimiento",
+    "proceduresWePerform": "Procedimientos que Realizamos",
+    "imageAlt": "Ilustración de {procedure}",
+    "imagePlaceholder": "Ilustración del procedimiento",
+    "viewProcedure": "Ver procedimiento"
+  },
+  "mangaGastrica": {
+    "ctaHeading": "¿La Manga Gástrica es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "bypassGastrico": {
+    "ctaHeading": "¿El Bypass Gástrico es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "balonIntragastrico": {
+    "ctaHeading": "¿El Balón Intragástrico es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaMinimaInvasion": {
+    "ctaHeading": "¿Necesitas una Cirugía de Mínima Invasión?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaDiastasisRectos": {
+    "ctaHeading": "¿Necesitas Reparación de Diástasis de Rectos?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiasUrgencias": {
+    "ctaHeading": "¿Tienes una Urgencia Quirúrgica?",
+    "ctaDescription": "Contacta al Dr. Mario Ruvalcaba las 24 horas del día, los 7 días de la semana."
+  }
+}

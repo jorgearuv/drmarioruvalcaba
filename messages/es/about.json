@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "badge": "Cirujano Bariátra Certificado",
+    "name": "Dr. Mario Ruvalcaba",
+    "specialty": "Especialista en Cirugía Bariátrica y Metabólica",
+    "bio1": "Con más de 5 años de práctica como cirujano, el Dr. Mario Ruvalcaba ha desarrollado experiencia en múltiples procedimientos no solo de cirugía, sino también de cirugía bariátrica, manteniendo un enfoque integral y personalizado en cada paciente.",
+    "bio2": "Su preparación incluye entrenamiento con cirujanos de referencia y actualización continua en cirugía de mínima invasión y bariátrica, lo que le permite ofrecer un abordaje integral en diversos procedimientos con altos estándares de calidad y seguridad.",
+    "cedulaLabel": "Cédula Profesional",
+    "cedulaEspecialidadLabel": "Cédula Especialidad",
+    "imageAlt": "Dr. Mario Ruvalcaba — Cirujano General y Bariátra Certificado en Mérida, Yucatán"
+  },
+  "credentials": {
+    "heading": "Formación y Credenciales",
+    "items": {
+      "medicalDegree": {
+        "title": "Médico Cirujano",
+        "institution": "Universidad Autónoma de Guadalajara"
+      },
+      "generalSurgery": {
+        "title": "Especialidad en Cirugía General",
+        "institution": "Universidad Autónoma de Yucatán"
+      },
+      "endoscopicSurgery": {
+        "title": "Alta Especialidad en Cirugía Endoscópica y Robótica",
+        "institution": "Centro de Formación en Cirugía de Mínima Invasión, CDMX"
+      },
+      "bariatricSurgery": {
+        "title": "Alta Especialidad en Cirugía Bariátrica y Metabólica",
+        "institution": "Universidad de las Américas Puebla"
+      },
+      "boardCertified": {
+        "title": "Certificado por el Consejo Mexicano",
+        "institution": "Consejo Mexicano de Cirugía General"
+      },
+      "ifsoMember": {
+        "title": "Miembro IFSO",
+        "institution": "International Federation for the Surgery of Obesity"
+      }
+    }
+  },
+  "timeline": {
+    "overline": "Trayectoria",
+    "heading": "Trayectoria Profesional",
+    "items": {
+      "degree": {
+        "year": "2019",
+        "description": "Egreso de Licenciatura Médico Cirujano"
+      },
+      "specialty": {
+        "year": "2020",
+        "description": "Especialidad en Cirugía General"
+      },
+      "endoscopicBariatric": {
+        "year": "2024",
+        "description": "Alta Especialidad en Cirugía Endoscópica y Bariátrica"
+      },
+      "bariatricMetabolic": {
+        "year": "2025",
+        "description": "Alta Especialidad en Cirugía Bariátrica y Metabólica"
+      }
+    }
+  },
+  "ctaHeading": "Agenda Tu Consulta con el Dr. Ruvalcaba",
+  "ctaDescription": "Da el primer paso hacia una vida más saludable. Consulta personalizada y sin compromiso."
+}

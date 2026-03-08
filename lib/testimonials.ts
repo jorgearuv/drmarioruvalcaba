@@ -1,6 +1,7 @@
+import type { Locale } from "@/i18n/routing";
 import type { Testimonial } from "@/types";
 
-export const TESTIMONIALS: Testimonial[] = [
+const TESTIMONIALS_ES: Testimonial[] = [
   {
     id: "testimonial-001",
     name: "MCR",
@@ -186,3 +187,199 @@ export const TESTIMONIALS: Testimonial[] = [
     source: "Doctoralia",
   },
 ];
+
+const TESTIMONIALS_EN: Testimonial[] = [
+  {
+    id: "testimonial-001",
+    name: "MCR",
+    rating: 5,
+    text: "I went in for a second opinion and felt very confident in the way he explained my condition. I could tell he really knows the subject. I had my surgery with him and I recommend him without hesitation.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-002",
+    name: "Alejandra Reyes Coronado",
+    rating: 5,
+    text: "The care was top quality, he was punctual and professional. I highly recommend him.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-003",
+    name: "AMDC",
+    rating: 5,
+    text: "Excellent care, clear and easy-to-understand explanations. Very professional doctor.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-004",
+    name: "DRH",
+    rating: 5,
+    text: "The doctor is very professional and the best at explaining your condition. He answered all my questions and the treatment he prescribed was exactly right. I definitely recommend him.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-005",
+    name: "BR",
+    rating: 5,
+    text: "Punctual and always willing to help. Attentive and empathetic, he takes the time to explain your condition and the treatment you need.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-006",
+    name: "Miguel Ángel Pérez Cruz",
+    rating: 5,
+    text: "After my hernia surgery, my recovery was very quick and the follow-up was attentive. Dr. Mario showed great empathy. I'm very grateful for the care I received.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-007",
+    name: "Daniela Torres Hernandez",
+    rating: 5,
+    text: "Great experience. I was treated for a hernia and the care was impeccable, always explaining everything calmly.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-008",
+    name: "Paola Camacho",
+    rating: 5,
+    text: "The doctor takes his time to explain the condition in detail and how the surgery will be performed. Very happy with his service.",
+    timeAgo: "November 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-009",
+    name: "Majo Padilla",
+    rating: 5,
+    text: "Very grateful for the care my father received during his emergency surgery.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-010",
+    name: "Alejandro Ramirez García",
+    rating: 5,
+    text: "Dr. Mario was very respectful and attentive when explaining my condition. After surgery, the discomfort was minimal. I highly recommend him.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-011",
+    name: "Paola Sánchez Morales",
+    rating: 5,
+    text: "Great experience with my surgery. Dr. Mario conveys a real sense of safety and confidence. Very grateful.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-012",
+    name: "J. R.",
+    rating: 5,
+    text: "Dr. Mario is very professional and compassionate. He explained everything clearly, gave me great confidence, and the treatment was excellent. I highly recommend him.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-013",
+    name: "Lilia",
+    rating: 5,
+    text: "The doctor was very empathetic and his explanation was very thorough. He answered all my questions and made sure I understood everything. I definitely recommend him.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-014",
+    name: "MP",
+    rating: 5,
+    text: "He is a specialist who genuinely cares about providing the best care for his patients, someone who values them and gives his best every time.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-015",
+    name: "Eduardo Vélez",
+    rating: 5,
+    text: "Excellent care from Dr. Ruvalcaba. He explained the treatment details and was very effective.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-016",
+    name: "Francisco Javier García Pérez",
+    rating: 5,
+    text: "The doctor was very respectful and attentive at all times. I highly recommend him.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-017",
+    name: "M.H.G.",
+    rating: 5,
+    text: "I really appreciated how he explained all the possible scenarios in detail. I'm grateful for such warm and attentive care.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-018",
+    name: "G. C. H.",
+    rating: 5,
+    text: "I had an inguinal hernia repair and everything was excellent. The scars are barely noticeable. Very grateful.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-019",
+    name: "Eduardo Morales Torres",
+    rating: 5,
+    text: "Very compassionate and professional. After my surgery, he explained every step of the process, which gave me great confidence. I highly recommend him.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-020",
+    name: "Ricardo Castillo Martínez",
+    rating: 5,
+    text: "Excellent surgeon. He treated me for a complicated gallbladder issue and thanks to his professionalism, everything went perfectly.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-021",
+    name: "María Fernanda Hernández López",
+    rating: 5,
+    text: "I had to undergo appendicitis surgery and I'm grateful for how quickly and safely I was treated. The care was warm and very compassionate.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-022",
+    name: "José Luis González Pérez",
+    rating: 5,
+    text: "Excellent care. I had gallbladder surgery and felt supported the entire time. The doctor always answered my questions patiently.",
+    timeAgo: "October 2025",
+    source: "Doctoralia",
+  },
+  {
+    id: "testimonial-023",
+    name: "Andrea",
+    rating: 5,
+    text: "Very good professional. He explains everything in detail, easy to understand, and answers every question you might have.",
+    timeAgo: "September 2025",
+    source: "Doctoralia",
+  },
+];
+
+const TESTIMONIALS_BY_LOCALE: Record<Locale, Testimonial[]> = {
+  es: TESTIMONIALS_ES,
+  en: TESTIMONIALS_EN,
+};
+
+export function getTestimonials(locale: Locale = "es"): Testimonial[] {
+  return TESTIMONIALS_BY_LOCALE[locale];
+}

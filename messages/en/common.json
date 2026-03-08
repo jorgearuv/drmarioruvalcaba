@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Home",
+    "procedures": "Procedures",
+    "gastricSleeve": "Gastric Sleeve",
+    "gastricBypass": "Gastric Bypass",
+    "intragastricBalloon": "Intragastric Balloon",
+    "minimallyInvasiveSurgery": "Minimally Invasive Surgery",
+    "aboutDoctor": "About the Doctor",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "footer": {
+    "description": "Board-certified general and bariatric surgeon in Mérida, Yucatán. Specialist in minimally invasive and bariatric & metabolic surgery.",
+    "procedures": "Procedures",
+    "quickLinks": "Quick Links",
+    "contactTitle": "Contact",
+    "copyright": "Dr. Mario Ruvalcaba. All rights reserved.",
+    "subtitle": "Bariatric Surgeon",
+    "bariatricSurgeon": "Bariatric Surgeon in Mérida, Yucatán",
+    "professionalLicense": "Medical License"
+  },
+  "cta": {
+    "scheduleAppointment": "Book Appointment",
+    "scheduleAppointmentWhatsApp": "Book Appointment via WhatsApp",
+    "scheduleEvaluation": "Book Evaluation",
+    "learnMore": "Learn more",
+    "learnProcedures": "View Procedures",
+    "meetDoctor": "Meet the Doctor",
+    "viewProcedure": "View procedure",
+    "sendMessage": "Send message",
+    "sendAnother": "Send another message",
+    "goHome": "Go Home",
+    "contactUs": "Contact Us",
+    "scheduleAssessment": "Schedule Assessment",
+    "scheduleBariatricAssessmentAria": "Schedule bariatric assessment"
+  },
+  "whatsapp": {
+    "defaultMessage": "Hello Dr. Ruvalcaba, I would like to schedule a consultation for bariatric surgery.",
+    "needHelp": "Need help?",
+    "contactVia": "Contact via WhatsApp",
+    "responseTime": "Response within 2 hours",
+    "scheduleConsultation": "Schedule your consultation",
+    "writeUsAria": "Write us on WhatsApp at {number}",
+    "opensNewTab": "opens WhatsApp in a new tab"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "navigationMenu": "Navigation menu",
+    "goToHome": "Go to homepage — Dr. Mario Ruvalcaba",
+    "doctorCredentials": "Doctor credentials"
+  },
+  "availability": {
+    "consultationsAvailable": "Consultations available this week"
+  },
+  "language": {
+    "es": "ES",
+    "en": "EN",
+    "spanish": "Español",
+    "english": "English"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "contact": "Contact Us"
+  }
+}

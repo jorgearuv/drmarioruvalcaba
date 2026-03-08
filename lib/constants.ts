@@ -1,4 +1,4 @@
-import type { DoctorInfo, NavLink, TrustBadge } from "@/types";
+import type { DoctorInfo, TrustBadge } from "@/types";
 
 export const DOCTOR_INFO = {
   name: "Dr. Mario Ruvalcaba",
@@ -31,24 +31,6 @@ export const DOCTOR_INFO = {
   },
 } as const satisfies DoctorInfo;
 
-export const NAV_LINKS: NavLink[] = [
-  { label: "Inicio", href: "/" },
-  {
-    label: "Procedimientos",
-    href: "/procedimientos",
-    children: [
-      { label: "Manga Gástrica", href: "/manga-gastrica-merida" },
-      { label: "Bypass Gástrico", href: "/bypass-gastrico-merida" },
-      { label: "Balón Intragástrico", href: "/balon-intragastrico" },
-      { label: "Cirugía de Mínima Invasión", href: "/cirugia-minima-invasion" },
-    ],
-  },
-  { label: "Sobre el Doctor", href: "/sobre-el-doctor" },
-  { label: "Blog", href: "/blog" },
-  { label: "FAQ", href: "/preguntas-frecuentes" },
-  { label: "Contacto", href: "/contacto" },
-];
-
 export const HERO_TRUST_SIGNALS = [
   {
     type: "doctoralia" as const,
@@ -79,8 +61,3 @@ export const TRUST_BADGES = [
   { name: "Colegio Mexicano de Cirugía para la Obesidad y Enfermedades Metabólicas (CMCOEM)", abbreviation: "CMCOEM", type: "association", logoPath: "/images/logos/cmcoem.webp" },
 ] as const satisfies readonly TrustBadge[];
 
-export const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hola Dr. Ruvalcaba, me gustaría agendar una consulta para cirugía bariátrica."
-);
-
-export const WHATSAPP_URL = `https://wa.me/${DOCTOR_INFO.whatsapp.replace(/\+/g, "")}?text=${WHATSAPP_MESSAGE}`;
