@@ -14,6 +14,7 @@ import {
   generatePhysicianJsonLd,
   generateLocalBusinessJsonLd,
 } from "@/lib/seo";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -140,6 +141,9 @@ export default async function LocaleLayout({
           }}
         />
       </body>
+      {process.env.NEXT_PUBLIC_GTAG_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTAG_ID} />
+      )}
     </html>
   );
 }
