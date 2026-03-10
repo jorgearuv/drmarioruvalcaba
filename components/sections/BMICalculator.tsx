@@ -4,6 +4,7 @@ import { useState } from "react";
 import { type Variants, motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 // ---------------------------------------------------------------------------
@@ -220,6 +221,7 @@ const BMIResultDisplay = ({
         href={whatsAppUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "bmi" } })}
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -399,7 +401,10 @@ export default function BMICalculator() {
 
     const heightInMeters = parsedHeight / 100;
     const bmiResult = parsedWeight / (heightInMeters * heightInMeters);
-    setCalculatedBMI(parseFloat(bmiResult.toFixed(1)));
+    const roundedBMI = parseFloat(bmiResult.toFixed(1));
+    const category = getBMICategory(roundedBMI);
+    trackEvent({ name: "bmi_calculate", params: { bmi_value: roundedBMI, bmi_category: category.key } });
+    setCalculatedBMI(roundedBMI);
   };
 
   const bmiCategory =

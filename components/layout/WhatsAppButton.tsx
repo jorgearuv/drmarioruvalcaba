@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 export default function WhatsAppButton() {
@@ -47,6 +48,7 @@ export default function WhatsAppButton() {
             href={whatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "floating" } })}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}

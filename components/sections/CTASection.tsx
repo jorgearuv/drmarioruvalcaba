@@ -7,6 +7,7 @@ import { DOCTOR_INFO } from "@/lib/constants";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { useId } from "react";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 // ---------------------------------------------------------------------------
@@ -87,6 +88,7 @@ const ContactCard = ({
             href={buttonHref}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "cta" } })}
             aria-label={`${buttonText} — ${tWhatsapp("opensNewTab")}`}
             className={whatsAppButtonClasses}
           >
@@ -96,6 +98,7 @@ const ContactCard = ({
         ) : (
           <a
             href={buttonHref}
+            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "cta" } })}
             aria-label={buttonText}
             className={whatsAppButtonClasses}
           >

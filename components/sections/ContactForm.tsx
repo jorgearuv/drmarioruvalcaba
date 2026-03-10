@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { DOCTOR_INFO } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 
 const CONSULTATION_REASON_KEYS = [
   "gastricSleeve",
@@ -101,6 +102,7 @@ export default function ContactForm() {
       messageBody,
       t("whatsappIntro"),
     );
+    trackEvent({ name: "contact_form_submit", params: { consultation_reason: consultationReason } });
     window.open(whatsAppUrl, "_blank", "noopener,noreferrer");
     setIsSubmitted(true);
   };

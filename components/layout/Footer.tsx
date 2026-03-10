@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { DOCTOR_INFO, TRUST_BADGES } from "@/lib/constants";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 const PROCEDURE_LINKS = [
@@ -154,7 +157,7 @@ export default function Footer() {
                 <svg className="h-5 w-5 flex-shrink-0 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href={`tel:${DOCTOR_INFO.phone}`} className="text-sm text-navy-400 transition-all duration-200 hover:text-white">
+                <a href={`tel:${DOCTOR_INFO.phone}`} onClick={() => trackEvent({ name: "phone_click" })} className="text-sm text-navy-400 transition-all duration-200 hover:text-white">
                   {DOCTOR_INFO.phone}
                 </a>
               </li>
@@ -171,6 +174,7 @@ export default function Footer() {
                   href={whatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "footer" } })}
                   className="mt-2 inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30 hover:brightness-110"
                 >
                   <WhatsAppIcon className="h-4 w-4" />

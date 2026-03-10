@@ -7,6 +7,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { HERO_TRUST_SIGNALS } from "@/lib/constants";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 interface HeroProps {
@@ -136,6 +137,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                 href={whatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "hero" } })}
                 className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-primary-500 to-primary-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-600/30"
               >
                 <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />

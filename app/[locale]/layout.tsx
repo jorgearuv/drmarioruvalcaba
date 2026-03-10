@@ -15,6 +15,7 @@ import {
   generateLocalBusinessJsonLd,
 } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -140,10 +141,19 @@ export default async function LocaleLayout({
             __html: JSON.stringify(localBusinessJsonLd),
           }}
         />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
+        {process.env.NEXT_PUBLIC_GADS_ID && (
+          <Script
+            id="gtag-ads-config"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.gtag('config', '${process.env.NEXT_PUBLIC_GADS_ID}');`,
+            }}
+          />
+        )}
       </body>
-      {process.env.NEXT_PUBLIC_GTAG_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTAG_ID} />
-      )}
     </html>
   );
 }
