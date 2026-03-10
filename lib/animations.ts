@@ -117,9 +117,11 @@ export const springTransition: Transition = {
   damping: 15,
 };
 
+export const CUBIC_EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
 export const smoothTransition: Transition = {
   duration: 0.6,
-  ease: [0.22, 1, 0.36, 1],
+  ease: CUBIC_EASE_OUT,
 };
 
 // ---------------------------------------------------------------------------

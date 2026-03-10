@@ -7,7 +7,7 @@ import {
   useRef,
   useId,
 } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useAnimationFrame, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import type { Testimonial } from "@/types";
@@ -16,35 +16,9 @@ import type { Testimonial } from "@/types";
 // Constants
 // ---------------------------------------------------------------------------
 
-const AUTOPLAY_INTERVAL_MS = 5000;
-const VISIBLE_CARDS_DESKTOP = 3;
-const VISIBLE_CARDS_TABLET = 2;
-const VISIBLE_CARDS_MOBILE = 1;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const deriveVisibleCardCount = (): number => {
-  if (typeof window === "undefined") return VISIBLE_CARDS_DESKTOP;
-  const viewportWidth = window.innerWidth;
-  if (viewportWidth < 640) return VISIBLE_CARDS_MOBILE;
-  if (viewportWidth < 1024) return VISIBLE_CARDS_TABLET;
-  return VISIBLE_CARDS_DESKTOP;
-};
-
-const deriveVisibleTestimonials = (
-  allTestimonials: Testimonial[],
-  pageStartIndex: number,
-  visibleCount: number
-): Testimonial[] =>
-  Array.from(
-    { length: visibleCount },
-    (_, slotIndex) =>
-      allTestimonials[
-        (pageStartIndex + slotIndex) % allTestimonials.length
-      ]
-  );
+const SCROLL_SPEED_PX_PER_SEC = 60;
+const MANUAL_PAUSE_DURATION_MS = 3000;
+const GAP_PX = 24; // Tailwind gap-6
 
 // ---------------------------------------------------------------------------
 // Main component
@@ -63,89 +37,205 @@ export default function TestimonialCarousel({
   const sectionHeadingId = useId();
   const carouselLiveRegionId = useId();
 
-  const [pageStartIndex, setPageStartIndex] = useState(0);
-  const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false);
-  const [visibleCardCount, setVisibleCardCount] = useState(
-    VISIBLE_CARDS_DESKTOP
-  );
+  const totalCards = testimonials.length;
 
+  // Refs for animation state (no re-renders in the loop)
+  const scrollPositionRef = useRef(0);
+  const isPausedRef = useRef(false);
+  const isManuallyPausedRef = useRef(false);
+  const manualPauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const cardStepWidthRef = useRef(0);
+  const halfStripWidthRef = useRef(0);
+
+  // State for active dot (only updates when index changes)
+  const [activeDotIndex, setActiveDotIndex] = useState(0);
+
+  // Ref for the outer container (focus management)
   const carouselRegionRef = useRef<HTMLDivElement>(null);
 
-  // Sync visible card count with viewport width
+  // -------------------------------------------------------------------------
+  // Measure card width + half strip via ResizeObserver
+  // -------------------------------------------------------------------------
   useEffect(() => {
-    const handleResize = () => {
-      setVisibleCardCount(deriveVisibleCardCount());
+    const stripElement = stripRef.current;
+    if (!stripElement) return;
+
+    const measureDimensions = () => {
+      const firstCard = stripElement.children[0] as HTMLElement | undefined;
+      if (firstCard) {
+        cardStepWidthRef.current = firstCard.offsetWidth + GAP_PX;
+      }
+      // Half strip = one full set of cards
+      halfStripWidthRef.current = cardStepWidthRef.current * totalCards;
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    measureDimensions();
+
+    const resizeObserver = new ResizeObserver(measureDimensions);
+    resizeObserver.observe(stripElement);
+
+    return () => resizeObserver.disconnect();
+  }, [totalCards]);
+
+  // -------------------------------------------------------------------------
+  // Continuous scroll via useAnimationFrame
+  // -------------------------------------------------------------------------
+  useAnimationFrame((_time, delta) => {
+    if (shouldReduceMotion) return;
+    if (isPausedRef.current) return;
+
+    const stripElement = stripRef.current;
+    if (!stripElement) return;
+
+    const halfWidth = halfStripWidthRef.current;
+    if (halfWidth <= 0) return;
+
+    // Advance scroll position
+    scrollPositionRef.current -= SCROLL_SPEED_PX_PER_SEC * (delta / 1000);
+
+    // Seamless loop: when we've scrolled past one full set, reset
+    if (Math.abs(scrollPositionRef.current) >= halfWidth) {
+      scrollPositionRef.current += halfWidth;
+    }
+
+    stripElement.style.transform = `translateX(${scrollPositionRef.current}px)`;
+
+    // Update active dot (only when index changes)
+    const cardStep = cardStepWidthRef.current;
+    if (cardStep > 0) {
+      const newDotIndex =
+        Math.floor(Math.abs(scrollPositionRef.current) / cardStep) % totalCards;
+      setActiveDotIndex((previousIndex) =>
+        previousIndex === newDotIndex ? previousIndex : newDotIndex
+      );
+    }
+  });
+
+  // -------------------------------------------------------------------------
+  // Pause / resume helpers
+  // -------------------------------------------------------------------------
+  const clearManualPauseTimer = useCallback(() => {
+    if (manualPauseTimerRef.current !== null) {
+      clearTimeout(manualPauseTimerRef.current);
+      manualPauseTimerRef.current = null;
+    }
   }, []);
 
-  const totalTestimonials = testimonials.length;
+  const pauseForManualNavigation = useCallback(() => {
+    clearManualPauseTimer();
+    isPausedRef.current = true;
+    isManuallyPausedRef.current = true;
 
-  const navigateToNext = useCallback(() => {
-    setPageStartIndex(
-      (previousIndex) => (previousIndex + 1) % totalTestimonials
-    );
-  }, [totalTestimonials]);
+    manualPauseTimerRef.current = setTimeout(() => {
+      isManuallyPausedRef.current = false;
+      isPausedRef.current = false;
+      manualPauseTimerRef.current = null;
+    }, MANUAL_PAUSE_DURATION_MS);
+  }, [clearManualPauseTimer]);
 
-  const navigateToPrevious = useCallback(() => {
-    setPageStartIndex(
-      (previousIndex) =>
-        (previousIndex - 1 + totalTestimonials) % totalTestimonials
-    );
-  }, [totalTestimonials]);
+  // Cleanup timer on unmount
+  useEffect(() => clearManualPauseTimer, [clearManualPauseTimer]);
 
-  const navigateToDot = useCallback((dotIndex: number) => {
-    setPageStartIndex(dotIndex);
+  // -------------------------------------------------------------------------
+  // Hover handlers
+  // -------------------------------------------------------------------------
+  const handleMouseEnter = useCallback(() => {
+    isPausedRef.current = true;
   }, []);
 
-  // Auto-play: disabled entirely when user prefers reduced motion
-  useEffect(() => {
-    if (shouldReduceMotion || isAutoPlayPaused) return;
+  const handleMouseLeave = useCallback(() => {
+    // Don't resume if we're in a manual pause window (arrow/dot click)
+    if (!isManuallyPausedRef.current) {
+      isPausedRef.current = false;
+    }
+  }, []);
 
-    const autoPlayTimer = setInterval(navigateToNext, AUTOPLAY_INTERVAL_MS);
-    return () => clearInterval(autoPlayTimer);
-  }, [shouldReduceMotion, isAutoPlayPaused, navigateToNext]);
-
-  // Pause auto-play when focus enters the carousel region
+  // -------------------------------------------------------------------------
+  // Focus handlers (accessibility – pause on focus)
+  // -------------------------------------------------------------------------
   const handleCarouselFocusIn = useCallback(() => {
-    setIsAutoPlayPaused(true);
+    isPausedRef.current = true;
   }, []);
 
   const handleCarouselFocusOut = useCallback(
     (event: React.FocusEvent<HTMLDivElement>) => {
-      const focusMovedOutsideCarousel = !carouselRegionRef.current?.contains(
-        event.relatedTarget as Node
-      );
-      if (focusMovedOutsideCarousel) {
-        setIsAutoPlayPaused(false);
+      const focusMovedOutsideCarousel =
+        !carouselRegionRef.current?.contains(event.relatedTarget as Node);
+      if (focusMovedOutsideCarousel && !isManuallyPausedRef.current) {
+        isPausedRef.current = false;
       }
     },
     []
   );
 
-  const visibleTestimonials = deriveVisibleTestimonials(
-    testimonials,
-    pageStartIndex,
-    visibleCardCount
+  // -------------------------------------------------------------------------
+  // Navigation: snap scroll position and apply transform immediately
+  // -------------------------------------------------------------------------
+  const applyScrollPosition = useCallback(() => {
+    const stripElement = stripRef.current;
+    if (stripElement) {
+      stripElement.style.transform = `translateX(${scrollPositionRef.current}px)`;
+    }
+  }, []);
+
+  const navigateToNext = useCallback(() => {
+    const cardStep = cardStepWidthRef.current;
+    if (cardStep <= 0) return;
+
+    scrollPositionRef.current -= cardStep;
+
+    // Seamless loop
+    const halfWidth = halfStripWidthRef.current;
+    if (halfWidth > 0 && Math.abs(scrollPositionRef.current) >= halfWidth) {
+      scrollPositionRef.current += halfWidth;
+    }
+
+    applyScrollPosition();
+    pauseForManualNavigation();
+
+    const newDotIndex =
+      Math.floor(Math.abs(scrollPositionRef.current) / cardStep) % totalCards;
+    setActiveDotIndex(newDotIndex);
+  }, [totalCards, applyScrollPosition, pauseForManualNavigation]);
+
+  const navigateToPrevious = useCallback(() => {
+    const cardStep = cardStepWidthRef.current;
+    if (cardStep <= 0) return;
+
+    scrollPositionRef.current += cardStep;
+
+    // Wrap around: if position goes positive, jump to the end of one set
+    const halfWidth = halfStripWidthRef.current;
+    if (scrollPositionRef.current > 0 && halfWidth > 0) {
+      scrollPositionRef.current -= halfWidth;
+    }
+
+    applyScrollPosition();
+    pauseForManualNavigation();
+
+    const newDotIndex =
+      Math.floor(Math.abs(scrollPositionRef.current) / cardStep) % totalCards;
+    setActiveDotIndex(newDotIndex);
+  }, [totalCards, applyScrollPosition, pauseForManualNavigation]);
+
+  const navigateToDot = useCallback(
+    (dotIndex: number) => {
+      const cardStep = cardStepWidthRef.current;
+      if (cardStep <= 0) return;
+
+      scrollPositionRef.current = -(dotIndex * cardStep);
+      applyScrollPosition();
+      pauseForManualNavigation();
+      setActiveDotIndex(dotIndex);
+    },
+    [applyScrollPosition, pauseForManualNavigation]
   );
 
-  const slideAnimationVariants = {
-    enter: (direction: number) => ({
-      opacity: 0,
-      x: shouldReduceMotion ? 0 : direction * 40,
-    }),
-    center: { opacity: 1, x: 0 },
-    exit: (direction: number) => ({
-      opacity: 0,
-      x: shouldReduceMotion ? 0 : direction * -40,
-    }),
-  };
-
-  // Derive dot count: one dot per logical "page" step
-  const dotCount = totalTestimonials;
+  // -------------------------------------------------------------------------
+  // Duplicated card list for seamless loop
+  // -------------------------------------------------------------------------
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section
@@ -167,7 +257,10 @@ export default function TestimonialCarousel({
           >
             {t("heading")}
           </h2>
-          <div aria-hidden="true" className="section-divider mx-auto mt-4 mb-2" />
+          <div
+            aria-hidden="true"
+            className="section-divider mx-auto mt-4 mb-2"
+          />
         </div>
 
         {/* Carousel region */}
@@ -178,8 +271,8 @@ export default function TestimonialCarousel({
           aria-label={t("carouselAriaLabel")}
           aria-labelledby={carouselLiveRegionId}
           className="mt-12"
-          onMouseEnter={() => setIsAutoPlayPaused(true)}
-          onMouseLeave={() => setIsAutoPlayPaused(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           onFocusCapture={handleCarouselFocusIn}
           onBlurCapture={handleCarouselFocusOut}
         >
@@ -191,9 +284,9 @@ export default function TestimonialCarousel({
             className="sr-only"
           >
             {t("showingTestimonials", {
-              start: pageStartIndex + 1,
-              end: Math.min(pageStartIndex + visibleCardCount, totalTestimonials),
-              total: totalTestimonials,
+              start: activeDotIndex + 1,
+              end: Math.min(activeDotIndex + 1, totalCards),
+              total: totalCards,
             })}
           </p>
 
@@ -204,7 +297,7 @@ export default function TestimonialCarousel({
               type="button"
               aria-label={t("previousAriaLabel")}
               onClick={navigateToPrevious}
-              className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             >
               <svg
                 aria-hidden="true"
@@ -222,39 +315,26 @@ export default function TestimonialCarousel({
               </svg>
             </button>
 
-            {/* Slide viewport */}
-            <div className="min-w-0 flex-1 overflow-hidden">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={pageStartIndex}
-                  custom={1}
-                  variants={slideAnimationVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={
-                    shouldReduceMotion
-                      ? { duration: 0 }
-                      : { duration: 0.4, ease: "easeInOut" }
-                  }
-                  className={`grid gap-6 ${
-                    visibleCardCount === 1
-                      ? "grid-cols-1"
-                      : visibleCardCount === 2
-                        ? "grid-cols-2"
-                        : "grid-cols-3"
-                  }`}
-                >
-                  {visibleTestimonials.map((testimonial, slotIndex) => (
+            {/* Scrolling strip viewport */}
+            <div className="relative min-w-0 flex-1 overflow-hidden">
+              <div
+                ref={stripRef}
+                className="flex gap-6"
+                style={{ willChange: "transform" }}
+              >
+                {duplicatedTestimonials.map((testimonial, slotIndex) => (
+                  <div
+                    key={`${testimonial.id}-${slotIndex}`}
+                    className="w-full flex-shrink-0 sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                  >
                     <TestimonialCard
-                      key={`${testimonial.id}-slot-${slotIndex}`}
                       testimonial={testimonial}
-                      cardPosition={pageStartIndex + slotIndex + 1}
-                      totalCards={totalTestimonials}
+                      cardPosition={(slotIndex % totalCards) + 1}
+                      totalCards={totalCards}
                     />
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Next button */}
@@ -262,7 +342,7 @@ export default function TestimonialCarousel({
               type="button"
               aria-label={t("nextAriaLabel")}
               onClick={navigateToNext}
-              className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex-shrink-0 rounded-full border border-navy-200 bg-white p-3 text-navy-600 shadow-sm transition-all duration-200 hover:border-teal-400 hover:text-teal-600 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             >
               <svg
                 aria-hidden="true"
@@ -287,8 +367,8 @@ export default function TestimonialCarousel({
             aria-label={t("dotNavigationAriaLabel")}
             className="mt-8 flex justify-center gap-2"
           >
-            {Array.from({ length: dotCount }, (_, dotIndex) => {
-              const isActiveDot = dotIndex === pageStartIndex;
+            {Array.from({ length: totalCards }, (_, dotIndex) => {
+              const isActiveDot = dotIndex === activeDotIndex;
               return (
                 <button
                   key={dotIndex}
