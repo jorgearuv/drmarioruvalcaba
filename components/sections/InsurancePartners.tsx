@@ -107,7 +107,7 @@ export default function InsurancePartners() {
                       ease: CUBIC_EASE_OUT,
                     }
               }
-              className="group flex flex-col items-center justify-center rounded-2xl border border-navy-100/60 bg-white px-6 py-8 transition-all duration-300 hover:border-teal-200/80 hover:shadow-lg hover:shadow-teal-600/[0.06]"
+              className="group flex flex-col items-center justify-center rounded-2xl border border-navy-100/60 bg-white px-6 py-6 transition-all duration-300 hover:border-teal-200/80 hover:shadow-lg hover:shadow-teal-600/[0.06]"
             >
               {/* Partner logo */}
               <div className="flex h-14 w-24 items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -119,11 +119,6 @@ export default function InsurancePartners() {
                   className="max-h-full w-auto max-w-full object-contain"
                 />
               </div>
-
-              {/* Partner name */}
-              <p className="mt-4 text-center text-sm font-semibold text-navy-900">
-                {partner.name}
-              </p>
             </motion.li>
           ))}
         </ul>
