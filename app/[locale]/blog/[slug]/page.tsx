@@ -7,6 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { generateBlogArticleJsonLd } from "@/lib/seo";
 import { DOCTOR_INFO } from "@/lib/constants";
 import BlogContentRenderer from "@/components/sections/BlogContentRenderer";
+import TrackViewContent from "@/components/analytics/TrackViewContent";
 import Badge from "@/components/ui/Badge";
 import CTASection from "@/components/sections/CTASection";
 import type { Locale } from "@/i18n/routing";
@@ -68,6 +69,7 @@ export default async function BlogArticlePage({
 
   return (
     <>
+      <TrackViewContent contentName={post.title} contentCategory="blog_post" />
       {/* Hero */}
       <section className="gradient-mesh-hero noise-overlay relative overflow-hidden py-16 md:py-20">
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">

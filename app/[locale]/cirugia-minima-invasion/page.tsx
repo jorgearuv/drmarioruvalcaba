@@ -4,6 +4,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { generateMedicalProcedureJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
 import { DOCTOR_INFO } from "@/lib/constants";
 import ProcedureDetail from "@/components/sections/ProcedureDetail";
+import TrackViewContent from "@/components/analytics/TrackViewContent";
 import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
 import { notFound } from "next/navigation";
@@ -44,6 +45,7 @@ export default async function CirugiaMinimaInvasionPage({ params }: PageProps) {
 
   return (
     <>
+      <TrackViewContent contentName={procedureData.title} contentCategory="procedure" />
       <ProcedureDetail procedure={procedureData} />
       <RelatedProcedures currentHref="/cirugia-minima-invasion" />
       <section className="py-16 bg-white">
