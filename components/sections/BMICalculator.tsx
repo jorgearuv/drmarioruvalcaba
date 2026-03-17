@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { type Variants, motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
@@ -161,7 +161,8 @@ interface BMIResultDisplayProps {
   bmiCategory: BMICategory;
   isCandidateForSurgery: boolean;
   shouldReduceMotion: boolean;
-  whatsAppUrl: string;
+  schedulingUrl: string;
+  calendarActive: boolean;
   t: (key: string, values?: Record<string, string>) => string;
   tCta: (key: string, values?: Record<string, string>) => string;
 }
@@ -171,7 +172,8 @@ const BMIResultDisplay = ({
   bmiCategory,
   isCandidateForSurgery,
   shouldReduceMotion,
-  whatsAppUrl,
+  schedulingUrl,
+  calendarActive,
   t,
   tCta,
 }: BMIResultDisplayProps) => (
@@ -215,13 +217,17 @@ const BMIResultDisplay = ({
       {t(`categories.${bmiCategory.key}.description`)}
     </p>
 
-    {/* Surgery candidate WhatsApp CTA */}
+    {/* Surgery candidate scheduling CTA */}
     {isCandidateForSurgery && (
       <motion.a
-        href={whatsAppUrl}
+        href={schedulingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "bmi" } })}
+        onClick={() =>
+          calendarActive
+            ? trackEvent({ name: "calendar_click", params: { location: "bmi" } })
+            : trackEvent({ name: "whatsapp_click", params: { location: "bmi" } })
+        }
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -381,7 +387,8 @@ export default function BMICalculator() {
   const t = useTranslations("home.bmi");
   const tCta = useTranslations("common.cta");
   const locale = useLocale() as Locale;
-  const whatsAppUrl = getWhatsAppUrl(locale);
+  const schedulingUrl = getSchedulingUrl(locale);
+  const calendarActive = isCalendarActive();
 
   const shouldReduceMotion = useReducedMotion() ?? false;
   const { fadeUp, slideInLeft, slideInRight, divider } =
@@ -546,7 +553,8 @@ export default function BMICalculator() {
                     bmiCategory={bmiCategory}
                     isCandidateForSurgery={isCandidateForSurgery}
                     shouldReduceMotion={shouldReduceMotion}
-                    whatsAppUrl={whatsAppUrl}
+                    schedulingUrl={schedulingUrl}
+                    calendarActive={calendarActive}
                     t={t}
                     tCta={tCta}
                   />

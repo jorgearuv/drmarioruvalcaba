@@ -23,6 +23,11 @@ const QUICK_LINKS = [
   { labelKey: "contact", href: "/contacto" },
 ] as const;
 
+const LEGAL_LINKS = [
+  { labelKey: "privacyPolicy", href: "/aviso-de-privacidad" },
+  { labelKey: "cookiePolicy", href: "/politica-de-cookies" },
+] as const;
+
 export default function Footer() {
   const tNav = useTranslations("common.nav");
   const tFooter = useTranslations("common.footer");
@@ -138,6 +143,21 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <h3 className="mb-3 mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-500">
+              {tFooter("legal")}
+            </h3>
+            <ul className="space-y-3">
+              {LEGAL_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href as any}
+                    className="group/link inline-block text-sm text-navy-400 transition-all duration-200 hover:pl-1 hover:text-white"
+                  >
+                    {tFooter(link.labelKey)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contact Column */}
@@ -200,12 +220,18 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 border-t border-navy-800 pt-8 text-center text-sm text-navy-600">
+        <div className="mt-8 border-t border-navy-800 pt-8 text-center text-xs text-navy-600 space-y-1">
           <p>
             &copy; {new Date().getFullYear()} {tFooter("copyright")}
           </p>
-          <p className="mt-1">
-            {tFooter("bariatricSurgeon")} &middot; {tFooter("professionalLicense")}: {DOCTOR_INFO.cedula}
+          <p>
+            {tFooter("bariatricSurgeon")} &middot; {tFooter("professionalLicense")}: {DOCTOR_INFO.cedula} — {DOCTOR_INFO.cedulaUniversity} &middot; {tFooter("specialtyLicense")}: {DOCTOR_INFO.cedulaEspecialidad} — {DOCTOR_INFO.cedulaEspecialidadUniversity}
+          </p>
+          <p>
+            {tFooter("boardCertification")}: {DOCTOR_INFO.certificacionConsejo}
+          </p>
+          <p>
+            {tFooter("cofeprisNotice")}: {DOCTOR_INFO.cofepris}
           </p>
         </div>
       </div>

@@ -13,7 +13,9 @@
     "proceduresWePerform": "Procedimientos que Realizamos",
     "imageAlt": "Ilustración de {procedure}",
     "imagePlaceholder": "Ilustración del procedimiento",
-    "viewProcedure": "Ver procedimiento"
+    "viewProcedure": "Ver procedimiento",
+    "disclaimerLabel": "Nota médica",
+    "disclaimer": "Este contenido es informativo y no sustituye una consulta médica."
   },
   "mangaGastrica": {
     "ctaHeading": "¿La Manga Gástrica es para Ti?",

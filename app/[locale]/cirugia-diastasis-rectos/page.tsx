@@ -7,6 +7,7 @@ import ProcedureDetail from "@/components/sections/ProcedureDetail";
 import TrackViewContent from "@/components/analytics/TrackViewContent";
 import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
+import MedicalDisclaimer from "@/components/ui/MedicalDisclaimer";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/i18n/routing";
 
@@ -41,6 +42,7 @@ export default async function CirugiaDiastasisRectosPage({ params }: PageProps) 
     <>
       <TrackViewContent contentName={procedureData.title} contentCategory="procedure" />
       <ProcedureDetail procedure={procedureData} />
+      <MedicalDisclaimer />
       <RelatedProcedures currentHref="/cirugia-diastasis-rectos" />
       <CTASection
         heading={t("cirugiaDiastasisRectos.ctaHeading")}

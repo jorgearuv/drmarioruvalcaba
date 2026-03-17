@@ -6,7 +6,8 @@
     "bio1": "Con más de 5 años de práctica como cirujano, el Dr. Mario Ruvalcaba ha desarrollado experiencia en múltiples procedimientos no solo de cirugía, sino también de cirugía bariátrica, manteniendo un enfoque integral y personalizado en cada paciente.",
     "bio2": "Su preparación incluye entrenamiento con cirujanos de referencia y actualización continua en cirugía de mínima invasión y bariátrica, lo que le permite ofrecer un abordaje integral en diversos procedimientos con altos estándares de calidad y seguridad.",
     "cedulaLabel": "Cédula Profesional",
-    "cedulaEspecialidadLabel": "Cédula Especialidad",
+    "cedulaEspecialidadLabel": "Cédula de Especialidad",
+    "certificacionConsejoLabel": "Nº Certificación Consejo Mexicano de Cirugía General",
     "imageAlt": "Dr. Mario Ruvalcaba — Cirujano General y Bariátra Certificado en Mérida, Yucatán"
   },
   "credentials": {
@@ -61,5 +62,7 @@
     }
   },
   "ctaHeading": "Agenda Tu Consulta con el Dr. Ruvalcaba",
-  "ctaDescription": "Da el primer paso hacia una vida más saludable. Consulta personalizada y sin compromiso."
+  "ctaDescription": "Da el primer paso hacia una vida más saludable. Consulta personalizada y sin compromiso.",
+  "ctaSchedule": "Agendar Consulta",
+  "ctaAsk": "Escríbenos"
 }

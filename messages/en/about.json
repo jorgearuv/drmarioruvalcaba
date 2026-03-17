@@ -7,6 +7,7 @@
     "bio2": "His training includes work with leading surgeons and ongoing education in minimally invasive and bariatric surgery, enabling him to offer a comprehensive approach to various procedures with high standards of quality and safety.",
     "cedulaLabel": "Medical License",
     "cedulaEspecialidadLabel": "Specialty License",
+    "certificacionConsejoLabel": "Mexican Board of General Surgery Certification No.",
     "imageAlt": "Dr. Mario Ruvalcaba — Board-Certified General and Bariatric Surgeon in Mérida, Yucatán"
   },
   "credentials": {
@@ -61,5 +62,7 @@
     }
   },
   "ctaHeading": "Schedule Your Consultation with Dr. Ruvalcaba",
-  "ctaDescription": "Take the first step toward a healthier life. Personalized consultation with no obligation."
+  "ctaDescription": "Take the first step toward a healthier life. Personalized consultation with no obligation.",
+  "ctaSchedule": "Book Consultation",
+  "ctaAsk": "Message Us"
 }

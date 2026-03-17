@@ -17,6 +17,8 @@ const PATHNAME_MAP: Record<string, string> = {
   "/preguntas-frecuentes": "/faq",
   "/contacto": "/contact",
   "/blog": "/blog",
+  "/aviso-de-privacidad": "/privacy-policy",
+  "/politica-de-cookies": "/cookie-policy",
 };
 
 interface PageEntry {
@@ -38,6 +40,8 @@ const PAGES: PageEntry[] = [
   { esPath: "/blog", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "weekly", priority: 0.7 },
   { esPath: "/preguntas-frecuentes", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.6 },
   { esPath: "/contacto", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.6 },
+  { esPath: "/aviso-de-privacidad", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "yearly", priority: 0.3 },
+  { esPath: "/politica-de-cookies", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "yearly", priority: 0.3 },
 ];
 
 function buildSitemapEntry(

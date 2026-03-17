@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { HERO_TRUST_SIGNALS } from "@/lib/constants";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
@@ -20,7 +20,8 @@ export default function Hero({ headline, subheadline }: HeroProps) {
   const tHero = useTranslations("home.hero");
   const tCta = useTranslations("common.cta");
   const locale = useLocale() as Locale;
-  const whatsAppUrl = getWhatsAppUrl(locale);
+  const schedulingUrl = getSchedulingUrl(locale);
+  const calendarActive = isCalendarActive();
 
   const tealHighlightWords: string[] = tHero.raw("highlightWords.teal") as string[];
   const goldHighlightWords: string[] = tHero.raw("highlightWords.gold") as string[];
@@ -134,13 +135,30 @@ export default function Hero({ headline, subheadline }: HeroProps) {
               className="mt-10 flex flex-col items-start gap-4 sm:flex-row"
             >
               <a
-                href={whatsAppUrl}
+                href={schedulingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "hero" } })}
+                onClick={() =>
+                  calendarActive
+                    ? trackEvent({ name: "calendar_click", params: { location: "hero" } })
+                    : trackEvent({ name: "whatsapp_click", params: { location: "hero" } })
+                }
                 className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-primary-500 to-primary-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-600/30"
               >
-                <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                {calendarActive ? (
+                  <svg
+                    className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                ) : (
+                  <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                )}
                 {tCta("scheduleAppointment")}
               </a>
               <a

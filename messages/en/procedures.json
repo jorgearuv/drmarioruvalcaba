@@ -13,7 +13,9 @@
     "proceduresWePerform": "Procedures We Perform",
     "imageAlt": "{procedure} illustration",
     "imagePlaceholder": "Procedure illustration",
-    "viewProcedure": "View procedure"
+    "viewProcedure": "View procedure",
+    "disclaimerLabel": "Medical note",
+    "disclaimer": "This content is for informational purposes only and does not replace a medical consultation."
   },
   "mangaGastrica": {
     "ctaHeading": "Is Gastric Sleeve Right for You?",

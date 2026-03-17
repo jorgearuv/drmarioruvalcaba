@@ -44,6 +44,14 @@ export const routing = defineRouting({
     },
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",
+    "/aviso-de-privacidad": {
+      es: "/aviso-de-privacidad",
+      en: "/privacy-policy",
+    },
+    "/politica-de-cookies": {
+      es: "/politica-de-cookies",
+      en: "/cookie-policy",
+    },
   },
 });
 

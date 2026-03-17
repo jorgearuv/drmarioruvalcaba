@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { DOCTOR_INFO } from "@/lib/constants";
 import {
   AcademicCapIcon,
@@ -10,6 +10,10 @@ import {
   BuildingLibraryIcon,
 } from "@heroicons/react/24/outline";
 import type { ComponentType, SVGProps } from "react";
+import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
+import { getWhatsAppQuestionUrl } from "@/lib/whatsapp";
+import DoctorBioCTA from "@/components/sections/DoctorBioCTA";
+import type { Locale } from "@/i18n/routing";
 
 interface Credential {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -34,6 +38,11 @@ const TIMELINE_KEYS = [
 
 export default async function DoctorBio() {
   const t = await getTranslations("about");
+  const tCommon = await getTranslations("common");
+  const locale = (await getLocale()) as Locale;
+  const schedulingUrl = getSchedulingUrl(locale);
+  const whatsAppQuestionUrl = getWhatsAppQuestionUrl(locale);
+  const calendarActive = isCalendarActive();
 
   return (
     <>
@@ -74,12 +83,24 @@ export default async function DoctorBio() {
 
             <div className="text-sm text-navy-500 mt-4 space-y-1">
               <p>
-                {t("hero.cedulaLabel")}: {DOCTOR_INFO.cedula}
+                {t("hero.cedulaLabel")}: {DOCTOR_INFO.cedula} — {DOCTOR_INFO.cedulaUniversity}
               </p>
               <p>
-                {t("hero.cedulaEspecialidadLabel")}: {DOCTOR_INFO.cedulaEspecialidad}
+                {t("hero.cedulaEspecialidadLabel")}: {DOCTOR_INFO.cedulaEspecialidad} — {DOCTOR_INFO.cedulaEspecialidadUniversity}
+              </p>
+              <p>
+                {t("hero.certificacionConsejoLabel")}: {DOCTOR_INFO.certificacionConsejo}
               </p>
             </div>
+
+            <DoctorBioCTA
+              schedulingUrl={schedulingUrl}
+              whatsAppUrl={whatsAppQuestionUrl}
+              calendarActive={calendarActive}
+              scheduleLabel={t("ctaSchedule")}
+              askLabel={t("ctaAsk")}
+              opensNewTabLabel={tCommon("whatsapp.opensNewTab")}
+            />
           </div>
         </div>
       </section>

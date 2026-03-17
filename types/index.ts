@@ -9,7 +9,11 @@ export interface DoctorInfo {
   title: string;
   specialties: string[];
   cedula: string;
+  cedulaUniversity: string;
   cedulaEspecialidad: string;
+  cedulaEspecialidadUniversity: string;
+  certificacionConsejo: string;
+  cofepris: string;
   phone: string;
   whatsapp: string;
   email: string;

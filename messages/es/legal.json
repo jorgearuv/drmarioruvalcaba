@@ -1,0 +1,41 @@
+{
+  "privacy": {
+    "title": "Aviso de Privacidad",
+    "lastUpdated": "Última actualización: marzo de 2026",
+    "intro": "En cumplimiento con lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento, el Dr. Mario Ruvalcaba Vallarta pone a su disposición el presente Aviso de Privacidad.",
+    "s1Title": "1. Responsable del tratamiento",
+    "s1Content": "El Dr. Mario Ruvalcaba Vallarta (en adelante, el «Responsable»), con domicilio en Calle 17 #182-B por calle 14 y 16, México Oriente, Mérida, Yucatán, C.P. 97137, México, es el responsable del tratamiento de sus datos personales. Contacto: cirujanomarioruvalcaba@gmail.com.",
+    "s2Title": "2. Datos personales recabados",
+    "s2Content": "El Responsable puede recabar los siguientes datos personales: nombre completo, número de teléfono, correo electrónico e información de salud relacionada con el motivo de consulta. Los datos de salud se consideran datos personales sensibles y serán tratados con especial protección conforme a la LFPDPPP.",
+    "s3Title": "3. Finalidades del tratamiento",
+    "s3Primary": "Finalidades primarias (necesarias para la relación jurídica):",
+    "s3PrimaryItems": "• Agendar y gestionar citas médicas.\n• Comunicarse con usted sobre su consulta o procedimiento.\n• Brindar seguimiento a su atención médica.",
+    "s3Secondary": "Finalidades secundarias (no necesarias para la relación jurídica):",
+    "s3SecondaryItems": "• Enviar información sobre procedimientos y servicios médicos.\n• Mejorar la calidad de nuestros servicios mediante análisis estadísticos anónimos.",
+    "s3OptOut": "Si no desea que sus datos sean utilizados para finalidades secundarias, puede manifestarlo enviando un correo a cirujanomarioruvalcaba@gmail.com con su nombre completo y la indicación de que desea revocar su consentimiento para dichas finalidades.",
+    "s4Title": "4. Transferencia de datos",
+    "s4Content": "Sus datos personales no serán transferidos a terceros sin su consentimiento expreso, salvo en los casos previstos en el artículo 37 de la LFPDPPP, incluyendo cuando sea necesario por disposición legal o requerimiento de autoridad competente.",
+    "s5Title": "5. Derechos ARCO",
+    "s5Content": "Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (derechos ARCO) al tratamiento de sus datos personales. Para ejercer estos derechos, envíe una solicitud por correo electrónico a cirujanomarioruvalcaba@gmail.com indicando: su nombre completo, una descripción clara del derecho que desea ejercer y una copia de su identificación oficial. El Responsable responderá en un plazo máximo de 20 días hábiles contados a partir de la recepción de su solicitud.",
+    "s6Title": "6. Cambios al Aviso de Privacidad",
+    "s6Content": "El presente Aviso de Privacidad puede ser modificado en cualquier momento. Cualquier cambio será notificado a través del sitio web https://drmarioruvalcaba.com. Se recomienda revisarlo periódicamente.",
+    "s7Title": "Marco normativo",
+    "s7Content": "Este aviso de privacidad ha sido elaborado de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) publicada en el Diario Oficial de la Federación el 5 de julio de 2010 y su Reglamento."
+  },
+  "cookies": {
+    "title": "Política de Cookies",
+    "lastUpdated": "Última actualización: marzo de 2026",
+    "intro": "Este sitio web utiliza cookies y tecnologías similares para mejorar la experiencia del usuario y analizar el tráfico. A continuación explicamos qué son, qué tipos utilizamos y cómo puede gestionarlas.",
+    "s1Title": "1. ¿Qué son las cookies?",
+    "s1Content": "Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (computadora, tablet o teléfono móvil) cuando visita un sitio web. Permiten que el sitio recuerde sus acciones y preferencias durante un período de tiempo.",
+    "s2Title": "2. Cookies que utilizamos",
+    "s2Essential": "Cookies esenciales: necesarias para el funcionamiento básico del sitio. No recopilan datos personales identificables y no pueden desactivarse.",
+    "s2Analytics": "Cookies analíticas (Google Analytics): nos permiten entender cómo los visitantes interactúan con el sitio de forma anónima (páginas visitadas, tiempo en el sitio, fuente de tráfico). Proveedor: Google LLC. Política de privacidad: https://policies.google.com/privacy",
+    "s2Marketing": "Cookies de marketing (Google Ads, Meta Pixel): se utilizan para medir la eficacia de campañas publicitarias y mostrar anuncios relevantes. Pueden compartir información con plataformas de publicidad. Proveedores: Google LLC y Meta Platforms, Inc.",
+    "s3Title": "3. Gestión de preferencias",
+    "s3Content": "Al ingresar al sitio por primera vez, verá un banner que le permite aceptar todas las cookies, rechazar las no esenciales o personalizar sus preferencias. Su elección se almacena en su dispositivo por 12 meses. También puede gestionar las cookies desde la configuración de su navegador, aunque desactivar ciertas cookies puede afectar la funcionalidad del sitio.",
+    "s4Title": "4. Contacto",
+    "s4Content": "Para cualquier pregunta relacionada con esta Política de Cookies, puede contactarnos en: cirujanomarioruvalcaba@gmail.com"
+  },
+  "backToHome": "Volver al inicio"
+}

@@ -15,11 +15,17 @@
     "description": "Cirujano general y bariátra certificado en Mérida, Yucatán. Especialista en cirugía de mínima invasión y cirugía bariátrica y metabólica.",
     "procedures": "Procedimientos",
     "quickLinks": "Enlaces Rápidos",
+    "legal": "Legal",
+    "privacyPolicy": "Aviso de Privacidad",
+    "cookiePolicy": "Política de Cookies",
     "contactTitle": "Contacto",
     "copyright": "Dr. Mario Ruvalcaba. Todos los derechos reservados.",
     "subtitle": "Cirujano Bariátra",
     "bariatricSurgeon": "Cirujano Bariátra en Mérida, Yucatán",
-    "professionalLicense": "Cédula Profesional"
+    "professionalLicense": "Cédula Profesional",
+    "specialtyLicense": "Cédula de Especialidad",
+    "boardCertification": "Nº Certificación Consejo Mexicano de Cirugía General",
+    "cofeprisNotice": "Aviso de Publicidad COFEPRIS"
   },
   "cta": {
     "scheduleAppointment": "Agendar Cita",
@@ -34,7 +40,8 @@
     "goHome": "Ir al Inicio",
     "contactUs": "Contactar",
     "scheduleAssessment": "Agendar Valoración",
-    "scheduleBariatricAssessmentAria": "Agendar valoración bariátrica"
+    "scheduleBariatricAssessmentAria": "Agendar valoración bariátrica",
+    "askQuestion": "Escríbenos por WhatsApp"
   },
   "whatsapp": {
     "defaultMessage": "Hola Dr. Ruvalcaba, me gustaría agendar una consulta para cirugía bariátrica.",
@@ -43,7 +50,9 @@
     "responseTime": "Respuesta en menos de 2 horas",
     "scheduleConsultation": "Agenda tu consulta",
     "writeUsAria": "Escríbenos por WhatsApp al {number}",
-    "opensNewTab": "abre WhatsApp en una nueva pestaña"
+    "opensNewTab": "abre WhatsApp en una nueva pestaña",
+    "questionMessage": "Hola Dr. Ruvalcaba, tengo una pregunta sobre sus procedimientos.",
+    "orWriteUs": "o escríbenos directamente"
   },
   "accessibility": {
     "skipToContent": "Saltar al contenido principal",

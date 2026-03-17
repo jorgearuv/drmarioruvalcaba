@@ -3,8 +3,8 @@
 import { Link } from "@/i18n/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
-import { DOCTOR_INFO } from "@/lib/constants";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
+import { getWhatsAppQuestionUrl } from "@/lib/whatsapp";
 import { useId } from "react";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import { trackEvent } from "@/lib/analytics";
@@ -44,68 +44,100 @@ const ClockIcon = () => (
   </svg>
 );
 
-/** Renders the WhatsApp contact card shown in the right column. */
+/** Renders the contact card shown in the right column. */
 interface ContactCardProps {
   buttonText: string;
   buttonHref: string;
+  whatsAppQuestionUrl: string;
   isExternalLink: boolean;
+  calendarActive: boolean;
   tWhatsapp: (key: string, values?: Record<string, string>) => string;
+  tCta: (key: string) => string;
 }
 
 const ContactCard = ({
   buttonText,
   buttonHref,
+  whatsAppQuestionUrl,
   isExternalLink,
+  calendarActive,
   tWhatsapp,
+  tCta,
 }: ContactCardProps) => {
-  const formattedWhatsAppNumber = DOCTOR_INFO.whatsapp;
+  const primaryButtonClasses =
+    "group flex w-full items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-gold-500 to-gold-400 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-gold-500/25 transition-all duration-300 hover:from-gold-400 hover:to-gold-300 hover:shadow-xl hover:shadow-gold-500/30 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900";
 
-  const whatsAppButtonClasses =
-    "group flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-green-500 to-green-400 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:from-green-400 hover:to-green-300 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900";
+  const secondaryButtonClasses =
+    "group flex w-full items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-green-500 to-green-400 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:from-green-400 hover:to-green-300 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900";
+
+  const handlePrimaryClick = () =>
+    calendarActive
+      ? trackEvent({ name: "calendar_click", params: { location: "cta" } })
+      : trackEvent({ name: "whatsapp_click", params: { location: "cta" } });
+
+  const handleSecondaryClick = () =>
+    trackEvent({ name: "whatsapp_click", params: { location: "cta" } });
+
+  const PrimaryButtonIcon = () =>
+    calendarActive ? (
+      <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ) : (
+      <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
+    );
 
   return (
     <div className="glass-dark rounded-3xl p-8">
       <h3 className="font-display text-2xl text-white">{tWhatsapp("scheduleConsultation")}</h3>
 
-      {/* WhatsApp number display */}
-      <div className="mt-5 flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
-        <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
-        <a
-          href={`https://wa.me/${formattedWhatsAppNumber.replace(/\D/g, "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={tWhatsapp("writeUsAria", { number: formattedWhatsAppNumber })}
-          className="font-mono text-sm tracking-wide text-white/90 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white hover:decoration-white"
-        >
-          {formattedWhatsAppNumber}
-        </a>
-      </div>
-
-      {/* Primary WhatsApp CTA */}
+      {/* Primary scheduling CTA */}
       <div className="mt-5">
         {isExternalLink ? (
           <a
             href={buttonHref}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "cta" } })}
+            onClick={handlePrimaryClick}
             aria-label={`${buttonText} — ${tWhatsapp("opensNewTab")}`}
-            className={whatsAppButtonClasses}
+            className={primaryButtonClasses}
           >
-            <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
+            <PrimaryButtonIcon />
             {buttonText}
           </a>
         ) : (
           <a
             href={buttonHref}
-            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "cta" } })}
+            onClick={handlePrimaryClick}
             aria-label={buttonText}
-            className={whatsAppButtonClasses}
+            className={primaryButtonClasses}
           >
-            <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
+            <PrimaryButtonIcon />
             {buttonText}
           </a>
         )}
+      </div>
+
+      {/* Separator */}
+      <div className="mt-4 flex items-center gap-3">
+        <div className="h-px flex-1 bg-white/10" />
+        <span className="text-xs font-medium text-white/40">{tWhatsapp("orWriteUs")}</span>
+        <div className="h-px flex-1 bg-white/10" />
+      </div>
+
+      {/* Secondary WhatsApp question CTA */}
+      <div className="mt-4">
+        <a
+          href={whatsAppQuestionUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleSecondaryClick}
+          aria-label={`${tCta("askQuestion")} — ${tWhatsapp("opensNewTab")}`}
+          className={secondaryButtonClasses}
+        >
+          <WhatsAppIcon className="h-5 w-5 flex-shrink-0" />
+          {tCta("askQuestion")}
+        </a>
       </div>
 
       {/* Trust micro-copy */}
@@ -135,10 +167,12 @@ export default function CTASection({
   const tWhatsapp = useTranslations("common.whatsapp");
   const tAvailability = useTranslations("common.availability");
   const locale = useLocale() as Locale;
-  const whatsAppUrl = getWhatsAppUrl(locale);
+  const schedulingUrl = getSchedulingUrl(locale);
+  const whatsAppQuestionUrl = getWhatsAppQuestionUrl(locale);
+  const calendarActive = isCalendarActive();
 
   const resolvedButtonText = buttonText ?? tCta("scheduleAppointment");
-  const resolvedButtonHref = buttonHref ?? whatsAppUrl;
+  const resolvedButtonHref = buttonHref ?? schedulingUrl;
 
   const isTealVariant = variant === "teal";
   const isExternalLink = resolvedButtonHref.startsWith("http");
@@ -243,8 +277,11 @@ export default function CTASection({
             <ContactCard
               buttonText={resolvedButtonText}
               buttonHref={resolvedButtonHref}
+              whatsAppQuestionUrl={whatsAppQuestionUrl}
               isExternalLink={isExternalLink}
+              calendarActive={calendarActive}
               tWhatsapp={tWhatsapp}
+              tCta={tCta}
             />
           </motion.div>
         </div>

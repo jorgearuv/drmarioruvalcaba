@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
 import { trackEvent } from "@/lib/analytics";
 import LanguageToggle from "@/components/layout/LanguageToggle";
@@ -107,7 +107,8 @@ export default function Navbar() {
   const tCta = useTranslations("common.cta");
   const tA11y = useTranslations("common.accessibility");
   const locale = useLocale() as Locale;
-  const whatsAppUrl = getWhatsAppUrl(locale);
+  const schedulingUrl = getSchedulingUrl(locale);
+  const calendarActive = isCalendarActive();
 
   return (
     <header className="glass-nav sticky top-0 z-50 border-b border-navy-200/50">
@@ -139,13 +140,23 @@ export default function Navbar() {
           ))}
           <LanguageToggle />
           <a
-            href={whatsAppUrl}
+            href={schedulingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })}
+            onClick={() =>
+              calendarActive
+                ? trackEvent({ name: "calendar_click", params: { location: "navbar" } })
+                : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })
+            }
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30 hover:brightness-110"
           >
-            <WhatsAppIcon className="h-4 w-4" />
+            {calendarActive ? (
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            ) : (
+              <WhatsAppIcon className="h-4 w-4" />
+            )}
             {tCta("scheduleAppointment")}
           </a>
         </div>
@@ -245,13 +256,17 @@ export default function Navbar() {
                 );
               })}
               <a
-                href={whatsAppUrl}
+                href={schedulingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })}
+                onClick={() =>
+                  calendarActive
+                    ? trackEvent({ name: "calendar_click", params: { location: "navbar" } })
+                    : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })
+                }
                 className="mt-2 flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30"
               >
-                {tCta("scheduleAppointmentWhatsApp")}
+                {calendarActive ? tCta("scheduleAppointment") : tCta("scheduleAppointmentWhatsApp")}
               </a>
             </div>
           </motion.div>
