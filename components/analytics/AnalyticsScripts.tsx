@@ -38,6 +38,18 @@ export default function AnalyticsScripts() {
     return () => window.removeEventListener("cookie_consent_changed", handleConsentChange);
   }, []);
 
+  // Push consent update to gtag whenever stored consent changes
+  useEffect(() => {
+    if (!mounted) return;
+    if (typeof window.gtag !== "function") return;
+    window.gtag("consent", "update", {
+      analytics_storage: consent.analytics ? "granted" : "denied",
+      ad_storage: consent.marketing ? "granted" : "denied",
+      ad_user_data: consent.marketing ? "granted" : "denied",
+      ad_personalization: consent.marketing ? "granted" : "denied",
+    });
+  }, [consent, mounted]);
+
   if (!mounted) return null;
 
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -46,8 +58,25 @@ export default function AnalyticsScripts() {
 
   return (
     <>
-      {consent.analytics && gaId && (
+      {gaId && (
         <>
+          {/* Consent Mode v2 defaults — must run before gtag('config') */}
+          <Script
+            id="gtag-consent-defaults"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('consent', 'default', {
+                  analytics_storage: 'denied',
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied',
+                });
+              `,
+            }}
+          />
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="afterInteractive"
@@ -57,8 +86,6 @@ export default function AnalyticsScripts() {
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', '${gaId}');
                 ${gadsId ? `gtag('config', '${gadsId}');` : ""}

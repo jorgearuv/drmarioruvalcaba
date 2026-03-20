@@ -31,6 +31,14 @@ function getStoredConsent(): ConsentState | null {
 function saveConsent(analytics: boolean, marketing: boolean): void {
   const consentState: ConsentState = { analytics, marketing, timestamp: Date.now() };
   localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(consentState));
+  if (typeof window.gtag === "function") {
+    window.gtag("consent", "update", {
+      analytics_storage: analytics ? "granted" : "denied",
+      ad_storage: marketing ? "granted" : "denied",
+      ad_user_data: marketing ? "granted" : "denied",
+      ad_personalization: marketing ? "granted" : "denied",
+    });
+  }
   window.dispatchEvent(new Event("cookie_consent_changed"));
 }
 
