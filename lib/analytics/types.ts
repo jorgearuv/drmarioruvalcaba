@@ -12,8 +12,15 @@ export interface PageContentEvent {
   contentCategory: "procedure" | "blog_post";
 }
 
+export type ConversionAction = "schedule" | "contact_page_view";
+
+export const CONVERSION_EVENT_NAMES: Record<ConversionAction, string> = {
+  schedule: "ads_conversion_Reservar_cita_1",
+  contact_page_view: "ads_conversion_Contactar_1",
+};
+
 export interface AnalyticsProvider {
   trackEvent(event: AnalyticsEvent): void;
   trackPageContent(event: PageContentEvent): void;
-  trackConversion?(action: string): void;
+  trackConversion?(action: ConversionAction): void;
 }

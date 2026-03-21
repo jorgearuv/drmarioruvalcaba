@@ -4,7 +4,7 @@ import { useState } from "react";
 import { type Variants, motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackConversion } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 // ---------------------------------------------------------------------------
@@ -223,11 +223,12 @@ const BMIResultDisplay = ({
         href={schedulingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() =>
+        onClick={() => {
           calendarActive
             ? trackEvent({ name: "calendar_click", params: { location: "bmi" } })
-            : trackEvent({ name: "whatsapp_click", params: { location: "bmi" } })
-        }
+            : trackEvent({ name: "whatsapp_click", params: { location: "bmi" } });
+          trackConversion("schedule");
+        }}
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{

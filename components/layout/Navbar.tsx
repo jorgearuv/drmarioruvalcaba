@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackConversion } from "@/lib/analytics";
 import LanguageToggle from "@/components/layout/LanguageToggle";
 import { useLocale } from "next-intl";
 import type { Locale } from "@/i18n/routing";
@@ -143,11 +143,12 @@ export default function Navbar() {
             href={schedulingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() =>
+            onClick={() => {
               calendarActive
                 ? trackEvent({ name: "calendar_click", params: { location: "navbar" } })
-                : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })
-            }
+                : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } });
+              trackConversion("schedule");
+            }}
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30 hover:brightness-110"
           >
             {calendarActive ? (
@@ -259,11 +260,12 @@ export default function Navbar() {
                 href={schedulingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() =>
+                onClick={() => {
                   calendarActive
                     ? trackEvent({ name: "calendar_click", params: { location: "navbar" } })
-                    : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } })
-                }
+                    : trackEvent({ name: "whatsapp_click", params: { location: "navbar" } });
+                  trackConversion("schedule");
+                }}
                 className="mt-2 flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30"
               >
                 {calendarActive ? tCta("scheduleAppointment") : tCta("scheduleAppointmentWhatsApp")}

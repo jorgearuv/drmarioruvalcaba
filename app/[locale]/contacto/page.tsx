@@ -3,6 +3,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { DOCTOR_INFO } from "@/lib/constants";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import ContactForm from "@/components/sections/ContactForm";
+import { ContactPageConversion } from "@/components/analytics/ContactPageConversion";
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -49,6 +50,7 @@ export default async function ContactoPage({ params }: PageProps) {
 
   return (
     <>
+      <ContactPageConversion />
       {/* Hero */}
       <section className="gradient-mesh-hero noise-overlay relative overflow-hidden py-16 md:py-20">
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">

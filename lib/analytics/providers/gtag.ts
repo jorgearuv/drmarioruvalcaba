@@ -1,4 +1,5 @@
-import type { AnalyticsProvider, AnalyticsEvent, PageContentEvent } from "../types";
+import type { AnalyticsProvider, AnalyticsEvent, PageContentEvent, ConversionAction } from "../types";
+import { CONVERSION_EVENT_NAMES } from "../types";
 
 declare global {
   interface Window {
@@ -24,9 +25,7 @@ export const gtagProvider: AnalyticsProvider = {
     });
   },
 
-  trackConversion(action: string) {
-    gtag("event", "conversion", {
-      send_to: `${process.env.NEXT_PUBLIC_GADS_ID}/${action}`,
-    });
+  trackConversion(action: ConversionAction) {
+    gtag("event", CONVERSION_EVENT_NAMES[action]);
   },
 };

@@ -1,6 +1,6 @@
 import { gtagProvider } from "./providers/gtag";
 import { metaPixelProvider } from "./providers/meta-pixel";
-import type { AnalyticsEvent, PageContentEvent, AnalyticsProvider } from "./types";
+import type { AnalyticsEvent, PageContentEvent, AnalyticsProvider, ConversionAction } from "./types";
 
 const providers: AnalyticsProvider[] = [gtagProvider, metaPixelProvider];
 
@@ -12,8 +12,8 @@ export function trackPageContent(event: PageContentEvent) {
   providers.forEach((p) => p.trackPageContent(event));
 }
 
-export function trackConversion(action: string) {
+export function trackConversion(action: ConversionAction) {
   providers.forEach((p) => p.trackConversion?.(action));
 }
 
-export type { AnalyticsEvent, PageContentEvent } from "./types";
+export type { AnalyticsEvent, PageContentEvent, ConversionAction } from "./types";

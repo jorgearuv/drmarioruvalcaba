@@ -7,7 +7,7 @@ import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import { getWhatsAppQuestionUrl } from "@/lib/whatsapp";
 import { useId } from "react";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackConversion } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 // ---------------------------------------------------------------------------
@@ -70,10 +70,12 @@ const ContactCard = ({
   const secondaryButtonClasses =
     "group flex w-full items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-green-500 to-green-400 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:from-green-400 hover:to-green-300 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900";
 
-  const handlePrimaryClick = () =>
+  const handlePrimaryClick = () => {
     calendarActive
       ? trackEvent({ name: "calendar_click", params: { location: "cta" } })
       : trackEvent({ name: "whatsapp_click", params: { location: "cta" } });
+    trackConversion("schedule");
+  };
 
   const handleSecondaryClick = () =>
     trackEvent({ name: "whatsapp_click", params: { location: "cta" } });
