@@ -115,14 +115,15 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" aria-label={tA11y("goToHome")}>
-          <Image
-            src="/images/logo.svg"
-            alt=""
-            width={36}
-            height={44}
-            className="h-11 w-auto"
-            priority
-          />
+          <div className="relative h-11 w-9">
+            <Image
+              src="/images/logo.svg"
+              alt=""
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
           <div>
             <p className="font-display text-sm font-semibold leading-tight text-navy-900">
               Dr. Mario Ruvalcaba

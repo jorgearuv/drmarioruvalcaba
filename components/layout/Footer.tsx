@@ -49,13 +49,14 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <Image
-                src="/images/logo.svg"
-                alt=""
-                width={36}
-                height={44}
-                className="h-11 w-auto brightness-0 invert"
-              />
+              <div className="relative h-11 w-9">
+                <Image
+                  src="/images/logo.svg"
+                  alt=""
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
               <div>
                 <p className="font-display text-sm font-semibold leading-tight text-white">
                   Dr. Mario Ruvalcaba

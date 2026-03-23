@@ -110,13 +110,13 @@ export default function InsurancePartners() {
               className="group flex flex-col items-center justify-center rounded-2xl border border-navy-100/60 bg-white px-6 py-6 transition-all duration-300 hover:border-teal-200/80 hover:shadow-lg hover:shadow-teal-600/[0.06]"
             >
               {/* Partner logo */}
-              <div className="flex h-14 w-24 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+              <div className="relative h-14 w-24 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src={partner.logoPath}
                   alt={partner.shortName}
-                  width={96}
-                  height={56}
-                  className="max-h-full w-auto max-w-full object-contain"
+                  fill
+                  sizes="96px"
+                  className="object-contain"
                 />
               </div>
             </motion.li>

@@ -5,15 +5,18 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const cspDirectives = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://td.doubleclick.net https://www.google.com https://www.facebook.com",
-  "font-src 'self'",
-  "frame-src https://www.google.com https://td.doubleclick.net https://www.googletagmanager.com",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://www.facebook.com",
+  "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://connect.facebook.net",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "img-src 'self' data: blob: https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googletagmanager.com https://*.google.com https://*.google.com.mx https://www.facebook.com https://connect.facebook.net",
+  "font-src 'self' https://fonts.gstatic.com",
+  "frame-src https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com https://www.facebook.com",
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    qualities: [75, 85],
+  },
   // Explicitly exclude source maps from production bundles to reduce bundle
   // size and avoid leaking implementation details to end users.
   productionBrowserSourceMaps: false,
