@@ -222,7 +222,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 border-t border-navy-800 pt-8 text-center text-xs text-navy-600 space-y-1">
-          <p>
+          <p suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {tFooter("copyright")}
           </p>
           <p>
