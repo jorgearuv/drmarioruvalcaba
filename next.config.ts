@@ -9,7 +9,7 @@ const cspDirectives = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googletagmanager.com https://*.google.com https://*.google.com.mx https://www.facebook.com https://connect.facebook.net",
   "font-src 'self' https://fonts.gstatic.com",
-  "frame-src https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com",
+  "frame-src https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com https://vercel.live",
   "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com https://www.facebook.com https://vercel.live https://*.vercel.live",
 ];
 
