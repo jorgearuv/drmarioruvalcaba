@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const cspDirectives = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://connect.facebook.net https://vercel.live",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.googletagmanager.com",
   "img-src 'self' data: blob: https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googletagmanager.com https://*.google.com https://*.google.com.mx https://www.facebook.com https://connect.facebook.net",
   "font-src 'self' https://fonts.gstatic.com",
   "frame-src https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com https://vercel.live",
