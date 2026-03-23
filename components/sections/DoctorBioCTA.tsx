@@ -1,7 +1,7 @@
 "use client";
 
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { trackEvent, trackConversion } from "@/lib/analytics";
+import { trackScheduleClick, trackWhatsAppClick } from "@/lib/analytics";
 
 interface DoctorBioCTAProps {
   schedulingUrl: string;
@@ -20,15 +20,8 @@ export default function DoctorBioCTA({
   askLabel,
   opensNewTabLabel,
 }: DoctorBioCTAProps) {
-  const handleScheduleClick = () => {
-    calendarActive
-      ? trackEvent({ name: "calendar_click", params: { location: "doctor_bio" } })
-      : trackEvent({ name: "whatsapp_click", params: { location: "doctor_bio" } });
-    trackConversion("schedule");
-  };
-
-  const handleAskClick = () =>
-    trackEvent({ name: "whatsapp_click", params: { location: "doctor_bio" } });
+  const handleScheduleClick = () => trackScheduleClick("doctor_bio", calendarActive);
+  const handleAskClick = () => trackWhatsAppClick("doctor_bio");
 
   const CalendarIcon = () => (
     <svg

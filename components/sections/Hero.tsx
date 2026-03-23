@@ -7,7 +7,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { HERO_TRUST_SIGNALS } from "@/lib/constants";
 import { getSchedulingUrl, isCalendarActive } from "@/lib/scheduling";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { trackEvent, trackConversion } from "@/lib/analytics";
+import { trackScheduleClick } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 interface HeroProps {
@@ -138,12 +138,7 @@ export default function Hero({ headline, subheadline }: HeroProps) {
                 href={schedulingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  calendarActive
-                    ? trackEvent({ name: "calendar_click", params: { location: "hero" } })
-                    : trackEvent({ name: "whatsapp_click", params: { location: "hero" } });
-                  trackConversion("schedule");
-                }}
+                onClick={() => trackScheduleClick("hero", calendarActive)}
                 className="group inline-flex items-center gap-3 rounded-2xl bg-gradient-to-b from-primary-500 to-primary-700 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-700/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-600/30"
               >
                 {calendarActive ? (

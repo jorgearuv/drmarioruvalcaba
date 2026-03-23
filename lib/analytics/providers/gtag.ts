@@ -1,5 +1,5 @@
 import type { AnalyticsProvider, AnalyticsEvent, PageContentEvent, ConversionAction } from "../types";
-import { CONVERSION_EVENT_NAMES } from "../types";
+import { CONVERSION_CONFIG } from "../types";
 
 declare global {
   interface Window {
@@ -26,6 +26,11 @@ export const gtagProvider: AnalyticsProvider = {
   },
 
   trackConversion(action: ConversionAction) {
-    gtag("event", CONVERSION_EVENT_NAMES[action]);
+    const config = CONVERSION_CONFIG[action];
+    if (config.type === "named_event") {
+      gtag("event", config.eventName);
+    } else {
+      gtag("event", "conversion", { send_to: config.sendTo, value: config.value, currency: config.currency });
+    }
   },
 };

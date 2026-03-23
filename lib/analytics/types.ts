@@ -1,4 +1,4 @@
-export type WhatsAppLocation = "hero" | "navbar" | "footer" | "floating" | "cta" | "bmi" | "doctor_bio";
+export type WhatsAppLocation = "hero" | "navbar" | "footer" | "floating" | "cta" | "bmi" | "doctor_bio" | "contact_page";
 
 export type AnalyticsEvent =
   | { name: "contact_form_submit"; params: { consultation_reason: string } }
@@ -12,11 +12,16 @@ export interface PageContentEvent {
   contentCategory: "procedure" | "blog_post";
 }
 
-export type ConversionAction = "schedule" | "contact_page_view";
+export type ConversionAction = "schedule" | "contact_page_view" | "whatsapp_click";
 
-export const CONVERSION_EVENT_NAMES: Record<ConversionAction, string> = {
-  schedule: "ads_conversion_Reservar_cita_1",
-  contact_page_view: "ads_conversion_Contactar_1",
+type NamedEventConversion = { type: "named_event"; eventName: string };
+type LabelConversion = { type: "label"; sendTo: string; value: number; currency: string };
+export type ConversionConfig = NamedEventConversion | LabelConversion;
+
+export const CONVERSION_CONFIG: Record<ConversionAction, ConversionConfig> = {
+  schedule: { type: "named_event", eventName: "ads_conversion_Reservar_cita_1" },
+  contact_page_view: { type: "named_event", eventName: "ads_conversion_Contactar_1" },
+  whatsapp_click: { type: "label", sendTo: "AW-17983868749/sEVFCM7jpY4cEM2esP9C", value: 1.0, currency: "MXN" },
 };
 
 export interface AnalyticsProvider {

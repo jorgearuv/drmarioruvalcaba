@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { DOCTOR_INFO, TRUST_BADGES } from "@/lib/constants";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import WhatsAppIcon from "@/components/ui/WhatsAppIcon";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackWhatsAppClick } from "@/lib/analytics";
 import type { Locale } from "@/i18n/routing";
 
 const PROCEDURE_LINKS = [
@@ -195,7 +195,7 @@ export default function Footer() {
                   href={whatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent({ name: "whatsapp_click", params: { location: "footer" } })}
+                  onClick={() => trackWhatsAppClick("footer")}
                   className="mt-2 inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-600 to-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition-all hover:shadow-xl hover:shadow-primary-600/30 hover:brightness-110"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
