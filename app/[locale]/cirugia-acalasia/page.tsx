@@ -17,22 +17,23 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-  const procedureData = getProcedureBySlug("cirugias-urgencias", locale as Locale);
+  const procedureData = getProcedureBySlug("cirugia-acalasia", locale as Locale);
   if (!procedureData) return {};
 
   return createPageMetadata({
     title: procedureData.metaTitle,
     description: procedureData.metaDescription,
-    path: "/cirugias-urgencias",
+    path: "/cirugia-acalasia",
     locale: locale as Locale,
-    alternateLocalePath: "/cirugias-urgencias",
+    alternateLocalePath: "/cirugia-acalasia",
+    ogImage: "/images/og-minima-invasion.png",
   });
 }
 
-export default async function CirugiasUrgenciasPage({ params }: PageProps) {
+export default async function CirugiaAcalasiaPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const procedureData = getProcedureBySlug("cirugias-urgencias", locale as Locale);
+  const procedureData = getProcedureBySlug("cirugia-acalasia", locale as Locale);
   if (!procedureData) notFound();
 
   const t = await getTranslations({ locale, namespace: "procedures" });
@@ -41,7 +42,7 @@ export default async function CirugiasUrgenciasPage({ params }: PageProps) {
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: locale === "en" ? "Home" : "Inicio", url: `${DOCTOR_INFO.siteUrl}/${locale}` },
     { name: locale === "en" ? "Procedures" : "Procedimientos", url: `${DOCTOR_INFO.siteUrl}/${locale}/#procedimientos` },
-    { name: procedureData.title, url: `${DOCTOR_INFO.siteUrl}/${locale}/cirugias-urgencias` },
+    { name: procedureData.title, url: `${DOCTOR_INFO.siteUrl}/${locale}/cirugia-acalasia` },
   ]);
 
   return (
@@ -49,10 +50,10 @@ export default async function CirugiasUrgenciasPage({ params }: PageProps) {
       <TrackViewContent contentName={procedureData.title} contentCategory="procedure" />
       <ProcedureDetail procedure={procedureData} />
       <MedicalDisclaimer />
-      <RelatedProcedures currentHref="/cirugias-urgencias" />
+      <RelatedProcedures currentHref="/cirugia-acalasia" />
       <CTASection
-        heading={t("cirugiasUrgencias.ctaHeading")}
-        description={t("cirugiasUrgencias.ctaDescription")}
+        heading={t("cirugiaAcalasia.ctaHeading")}
+        description={t("cirugiaAcalasia.ctaDescription")}
         variant="teal"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

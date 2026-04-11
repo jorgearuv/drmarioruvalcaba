@@ -2,11 +2,13 @@
   "name": "drmarioruvalcaba",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "bun@1.2.5",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

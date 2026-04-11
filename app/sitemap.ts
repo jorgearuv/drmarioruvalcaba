@@ -3,6 +3,7 @@ import { getBlogPosts } from "@/lib/blog";
 
 const BASE_URL = "https://drmarioruvalcaba.com";
 const LAST_CONTENT_UPDATE = new Date("2026-03-07");
+const NEW_PAGES_DATE = new Date("2026-04-10");
 
 /** Maps Spanish (canonical) paths to English translated slugs. */
 const PATHNAME_MAP: Record<string, string> = {
@@ -13,6 +14,18 @@ const PATHNAME_MAP: Record<string, string> = {
   "/cirugia-minima-invasion": "/minimally-invasive-surgery",
   "/cirugia-diastasis-rectos": "/diastasis-recti-surgery",
   "/cirugias-urgencias": "/emergency-surgery",
+  "/cirugia-bariatrica-metabolica": "/bariatric-metabolic-surgery",
+  "/biparticion-transito-intestinal": "/intestinal-bipartition",
+  "/sadi-s": "/sadi-s",
+  "/cirugia-revision-bariatrica": "/bariatric-revision-surgery",
+  "/cirugia-conversion-bariatrica": "/bariatric-conversion-surgery",
+  "/colecistectomia-laparoscopica": "/laparoscopic-cholecystectomy",
+  "/apendicectomia-laparoscopica": "/laparoscopic-appendectomy",
+  "/funduplicatura-antirreflujo": "/antireflux-fundoplication",
+  "/cirugia-acalasia": "/achalasia-surgery",
+  "/cirugia-hernias-ventrales": "/ventral-hernia-surgery",
+  "/cirugia-hernias-inguinales": "/inguinal-hernia-surgery",
+  "/cirugia-puerto-unico": "/single-port-surgery",
   "/sobre-el-doctor": "/about-the-doctor",
   "/preguntas-frecuentes": "/faq",
   "/contacto": "/contact",
@@ -36,6 +49,18 @@ const PAGES: PageEntry[] = [
   { esPath: "/cirugia-minima-invasion", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.9 },
   { esPath: "/cirugia-diastasis-rectos", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.8 },
   { esPath: "/cirugias-urgencias", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-bariatrica-metabolica", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.9 },
+  { esPath: "/biparticion-transito-intestinal", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/sadi-s", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-revision-bariatrica", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-conversion-bariatrica", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/colecistectomia-laparoscopica", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/apendicectomia-laparoscopica", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/funduplicatura-antirreflujo", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-acalasia", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-hernias-ventrales", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-hernias-inguinales", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
+  { esPath: "/cirugia-puerto-unico", lastModified: NEW_PAGES_DATE, changeFrequency: "monthly", priority: 0.8 },
   { esPath: "/sobre-el-doctor", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.8 },
   { esPath: "/blog", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "weekly", priority: 0.7 },
   { esPath: "/preguntas-frecuentes", lastModified: LAST_CONTENT_UPDATE, changeFrequency: "monthly", priority: 0.6 },

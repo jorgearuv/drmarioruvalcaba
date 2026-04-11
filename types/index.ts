@@ -61,6 +61,9 @@ export interface Procedure {
   icon: string;
   imagePath?: string;
   faq: FAQItem[];
+  bodyLocation?: string;
+  preparation?: string;
+  relevantSpecialty?: string;
 }
 
 export interface ProcedureBenefit {
@@ -78,6 +81,7 @@ export interface SubProcedure {
   title: string;
   description: string;
   icon: string;
+  slug?: string;
 }
 
 export interface Testimonial {
