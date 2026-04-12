@@ -20,11 +20,6 @@ const nextConfig: NextConfig = {
   // Explicitly exclude source maps from production bundles to reduce bundle
   // size and avoid leaking implementation details to end users.
   productionBrowserSourceMaps: false,
-  // Force blocking metadata rendering for all requests to avoid hydration
-  // mismatch in MetadataWrapper (<div hidden> server vs client discrepancy).
-  // Safe because all metadata in this site is static.
-  // https://github.com/vercel/next.js/issues/XXXXX
-  htmlLimitedBots: /./,
   async headers() {
     return [
       {

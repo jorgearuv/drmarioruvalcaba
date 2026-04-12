@@ -5,7 +5,7 @@ const SITE_URL = "https://drmarioruvalcaba.com";
 const SITE_NAME = "Dr. Mario Ruvalcaba - Cirujano Bariátrico en Mérida";
 
 export const DEFAULT_OG_IMAGE = {
-  url: "/images/og-default.png",
+  url: `${SITE_URL}/images/og-default.png`,
   width: 1200,
   height: 630,
   alt: "Dr. Mario Ruvalcaba — Cirujano Bariátra en Mérida",
@@ -38,7 +38,12 @@ export function createPageMetadata(config: PageMetadataConfig): Metadata {
   const ogLocale = isEnglish ? "en_US" : "es_MX";
 
   const ogImageObject = ogImage
-    ? { url: ogImage, width: 1200, height: 630, alt: title }
+    ? {
+        url: ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`,
+        width: 1200,
+        height: 630,
+        alt: title,
+      }
     : DEFAULT_OG_IMAGE;
 
   const alternates: Metadata["alternates"] = {

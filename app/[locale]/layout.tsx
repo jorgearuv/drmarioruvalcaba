@@ -70,7 +70,7 @@ export async function generateMetadata({
         { url: "/favicon.ico", sizes: "32x32" },
         { url: "/images/logo.svg", type: "image/svg+xml" },
       ],
-      apple: "/images/logo-apple-touch.png",
+      apple: "/images/logo-apple-touch-icon.png",
     },
     openGraph: {
       siteName: isEn
