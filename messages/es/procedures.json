@@ -10,7 +10,7 @@
     "faq": "Preguntas Frecuentes sobre {procedure}",
     "otherProcedures": "Otros Procedimientos",
     "procedureIllustration": "Ilustración del procedimiento",
-    "proceduresWePerform": "Procedimientos que Realizamos",
+    "proceduresWePerform": "Procedimientos que realizamos",
     "imageAlt": "Ilustración de {procedure}",
     "imagePlaceholder": "Ilustración del procedimiento",
     "viewProcedure": "Ver procedimiento",
@@ -40,5 +40,53 @@
   "cirugiasUrgencias": {
     "ctaHeading": "¿Tienes una Urgencia Quirúrgica?",
     "ctaDescription": "Contacta al Dr. Mario Ruvalcaba las 24 horas del día, los 7 días de la semana."
+  },
+  "cirugiaBariatricaMetabolica": {
+    "ctaHeading": "¿La Cirugía Bariátrica es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "biparticionIntestinal": {
+    "ctaHeading": "¿La Bipartición de Tránsito Intestinal es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "sadiS": {
+    "ctaHeading": "¿El SADI-S es para Ti?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaRevisionBariatrica": {
+    "ctaHeading": "¿Necesitas una Revisión Bariátrica?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaConversionBariatrica": {
+    "ctaHeading": "¿Necesitas una Conversión Bariátrica?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "colecistectomiaLaparoscopica": {
+    "ctaHeading": "¿Necesitas una Colecistectomía Laparoscópica?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "apendicectomiaLaparoscopica": {
+    "ctaHeading": "¿Necesitas una Apendicectomía Laparoscópica?",
+    "ctaDescription": "Contacta al Dr. Mario Ruvalcaba para atención de urgencia o valoración."
+  },
+  "funduplicaturaAntirreflujo": {
+    "ctaHeading": "¿Sufres de Reflujo Severo?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaAcalasia": {
+    "ctaHeading": "¿Tienes Dificultad para Tragar?",
+    "ctaDescription": "Agenda una valoración para acalasia con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaHerniasVentrales": {
+    "ctaHeading": "¿Tienes una Hernia Ventral o Umbilical?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaHerniasInguinales": {
+    "ctaHeading": "¿Tienes una Hernia Inguinal?",
+    "ctaDescription": "Agenda una valoración personalizada con el Dr. Mario Ruvalcaba."
+  },
+  "cirugiaPuertoUnico": {
+    "ctaHeading": "¿Quieres una Cirugía con Cicatriz Invisible?",
+    "ctaDescription": "Agenda una valoración para puerto único con el Dr. Mario Ruvalcaba."
   }
 }

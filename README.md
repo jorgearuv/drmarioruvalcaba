@@ -17,16 +17,19 @@ Professional website for Dr. Mario Ruvalcaba, specialist in bariatric and metabo
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Development server
-npm run dev
+bun dev
 
 # Production build
-npm run build && npm start
+bun run build && bun start
 
 # Lint
-npm run lint
+bun run lint
+
+# Regression tests
+bun test
 ```
 
 The server starts at [http://localhost:3000](http://localhost:3000).
@@ -35,22 +38,17 @@ The server starts at [http://localhost:3000](http://localhost:3000).
 
 ```
 app/
-├── page.tsx                        # Homepage
-├── layout.tsx                      # Root layout (lang="es", fonts, Navbar, Footer, JSON-LD)
+├── layout.tsx                      # Root layout (html/body, fonts, globals)
 ├── globals.css                     # Tailwind v4 theme, brand tokens, utility classes
-├── not-found.tsx                   # 404
 ├── sitemap.ts                      # Dynamic sitemap
 ├── robots.ts                       # robots.txt
-├── manga-gastrica-merida/          # Procedure page
-├── bypass-gastrico-merida/         # Procedure page
-├── balon-intragastrico/            # Procedure page
-├── cirugia-minima-invasion/        # Procedure page
-├── sobre-el-doctor/
-├── contacto/
-├── testimonios/
-├── preguntas-frecuentes/
-├── turismo-medico/
-└── blog/
+├── [locale]/
+│   ├── layout.tsx                  # Localized shell, providers, metadata, JSON-LD
+│   ├── page.tsx                    # Homepage
+│   ├── contacto/
+│   ├── preguntas-frecuentes/
+│   └── blog/
+└── favicon.ico
 
 components/
 ├── layout/                         # Navbar, Footer, WhatsAppButton
@@ -125,8 +123,8 @@ Each page exports metadata via `createPageMetadata()`. Injected JSON-LD:
 
 | Schema | Scope |
 |--------|-------|
-| `Physician` | Global (root layout) |
-| `LocalBusiness` | Global (root layout) |
+| `Physician` | Global localized layout |
+| `LocalBusiness` | Global localized layout |
 | `MedicalProcedure` | Procedure pages |
 | `FAQPage` | FAQ page |
 | `BreadcrumbList` | Available via helper |
@@ -148,10 +146,11 @@ These values must be replaced with real data before going to production:
 ## Scripts
 
 ```bash
-npm run dev       # Development server (Turbopack)
-npm run build     # Production build (generates 16 static routes)
-npm run start     # Serve the production build
-npm run lint      # ESLint
+bun dev           # Development server (Turbopack)
+bun run build     # Production build
+bun start         # Serve the production build
+bun run lint      # ESLint
+bun test          # Regression tests
 ```
 
 ## License

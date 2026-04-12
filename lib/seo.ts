@@ -1,4 +1,5 @@
 import type { DoctorInfo, Procedure, FAQItem, Testimonial, BlogPost } from "@/types";
+import { DOCTOR_INFO } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
 // Physician (schema.org/Physician)
@@ -8,6 +9,7 @@ export function generatePhysicianJsonLd(doctor: DoctorInfo) {
   return {
     "@context": "https://schema.org",
     "@type": "Physician",
+    "@id": `${doctor.siteUrl}/#physician`,
     name: doctor.name,
     description: doctor.title,
     medicalSpecialty: doctor.specialties,
@@ -27,6 +29,49 @@ export function generatePhysicianJsonLd(doctor: DoctorInfo) {
       doctor.socialMedia.tiktok,
       doctor.socialMedia.doctoralia,
     ],
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Cédula Profesional",
+        recognizedBy: { "@type": "Organization", name: "SEP — México" },
+        identifier: doctor.cedula,
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Cédula de Especialidad",
+        recognizedBy: { "@type": "Organization", name: "SEP — México" },
+        identifier: doctor.cedulaEspecialidad,
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Certificación Consejo Mexicano de Cirugía General",
+        recognizedBy: { "@type": "Organization", name: "Consejo Mexicano de Cirugía General, A.C." },
+        identifier: doctor.certificacionConsejo,
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Aviso de Publicidad COFEPRIS",
+        recognizedBy: { "@type": "Organization", name: "COFEPRIS" },
+        identifier: doctor.cofepris,
+      },
+    ],
+  };
+}
+
+// ---------------------------------------------------------------------------
+// WebSite (schema.org/WebSite) — enables Google knowledge graph association
+// ---------------------------------------------------------------------------
+
+export function generateWebSiteJsonLd(doctor: DoctorInfo) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${doctor.siteUrl}/#website`,
+    url: doctor.siteUrl,
+    name: doctor.name,
+    description: doctor.title,
+    inLanguage: ["es-MX", "en-US"],
+    publisher: { "@id": `${doctor.siteUrl}/#physician` },
   };
 }
 
@@ -67,18 +112,33 @@ export function generateMedicalProcedureJsonLd(
   doctorName: string,
   locale: string = "es",
 ) {
+  const localePrefix = locale === "en" ? "/en" : "/es";
+  const pageUrl = `${DOCTOR_INFO.siteUrl}${localePrefix}/${procedure.slug}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
+    "@id": `${pageUrl}#procedure`,
     name: procedure.title,
     description: procedure.description,
+    url: pageUrl,
     howPerformed: procedure.longDescription,
     procedureType: "Surgical",
     inLanguage: locale === "en" ? "en" : "es",
     followup: procedure.recovery.map((step) => step.description).join(". "),
+    ...(procedure.bodyLocation && { bodyLocation: procedure.bodyLocation }),
+    ...(procedure.preparation && { preparation: procedure.preparation }),
+    ...(procedure.relevantSpecialty && {
+      relevantSpecialty: {
+        "@type": "MedicalSpecialty",
+        name: procedure.relevantSpecialty,
+      },
+    }),
+    ...(procedure.imagePath && { image: `${DOCTOR_INFO.siteUrl}${procedure.imagePath}` }),
     performedBy: {
       "@type": "Physician",
       name: doctorName,
+      url: DOCTOR_INFO.siteUrl,
     },
   };
 }

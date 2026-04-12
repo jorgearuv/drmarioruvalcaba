@@ -42,6 +42,54 @@ export const routing = defineRouting({
       es: "/contacto",
       en: "/contact",
     },
+    "/cirugia-bariatrica-metabolica": {
+      es: "/cirugia-bariatrica-metabolica",
+      en: "/bariatric-metabolic-surgery",
+    },
+    "/biparticion-transito-intestinal": {
+      es: "/biparticion-transito-intestinal",
+      en: "/intestinal-bipartition",
+    },
+    "/sadi-s": {
+      es: "/sadi-s",
+      en: "/sadi-s",
+    },
+    "/cirugia-revision-bariatrica": {
+      es: "/cirugia-revision-bariatrica",
+      en: "/bariatric-revision-surgery",
+    },
+    "/cirugia-conversion-bariatrica": {
+      es: "/cirugia-conversion-bariatrica",
+      en: "/bariatric-conversion-surgery",
+    },
+    "/colecistectomia-laparoscopica": {
+      es: "/colecistectomia-laparoscopica",
+      en: "/laparoscopic-cholecystectomy",
+    },
+    "/apendicectomia-laparoscopica": {
+      es: "/apendicectomia-laparoscopica",
+      en: "/laparoscopic-appendectomy",
+    },
+    "/funduplicatura-antirreflujo": {
+      es: "/funduplicatura-antirreflujo",
+      en: "/antireflux-fundoplication",
+    },
+    "/cirugia-acalasia": {
+      es: "/cirugia-acalasia",
+      en: "/achalasia-surgery",
+    },
+    "/cirugia-hernias-ventrales": {
+      es: "/cirugia-hernias-ventrales",
+      en: "/ventral-hernia-surgery",
+    },
+    "/cirugia-hernias-inguinales": {
+      es: "/cirugia-hernias-inguinales",
+      en: "/inguinal-hernia-surgery",
+    },
+    "/cirugia-puerto-unico": {
+      es: "/cirugia-puerto-unico",
+      en: "/single-port-surgery",
+    },
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",
     "/aviso-de-privacidad": {

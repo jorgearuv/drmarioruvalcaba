@@ -40,5 +40,53 @@
   "cirugiasUrgencias": {
     "ctaHeading": "Do You Have a Surgical Emergency?",
     "ctaDescription": "Contact Dr. Mario Ruvalcaba 24 hours a day, 7 days a week."
+  },
+  "cirugiaBariatricaMetabolica": {
+    "ctaHeading": "Is Bariatric Surgery Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "biparticionIntestinal": {
+    "ctaHeading": "Is Intestinal Transit Bipartition Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "sadiS": {
+    "ctaHeading": "Is SADI-S Right for You?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaRevisionBariatrica": {
+    "ctaHeading": "Do You Need Bariatric Revision Surgery?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaConversionBariatrica": {
+    "ctaHeading": "Do You Need Bariatric Conversion Surgery?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "colecistectomiaLaparoscopica": {
+    "ctaHeading": "Do You Need Laparoscopic Cholecystectomy?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "apendicectomiaLaparoscopica": {
+    "ctaHeading": "Do You Need Laparoscopic Appendectomy?",
+    "ctaDescription": "Contact Dr. Mario Ruvalcaba for emergency care or evaluation."
+  },
+  "funduplicaturaAntirreflujo": {
+    "ctaHeading": "Do You Suffer from Severe Reflux?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaAcalasia": {
+    "ctaHeading": "Do You Have Difficulty Swallowing?",
+    "ctaDescription": "Schedule an achalasia evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaHerniasVentrales": {
+    "ctaHeading": "Do You Have a Ventral or Umbilical Hernia?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaHerniasInguinales": {
+    "ctaHeading": "Do You Have an Inguinal Hernia?",
+    "ctaDescription": "Schedule a personalized evaluation with Dr. Mario Ruvalcaba."
+  },
+  "cirugiaPuertoUnico": {
+    "ctaHeading": "Want Surgery with an Invisible Scar?",
+    "ctaDescription": "Schedule a single-port surgery evaluation with Dr. Mario Ruvalcaba."
   }
 }
