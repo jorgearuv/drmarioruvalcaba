@@ -11,6 +11,7 @@ import { trackScheduleClick } from "@/lib/analytics";
 import LanguageToggle from "@/components/layout/LanguageToggle";
 import { useLocale } from "next-intl";
 import type { Locale } from "@/i18n/routing";
+import { PROCEDURE_CATEGORIES } from "@/lib/procedure-nav";
 
 interface NavLinkItem {
   labelKey: string;
@@ -22,34 +23,7 @@ const NAV_LINKS: NavLinkItem[] = [
   { labelKey: "home", href: "/" },
   {
     labelKey: "procedures",
-    children: [
-      {
-        labelKey: "minimallyInvasiveSurgery",
-        href: "/cirugia-minima-invasion",
-        children: [
-          { labelKey: "laparoscopicCholecystectomy", href: "/colecistectomia-laparoscopica" },
-          { labelKey: "laparoscopicAppendectomy", href: "/apendicectomia-laparoscopica" },
-          { labelKey: "inguinalHerniaRepair", href: "/cirugia-hernias-inguinales" },
-          { labelKey: "umbilicalVentralHerniaRepair", href: "/cirugia-hernias-ventrales" },
-          { labelKey: "antirefluxSurgery", href: "/funduplicatura-antirreflujo" },
-          { labelKey: "achalasiaSurgery", href: "/cirugia-acalasia" },
-          { labelKey: "singlePortSurgery", href: "/cirugia-puerto-unico" },
-        ],
-      },
-      {
-        labelKey: "bariatricMetabolicSurgery",
-        href: "/cirugia-bariatrica-metabolica",
-        children: [
-          { labelKey: "intragastricBalloon", href: "/balon-intragastrico" },
-          { labelKey: "gastricSleeve", href: "/manga-gastrica-merida" },
-          { labelKey: "gastricBypass", href: "/bypass-gastrico-merida" },
-          { labelKey: "intestinalBipartition", href: "/biparticion-transito-intestinal" },
-          { labelKey: "sadiS", href: "/sadi-s" },
-          { labelKey: "bariatricRevisionSurgery", href: "/cirugia-revision-bariatrica" },
-          { labelKey: "bariatricConversionSurgery", href: "/cirugia-conversion-bariatrica" },
-        ],
-      },
-    ],
+    children: PROCEDURE_CATEGORIES,
   },
   { labelKey: "aboutDoctor", href: "/sobre-el-doctor" },
   { labelKey: "blog", href: "/blog" },

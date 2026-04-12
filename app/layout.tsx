@@ -1,10 +1,13 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist } from "next/font/google";
 import localFont from "next/font/local";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const bodyFont = Plus_Jakarta_Sans({
   variable: "--font-body",
@@ -54,7 +57,7 @@ export default async function RootLayout({
       : routing.defaultLocale;
 
   return (
-    <html lang={lang} data-theme="noir-gold">
+    <html lang={lang} data-theme="noir-gold" className={cn("font-sans", geist.variable)}>
       <body
         className={`${bodyFont.variable} ${headingFont.variable} font-sans antialiased`}
       >

@@ -1,26 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-
-const PROCEDURE_LINKS: { labelKey: string; href: string }[] = [
-  { labelKey: "bariatricMetabolicSurgery", href: "/cirugia-bariatrica-metabolica" },
-  { labelKey: "gastricSleeve", href: "/manga-gastrica-merida" },
-  { labelKey: "gastricBypass", href: "/bypass-gastrico-merida" },
-  { labelKey: "intragastricBalloon", href: "/balon-intragastrico" },
-  { labelKey: "intestinalBipartition", href: "/biparticion-transito-intestinal" },
-  { labelKey: "sadiS", href: "/sadi-s" },
-  { labelKey: "bariatricRevisionSurgery", href: "/cirugia-revision-bariatrica" },
-  { labelKey: "bariatricConversionSurgery", href: "/cirugia-conversion-bariatrica" },
-  { labelKey: "minimallyInvasiveSurgery", href: "/cirugia-minima-invasion" },
-  { labelKey: "laparoscopicCholecystectomy", href: "/colecistectomia-laparoscopica" },
-  { labelKey: "laparoscopicAppendectomy", href: "/apendicectomia-laparoscopica" },
-  { labelKey: "antirefluxSurgery", href: "/funduplicatura-antirreflujo" },
-  { labelKey: "achalasiaSurgery", href: "/cirugia-acalasia" },
-  { labelKey: "inguinalHerniaRepair", href: "/cirugia-hernias-inguinales" },
-  { labelKey: "umbilicalVentralHerniaRepair", href: "/cirugia-hernias-ventrales" },
-  { labelKey: "singlePortSurgery", href: "/cirugia-puerto-unico" },
-  { labelKey: "diastasisRectiSurgery", href: "/cirugia-diastasis-rectos" },
-  { labelKey: "emergencySurgery", href: "/cirugias-urgencias" },
-];
+import { getSiblingProcedures } from "@/lib/procedure-nav";
 
 interface RelatedProceduresProps {
   /** The href of the current procedure page, used to exclude it from the list */
@@ -31,9 +11,7 @@ export default async function RelatedProcedures({ currentHref }: RelatedProcedur
   const t = await getTranslations("procedures.shared");
   const tNav = await getTranslations("common.nav");
 
-  const relatedProcedureLinks = PROCEDURE_LINKS.filter(
-    (procedure) => procedure.href !== currentHref
-  ).slice(0, 6);
+  const relatedProcedureLinks = getSiblingProcedures(currentHref).slice(0, 6);
 
   if (relatedProcedureLinks.length === 0) return null;
 

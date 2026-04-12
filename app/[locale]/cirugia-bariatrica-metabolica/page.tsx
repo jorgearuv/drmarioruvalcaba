@@ -5,7 +5,6 @@ import { generateMedicalProcedureJsonLd, generateBreadcrumbJsonLd, generateFAQPa
 import { DOCTOR_INFO } from "@/lib/constants";
 import ProcedureDetail from "@/components/sections/ProcedureDetail";
 import TrackViewContent from "@/components/analytics/TrackViewContent";
-import RelatedProcedures from "@/components/sections/RelatedProcedures";
 import CTASection from "@/components/sections/CTASection";
 import MedicalDisclaimer from "@/components/ui/MedicalDisclaimer";
 import { Link } from "@/i18n/navigation";
@@ -52,7 +51,6 @@ export default async function CirugiaBariatricaMetabolicaPage({ params }: PagePr
       <TrackViewContent contentName={procedureData.title} contentCategory="procedure" />
       <ProcedureDetail procedure={procedureData} />
       <MedicalDisclaimer />
-      <RelatedProcedures currentHref="/cirugia-bariatrica-metabolica" />
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-navy-900 text-center">
