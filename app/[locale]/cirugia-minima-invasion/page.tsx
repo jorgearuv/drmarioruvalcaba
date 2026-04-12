@@ -60,7 +60,7 @@ export default async function CirugiaMinimaInvasionPage({ params }: PageProps) {
               const inner = (
                 <>
                   <span className="text-3xl">{sub.icon}</span>
-                  <h3 className="text-xl font-bold text-navy-900 mt-3">{sub.title}</h3>
+                  <h3 className="text-xl font-bold text-navy-900 mt-3 group-hover:text-teal-700 transition-colors">{sub.title}</h3>
                   <p className="text-navy-600 mt-2">{sub.description}</p>
                 </>
               );
@@ -68,9 +68,15 @@ export default async function CirugiaMinimaInvasionPage({ params }: PageProps) {
                 <Link
                   key={sub.title}
                   href={sub.slug as any}
-                  className="bg-navy-50 rounded-2xl p-6 border border-navy-100 hover:border-teal-400 hover:shadow-md transition-all block"
+                  className="group bg-navy-50 rounded-2xl p-6 border border-navy-100 hover:border-teal-400/60 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 block"
                 >
                   {inner}
+                  <span className="inline-flex items-center gap-1.5 text-teal-600 text-sm font-semibold mt-4 group-hover:gap-2.5 transition-all duration-200">
+                    {t("shared.viewProcedure")}
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
+                    </svg>
+                  </span>
                 </Link>
               ) : (
                 <div key={sub.title} className="bg-navy-50 rounded-2xl p-6 border border-navy-100">

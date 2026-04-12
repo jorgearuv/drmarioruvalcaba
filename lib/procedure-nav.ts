@@ -73,6 +73,48 @@ export function getSiblingProcedures(currentHref: string): ProcedureNavItem[] {
   return getAllProcedureLinks().filter((item) => item.href !== currentHref);
 }
 
+export interface BreadcrumbSegment {
+  labelKey: string;
+  href: string;
+}
+
+/**
+ * Returns the ancestor segments (with hrefs) for a given procedure slug.
+ * The current page is NOT included — render it separately as BreadcrumbPage.
+ *
+ * - Child page  → [Home, Parent Category]
+ * - Parent page → [Home]
+ * - Standalone  → [Home]
+ */
+export function getProcedureBreadcrumb(slug: string): BreadcrumbSegment[] {
+  const href = `/${slug}`;
+  const parentCategory = getParentCategory(href);
+
+  if (parentCategory) {
+    return [
+      { labelKey: "home", href: "/" },
+      { labelKey: parentCategory.labelKey, href: parentCategory.href },
+    ];
+  }
+
+  return [{ labelKey: "home", href: "/" }];
+}
+
+/** Returns the nav tree labelKey for a given procedure slug, or undefined if not found */
+export function getNavLabelKey(slug: string): string | undefined {
+  const href = `/${slug}`;
+  for (const cat of PROCEDURE_CATEGORIES) {
+    if (cat.href === href) return cat.labelKey;
+    for (const child of cat.children) {
+      if (child.href === href) return child.labelKey;
+    }
+  }
+  for (const sp of STANDALONE_PROCEDURES) {
+    if (sp.href === href) return sp.labelKey;
+  }
+  return undefined;
+}
+
 /** Flat list of all procedures: categories + their children + standalones */
 export function getAllProcedureLinks(): ProcedureNavItem[] {
   const allItems: ProcedureNavItem[] = [];

@@ -1,6 +1,17 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import type { Procedure } from "@/types";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { getProcedureBreadcrumb, getNavLabelKey } from "@/lib/procedure-nav";
 
 interface ProcedureDetailProps {
   procedure: Procedure;
@@ -8,13 +19,42 @@ interface ProcedureDetailProps {
 
 export default async function ProcedureDetail({ procedure }: ProcedureDetailProps) {
   const t = await getTranslations("procedures.shared");
+  const tNav = await getTranslations("common.nav");
   const descriptionParagraphs = procedure.longDescription.split("\n\n");
+  const breadcrumbSegments = getProcedureBreadcrumb(procedure.slug);
+  const breadcrumbCurrentLabel = (() => {
+    const labelKey = getNavLabelKey(procedure.slug);
+    return labelKey ? tNav(labelKey) : procedure.shortTitle;
+  })();
 
   return (
     <>
       {/* Hero Section */}
       <section className="gradient-mesh-hero noise-overlay relative overflow-hidden py-16 md:py-24">
         <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <Breadcrumb className="mb-6">
+            <BreadcrumbList className="text-navy-400">
+              {breadcrumbSegments.map((seg) => (
+                <Fragment key={seg.href}>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink
+                      render={<Link href={seg.href as any} />}
+                      className="text-navy-300 hover:text-white"
+                    >
+                      {tNav(seg.labelKey)}
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator className="text-navy-500" />
+                </Fragment>
+              ))}
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-white/90 font-medium">
+                  {breadcrumbCurrentLabel}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           <span className="inline-flex items-center gap-2 rounded-full glass-dark px-4 py-2 text-sm font-medium text-teal-300">
             <span>{procedure.icon}</span>
             <span>{procedure.shortTitle}</span>
