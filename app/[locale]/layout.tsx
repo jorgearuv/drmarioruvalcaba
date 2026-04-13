@@ -67,7 +67,6 @@ export async function generateMetadata({
     metadataBase: new URL(DOCTOR_INFO.siteUrl),
     icons: {
       icon: [
-        { url: "/favicon.ico", sizes: "32x32" },
         { url: "/images/logo.svg", type: "image/svg+xml" },
       ],
       apple: "/images/logo-apple-touch-icon.png",
