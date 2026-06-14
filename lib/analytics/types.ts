@@ -21,7 +21,7 @@ export type ConversionConfig = NamedEventConversion | LabelConversion;
 export const CONVERSION_CONFIG: Record<ConversionAction, ConversionConfig> = {
   schedule: { type: "named_event", eventName: "ads_conversion_Reservar_cita_1" },
   contact_page_view: { type: "named_event", eventName: "ads_conversion_Contactar_1" },
-  whatsapp_click: { type: "label", sendTo: "AW-17983868749/sEVFCM7jpY4cEM2esP9C", value: 1.0, currency: "MXN" },
+  whatsapp_click: { type: "label", sendTo: "AW-17983868749/i2OnCNOKqLgcEM2esP9C", value: 1.0, currency: "MXN" },
 };
 
 export interface AnalyticsProvider {
